@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bjfgjq7tctvnu"]
+
+[ext_resource type="PackedScene" uid="uid://c7xkqr5fnonrf" path="res://Scenes/Projectiles/bullet.tscn" id="1_mtslb"]
+[ext_resource type="Script" uid="uid://bs58rdk3akurv" path="res://Scripts/bullet_particles.gd" id="2_8x85l"]
+
+[sub_resource type="Gradient" id="Gradient_8x85l"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.59359604)
+colors = PackedColorArray(1, 1, 1, 1, 0.76830685, 0.7683071, 0.76830673, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hjhr8"]
+gradient = SubResource("Gradient_8x85l")
+width = 150
+height = 16
+fill_from = Vector2(0.49646643, 0)
+fill_to = Vector2(0.48939928, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nua3d"]
+size = Vector2(16, 4)
+
+[sub_resource type="Gradient" id="Gradient_mtslb"]
+offsets = PackedFloat32Array(0, 0.63793105)
+colors = PackedColorArray(1, 1, 1, 0.50980395, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xfr4g"]
+gradient = SubResource("Gradient_mtslb")
+width = 24
+height = 8
+fill = 2
+fill_from = Vector2(0.50706714, 0.49293286)
+
+[sub_resource type="Curve" id="Curve_h2w44"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99567103, 0), -3.609376, 0.0, 0, 0]
+point_count = 2
+
+[node name="ThinBullet" unique_id=1755723062 node_paths=PackedStringArray("particles") instance=ExtResource("1_mtslb")]
+particles = NodePath("BulletParticles")
+
+[node name="BulletSprite" parent="." index="0" unique_id=1057259869]
+texture = SubResource("GradientTexture2D_hjhr8")
+
+[node name="Collider" parent="." index="1" unique_id=633958702]
+shape = SubResource("RectangleShape2D_nua3d")
+
+[node name="BulletLight" parent="." index="3" unique_id=981348411]
+energy = 0.5
+texture = SubResource("GradientTexture2D_xfr4g")
+
+[node name="BulletParticles" type="CPUParticles2D" parent="." index="4" unique_id=369581182]
+amount = 15
+lifetime = 0.09999999999999999
+emission_shape = 3
+emission_rect_extents = Vector2(5.24, 0.415)
+gravity = Vector2(0, 0)
+angle_max = 90.0
+scale_amount_min = 0.6
+scale_amount_max = 0.8
+scale_amount_curve = SubResource("Curve_h2w44")
+script = ExtResource("2_8x85l")
+metadata/_custom_type_script = "uid://bs58rdk3akurv"

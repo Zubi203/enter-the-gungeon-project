@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://c05pjh40heosc"]
+
+[ext_resource type="Script" uid="uid://dqpsi1yrb0i4u" path="res://Scripts/explosion.gd" id="1_bo10k"]
+[ext_resource type="Texture2D" uid="uid://h08230vuct6s" path="res://Graphics/Explosions pack/explosion-1-d/spritsheet.png" id="2_dy5p8"]
+
+[sub_resource type="Animation" id="Animation_6ko8j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g4clp"]
+resource_name = "explode"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333336, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667, 0.53333336, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_enable_collider"
+}, {
+"args": [],
+"method": &"_disable_collider"
+}, {
+"args": [],
+"method": &"_explosion_end"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l5ms5"]
+_data = {
+&"RESET": SubResource("Animation_6ko8j"),
+&"explode": SubResource("Animation_g4clp")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2w44"]
+radius = 36.013885
+
+[node name="LargeExplosion" type="Area2D" unique_id=1369045192 node_paths=PackedStringArray("collider", "animation_player")]
+z_index = 2
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_bo10k")
+collider = NodePath("CollisionShape2D")
+owner_group = "Player"
+damage = 15
+animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://dqpsi1yrb0i4u"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1447583006]
+texture = ExtResource("2_dy5p8")
+offset = Vector2(0, -36)
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=620497383]
+libraries/ = SubResource("AnimationLibrary_l5ms5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1380447556]
+shape = SubResource("CircleShape2D_h2w44")
+disabled = true

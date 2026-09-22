@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://y8d6tvum0cd7"
+path="res://.godot/imported/06_Impact_Object_Drop.wav.wav-5896e652ddf4ebd4dd41ab69275a3a52.sample"
+
+[deps]
+
+source_file="res://Audio/Sci-Fi Weapons & Impacts –  Sound Effects Pack FREE/06_Impact_Object_Drop.wav.wav"
+dest_files=["res://.godot/imported/06_Impact_Object_Drop.wav.wav-5896e652ddf4ebd4dd41ab69275a3a52.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

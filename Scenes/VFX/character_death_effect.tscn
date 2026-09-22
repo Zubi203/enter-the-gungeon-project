@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c0ceepa6c27pu"]
+
+[ext_resource type="Script" uid="uid://dk8xyokclaoxm" path="res://Scripts/Components/one_shot_cpu_particles.gd" id="1_qwuqm"]
+
+[sub_resource type="Gradient" id="Gradient_ie1b3"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.61032027)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_ie1b3")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.48293516, 0.5)
+
+[sub_resource type="Curve" id="Curve_65ton"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3430421, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CharacterDeathEffect" type="CPUParticles2D" unique_id=377404084]
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_h2w44")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 120.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+damping_min = 200.0
+damping_max = 200.0
+angle_min = 90.0
+angle_max = 90.0
+scale_amount_curve = SubResource("Curve_65ton")
+script = ExtResource("1_qwuqm")
+metadata/_custom_type_script = "uid://dk8xyokclaoxm"

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://df3kvlvw1jdgo"]
+
+[ext_resource type="PackedScene" uid="uid://c370i8x1hba51" path="res://Scenes/Characters/enemy_default.tscn" id="1_evr2p"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_u8rvh"]
+[ext_resource type="Texture2D" uid="uid://baisuujw47o01" path="res://Graphics/Characters/blood-eye.png" id="3_p78bt"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_w041d"]
+[ext_resource type="Resource" uid="uid://ckd2wi6dtsll0" path="res://Resources/BulletData/enemy_splitting_bullet.tres" id="5_irsp5"]
+[ext_resource type="PackedScene" uid="uid://k7bgs2fy76je" path="res://Scenes/VFX/enemy_shoot_effect_2.tscn" id="6_evr2p"]
+[ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_37ekk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8rvh"]
+resource_local_to_scene = true
+shader = ExtResource("2_u8rvh")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="Resource" id="Resource_7jy0f"]
+script = ExtResource("4_w041d")
+bullet = ExtResource("5_irsp5")
+shoot_vfx = Array[PackedScene]([ExtResource("6_evr2p")])
+recoil_enabled = false
+accuracy_cone_angle = 15.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_han3a"]
+script = ExtResource("7_37ekk")
+attack_sequence = Array[ExtResource("4_w041d")]([SubResource("Resource_7jy0f")])
+startup_delay = 0.3
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[node name="BloodEye" unique_id=184718225 instance=ExtResource("1_evr2p")]
+
+[node name="Shadow" parent="." index="0" unique_id=1624065905]
+scale = Vector2(0.8125, 1)
+
+[node name="CharacterSprite" parent="." index="1" unique_id=8739034]
+material = SubResource("ShaderMaterial_u8rvh")
+texture = ExtResource("3_p78bt")
+
+[node name="EnemyAI" parent="." index="6" unique_id=731142563]
+attack_sequence = SubResource("Resource_han3a")
+attack_cooldown = 2.8
+
+[node name="GunSprite" parent="." index="9" unique_id=1716614618]
+position = Vector2(0, -9)
+gun_offset = 0.0

@@ -1,0 +1,476 @@
+[gd_scene format=3 uid="uid://cnqufii45njh5"]
+
+[ext_resource type="PackedScene" uid="uid://dr54aqyb5bxpm" path="res://Scenes/Characters/character_base.tscn" id="1_al8ar"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_f2s78"]
+[ext_resource type="Script" uid="uid://dgawt8meclj6n" path="res://Scenes/Characters/hurtbox_component.gd" id="2_fcmex"]
+[ext_resource type="Script" uid="uid://bk5d58qoe7pi" path="res://Scripts/Components/movement_component.gd" id="2_gy20a"]
+[ext_resource type="Script" uid="uid://dtejatc6kcbh3" path="res://Scripts/Components/player_controller.gd" id="3_cqrjx"]
+[ext_resource type="Script" uid="uid://cmgu0npg7qct6" path="res://Scripts/Components/character_animation.gd" id="4_gy20a"]
+[ext_resource type="Resource" uid="uid://c1kf47ogqf0oy" path="res://Resources/GunData/accurate_pistol.tres" id="5_01b8d"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="5_f2s78"]
+[ext_resource type="AudioStream" uid="uid://dealnim77jwyb" path="res://Audio/Minifantasy_Dungeon_SFX/12_human_jump_1.wav" id="5_khnq4"]
+[ext_resource type="Resource" uid="uid://dnqca6ci7pd23" path="res://Resources/GunData/default_pistol.tres" id="5_xccyk"]
+[ext_resource type="AudioStream" uid="uid://dh3grbq016s2o" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_1.wav" id="5_xo8ps"]
+[ext_resource type="AudioStream" uid="uid://bo4f01jlk8hix" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_2.wav" id="6_fcmex"]
+[ext_resource type="AudioStream" uid="uid://b3vuldkl0jnsd" path="res://Audio/Minifantasy_Dungeon_SFX/13_human_jump_land_1.wav" id="6_utp2y"]
+[ext_resource type="AudioStream" uid="uid://dw72gxbruv2b" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_3.wav" id="7_25bbb"]
+[ext_resource type="Resource" uid="uid://bl6hght4hbn7c" path="res://Resources/GunData/triple_burst_revolver.tres" id="8_hwltk"]
+[ext_resource type="Resource" uid="uid://rchw1p720oct" path="res://Resources/GunData/frag_revolver.tres" id="9_hhnlt"]
+[ext_resource type="Resource" uid="uid://bpli0ftre1d4j" path="res://Resources/GunData/accurate_machine_gun.tres" id="10_m75h8"]
+[ext_resource type="Resource" uid="uid://na0edeyirvgj" path="res://Resources/GunData/gatling_gun.tres" id="11_2dmea"]
+[ext_resource type="Script" uid="uid://873eq26p32mw" path="res://Scripts/Components/gun_sprite.gd" id="11_25bbb"]
+[ext_resource type="Resource" uid="uid://cfpcs0qkb1wb7" path="res://Resources/GunData/even_spread_shotgun.tres" id="12_lml76"]
+[ext_resource type="Resource" uid="uid://c1gfb0s0y05xg" path="res://Resources/GunData/bouncy_shotgun.tres" id="13_ste30"]
+[ext_resource type="Resource" uid="uid://bmgp0230ecc1y" path="res://Resources/GunData/burst_smg.tres" id="14_6kewp"]
+[ext_resource type="Resource" uid="uid://dmjp272lyd546" path="res://Resources/GunData/homing_machine_gun.tres" id="15_j3fsp"]
+[ext_resource type="Resource" uid="uid://db1yn15vscir5" path="res://Resources/GunData/pulse_cannon.tres" id="16_2davj"]
+[ext_resource type="Resource" uid="uid://bu1ypensrgj15" path="res://Resources/GunData/chain_machine_gun.tres" id="17_sgb3t"]
+[ext_resource type="Resource" uid="uid://pykgyhp3vq6p" path="res://Resources/GunData/sniper.tres" id="18_5ehh5"]
+[ext_resource type="Resource" uid="uid://ciqh2cm226bds" path="res://Resources/GunData/charged_sniper.tres" id="19_yhd30"]
+[ext_resource type="Resource" uid="uid://xdybovpgj6uj" path="res://Resources/GunData/rocket_launcher.tres" id="20_lecoj"]
+[ext_resource type="Resource" uid="uid://c5nloty3drtoh" path="res://Resources/GunData/burst_rocket_launcher.tres" id="21_bgpn4"]
+[ext_resource type="Shader" uid="uid://di6cmpauj1gl" path="res://Shaders/outline_shader.gdshader" id="29_hwltk"]
+[ext_resource type="Script" uid="uid://b17oc8kky02w0" path="res://Scripts/Characters/player_ui.gd" id="31_hhnlt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhnlt"]
+resource_local_to_scene = true
+shader = ExtResource("2_f2s78")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mg68"]
+size = Vector2(13, 5)
+
+[sub_resource type="Animation" id="Animation_cqrjx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_khnq4"]
+resource_name = "death"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667, 0.8, 0.93333334, 1.0666667, 1.2, 1.3333334, 1.4666667, 1.6, 1.7333333, 1.8666666, 2, 2.1333334, 2.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_utp2y"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_gdgf0"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_xo8ps"]
+resource_name = "roll"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666665, 0.4, 0.5333333, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 58, 59]
+}
+
+[sub_resource type="Animation" id="Animation_fcmex"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76, 77, 78, 79]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25bbb"]
+_data = {
+&"RESET": SubResource("Animation_cqrjx"),
+&"death": SubResource("Animation_khnq4"),
+&"hit": SubResource("Animation_utp2y"),
+&"idle": SubResource("Animation_gdgf0"),
+&"roll": SubResource("Animation_xo8ps"),
+&"run": SubResource("Animation_fcmex")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2s78"]
+shader = ExtResource("29_hwltk")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/corner_pixels = false
+
+[sub_resource type="Gradient" id="Gradient_2davj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.49507388, 0.91871923)
+colors = PackedColorArray(0.8810723, 0.8810722, 0.8810722, 1, 0.18645912, 0.186459, 0.18645903, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_2davj")
+width = 96
+height = 96
+fill = 2
+fill_from = Vector2(0.49293286, 0.50706714)
+
+[sub_resource type="Gradient" id="Gradient_6kewp"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.4466192, 0.7241993)
+colors = PackedColorArray(0.8810723, 0.8810722, 0.8810722, 1, 0.18645912, 0.186459, 0.18645903, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3fsp"]
+gradient = SubResource("Gradient_6kewp")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.49293286, 0.50706714)
+
+[sub_resource type="Gradient" id="Gradient_hhnlt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.0024630541, 0.52463055)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f2s78"]
+gradient = SubResource("Gradient_hhnlt")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.47526503, 0.50353354)
+
+[sub_resource type="Curve" id="Curve_h2w44"]
+_data = [Vector2(0, 1), 0.0, -0.74999964, 0, 0, Vector2(1, 0), -1.9038466, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hwltk"]
+offsets = PackedFloat32Array(0, 0.8055556, 1)
+colors = PackedColorArray(1, 1, 1, 0.88235295, 1, 1, 1, 0.78431374, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_lml76"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5498221)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xpw1u"]
+gradient = SubResource("Gradient_lml76")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.48976108, 0.50341296)
+
+[sub_resource type="Curve" id="Curve_pi8ck"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.17799354, 1), 0.0, 0.0, 0, 0, Vector2(0.83818775, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_ste30"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.56049824)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yhcui"]
+gradient = SubResource("Gradient_ste30")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.49658704, 0.49658704)
+
+[sub_resource type="Curve" id="Curve_e8jn2"]
+_data = [Vector2(0, 0.27741933), 0.0, 0.0, 0, 0, Vector2(0.50161815, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.24516124), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_xpw1u"]
+_data = [Vector2(0.02597402, 1), 0.0, -0.9542907, 0, 0, Vector2(1, 0), -1.0725003, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_m75h8"]
+offsets = PackedFloat32Array(0, 0.30555555)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_2dmea"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5591133)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_65ton"]
+gradient = SubResource("Gradient_2dmea")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.4787986, 0.48233217)
+
+[sub_resource type="Curve" id="Curve_yhcui"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7089295, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_j3fsp"]
+offsets = PackedFloat32Array(0, 0.31494662, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.31, 0.31, 0.31, 0, 0.75, 0, 0, 0.5019608)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hwltk"]
+gradient = SubResource("Gradient_j3fsp")
+fill = 1
+fill_from = Vector2(0.52730376, 0.5)
+
+[node name="Player" unique_id=184718225 groups=["Player"] instance=ExtResource("1_al8ar")]
+collision_layer = 2
+
+[node name="CharacterSprite" parent="." index="0" unique_id=8739034]
+material = SubResource("ShaderMaterial_hhnlt")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1092441608]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_6mg68")
+
+[node name="MovementComponent" type="Node" parent="." index="2" unique_id=1249372262 node_paths=PackedStringArray("roll_particles")]
+script = ExtResource("2_gy20a")
+speed = 100.0
+acceleration = 9999.0
+braking = 9999.0
+roll_speed = 190.0
+roll_particles = NodePath("../RollParticles")
+metadata/_custom_type_script = "uid://bk5d58qoe7pi"
+
+[node name="PlayerController" type="Node2D" parent="." index="3" unique_id=434867001 node_paths=PackedStringArray("roll_buffer_timer", "shoot_buffer_timer")]
+script = ExtResource("3_cqrjx")
+roll_buffer_timer = NodePath("../Buffers/RollBuffer")
+shoot_buffer_timer = NodePath("../Buffers/ShootBuffer")
+weapons = Array[ExtResource("5_f2s78")]([ExtResource("5_xccyk"), ExtResource("5_01b8d"), ExtResource("8_hwltk"), ExtResource("9_hhnlt"), ExtResource("10_m75h8"), ExtResource("11_2dmea"), ExtResource("12_lml76"), ExtResource("13_ste30"), ExtResource("14_6kewp"), ExtResource("15_j3fsp"), ExtResource("16_2davj"), ExtResource("17_sgb3t"), ExtResource("18_5ehh5"), ExtResource("19_yhd30"), ExtResource("20_lecoj"), ExtResource("21_bgpn4")])
+hit_iframe_duration = 0.8
+metadata/_custom_type_script = "uid://dtejatc6kcbh3"
+
+[node name="CharacterAnimation" type="AnimationPlayer" parent="." index="4" unique_id=1474198629 node_paths=PackedStringArray("walk_particles", "roll_land_particles")]
+libraries/ = SubResource("AnimationLibrary_25bbb")
+script = ExtResource("4_gy20a")
+footstep_sounds = Array[AudioStream]([ExtResource("5_xo8ps"), ExtResource("6_fcmex"), ExtResource("7_25bbb")])
+footstep_interval = 0.5
+roll_sound = ExtResource("5_khnq4")
+roll_land_sound = ExtResource("6_utp2y")
+walk_particles = NodePath("../WalkParticles")
+roll_land_particles = NodePath("../RollLandParticles")
+
+[node name="Hurtbox" parent="." index="6" unique_id=41026086 groups=["Player"]]
+position = Vector2(0, -7)
+collision_mask = 24
+script = ExtResource("2_fcmex")
+
+[node name="GunSprite" type="Sprite2D" parent="." index="7" unique_id=2043419832 node_paths=PackedStringArray("gun_flash", "shot_particles", "charging_particles", "charged_particles", "charge_light")]
+z_index = 1
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_f2s78")
+position = Vector2(0, -7)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("11_25bbb")
+origin_offset = Vector2(0, -6)
+gun_flash = NodePath("GunFlash")
+gun_flash_duration = 0.1
+shot_particles = NodePath("GunshotParticles")
+charging_particles = NodePath("ChargingParticles")
+charged_particles = NodePath("ChargedParticles")
+charge_light = NodePath("ChargeLight")
+
+[node name="GunFlash" type="PointLight2D" parent="GunSprite" index="0" unique_id=805380596]
+position = Vector2(15.000001, 0)
+rotation = 0.7853982
+color = Color(1, 0.8613334, 0.48000002, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_h2w44")
+
+[node name="ChargeLight" type="PointLight2D" parent="GunSprite" index="1" unique_id=327931792]
+position = Vector2(15.000001, 0)
+rotation = 0.7853982
+energy = 0.0
+texture = SubResource("GradientTexture2D_j3fsp")
+
+[node name="GunshotParticles" type="CPUParticles2D" parent="GunSprite" index="2" unique_id=1293327096]
+position = Vector2(12.5, 0)
+emitting = false
+amount = 15
+texture = SubResource("GradientTexture2D_f2s78")
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.51
+local_coords = true
+spread = 70.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
+damping_min = 600.0
+damping_max = 600.0
+angle_max = 90.0
+scale_amount_min = 0.3
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_h2w44")
+color_ramp = SubResource("Gradient_hwltk")
+
+[node name="ChargingParticles" type="CPUParticles2D" parent="GunSprite" index="3" unique_id=564614168]
+position = Vector2(17.500002, 0)
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_xpw1u")
+lifetime = 0.3
+local_coords = true
+emission_shape = 6
+emission_ring_inner_radius = 28.0
+emission_ring_radius = 32.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = -0.1
+orbit_velocity_max = -0.1
+radial_accel_min = -600.0
+radial_accel_max = -600.0
+scale_amount_min = 0.1
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_pi8ck")
+
+[node name="ChargedParticles" type="CPUParticles2D" parent="GunSprite" index="4" unique_id=606257676]
+position = Vector2(17.5, 0)
+emitting = false
+amount = 1
+texture = SubResource("GradientTexture2D_yhcui")
+lifetime = 0.5
+local_coords = true
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_e8jn2")
+
+[node name="RollParticles" type="CPUParticles2D" parent="." index="8" unique_id=1441589717]
+z_index = -1
+emitting = false
+amount = 20
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.23
+emission_shape = 3
+emission_rect_extents = Vector2(4, 4)
+direction = Vector2(-1, 0)
+spread = 60.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+angle_max = 90.0
+scale_amount_min = 3.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_xpw1u")
+color_ramp = SubResource("Gradient_m75h8")
+
+[node name="WalkParticles" type="CPUParticles2D" parent="." index="9" unique_id=1698034272]
+z_index = -1
+emitting = false
+amount = 15
+texture = SubResource("GradientTexture2D_65ton")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(4, 2)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+scale_amount_min = 0.05
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_yhcui")
+
+[node name="RollLandParticles" type="CPUParticles2D" parent="." index="10" unique_id=1664833441]
+z_index = -1
+emitting = false
+amount = 25
+texture = SubResource("GradientTexture2D_65ton")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(6, 2)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+radial_accel_min = 10.0
+radial_accel_max = 30.0
+scale_amount_min = 0.05
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_yhcui")
+
+[node name="Buffers" type="Node" parent="." index="11" unique_id=707513715]
+
+[node name="RollBuffer" type="Timer" parent="Buffers" index="0" unique_id=2021871092]
+one_shot = true
+
+[node name="ShootBuffer" type="Timer" parent="Buffers" index="1" unique_id=565724756]
+one_shot = true
+
+[node name="PlayerUI" type="CanvasLayer" parent="." index="12" unique_id=124177810 node_paths=PackedStringArray("damage_screen_effect")]
+script = ExtResource("31_hhnlt")
+damage_screen_effect = NodePath("DamageEffect")
+
+[node name="DamageEffect" type="TextureRect" parent="PlayerUI" index="0" unique_id=1083637695]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_hwltk")

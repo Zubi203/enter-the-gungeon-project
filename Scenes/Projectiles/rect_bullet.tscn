@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b547i0hnllonf"]
+
+[ext_resource type="PackedScene" uid="uid://c7xkqr5fnonrf" path="res://Scenes/Projectiles/bullet.tscn" id="1_g7fny"]
+[ext_resource type="Script" uid="uid://bs58rdk3akurv" path="res://Scripts/bullet_particles.gd" id="2_1cw6w"]
+
+[sub_resource type="Curve" id="Curve_ydb8k"]
+_data = [Vector2(0, 1), 0.0, -0.9956894, 0, 0, Vector2(1, 0), -1.0312504, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_1cw6w"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.30295566, 0.63793105, 0.9039409)
+colors = PackedColorArray(0.9471994, 0.9471994, 0.9471994, 1, 1, 1, 1, 1, 1, 1, 1, 0.8862745, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iaoy4"]
+gradient = SubResource("Gradient_1cw6w")
+width = 128
+height = 50
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r1r8"]
+size = Vector2(10, 4)
+
+[sub_resource type="Gradient" id="Gradient_g7fny"]
+colors = PackedColorArray(1, 1, 1, 0.59607846, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pnwk5"]
+gradient = SubResource("Gradient_g7fny")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.4646643, 0.50530034)
+
+[node name="RectBullet" unique_id=1755723062 node_paths=PackedStringArray("particles") instance=ExtResource("1_g7fny")]
+particles = NodePath("BulletParticles")
+
+[node name="BulletParticles" type="CPUParticles2D" parent="." index="0" unique_id=2039302776]
+amount = 50
+lifetime = 0.15000000000000002
+gravity = Vector2(0, 0)
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_ydb8k")
+script = ExtResource("2_1cw6w")
+metadata/_custom_type_script = "uid://bs58rdk3akurv"
+
+[node name="BulletSprite" parent="." index="1" unique_id=1057259869]
+texture = SubResource("GradientTexture2D_iaoy4")
+
+[node name="Collider" parent="." index="2" unique_id=633958702]
+shape = SubResource("RectangleShape2D_3r1r8")
+
+[node name="BulletLight" parent="." index="4" unique_id=981348411]
+energy = 0.5
+texture = SubResource("GradientTexture2D_pnwk5")

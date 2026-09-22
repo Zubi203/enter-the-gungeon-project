@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://cjri8fmvtsah8"]
+
+[ext_resource type="PackedScene" uid="uid://dc1eoururnyi0" path="res://Scenes/Projectiles/enemy_bullet_oval.tscn" id="1_6u42v"]
+[ext_resource type="PackedScene" uid="uid://da8t0qhnps1j1" path="res://Scenes/VFX/wall_hit_effect_3.tscn" id="1_8tbr8"]
+[ext_resource type="Script" uid="uid://bhowfwjcqmlkp" path="res://Scripts/ResourceScripts/bullet_data.gd" id="1_v46ym"]
+[ext_resource type="Script" uid="uid://20jt2km3xhd0" path="res://Scripts/ResourceScripts/bullet_destroy_strategy.gd" id="2_r2xcq"]
+[ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="3_6u6i3"]
+[ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="6_qnx3v"]
+[ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="7_hmrp3"]
+[ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="8_ow41q"]
+
+[sub_resource type="Resource" id="Resource_8tbr8"]
+script = ExtResource("2_r2xcq")
+destroy_effect = ExtResource("1_8tbr8")
+metadata/_custom_type_script = "uid://20jt2km3xhd0"
+
+[sub_resource type="Curve" id="Curve_r2xcq"]
+_data = [Vector2(0, 0.19469023), 0.0, -2.7366486, 0, 0, Vector2(0.118644066, 0), 0.9862341, 0.9862341, 0, 0, Vector2(0.2881356, 1), 11.602755, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_qnx3v"]
+script = ExtResource("3_6u6i3")
+base_speed = 700.0
+speed_curve = SubResource("Curve_r2xcq")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_hmrp3"]
+script = ExtResource("7_hmrp3")
+collision_vfx = Array[PackedScene]([ExtResource("6_qnx3v")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_ow41q"]
+script = ExtResource("7_hmrp3")
+collision_vfx = Array[PackedScene]([ExtResource("8_ow41q")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[resource]
+script = ExtResource("1_v46ym")
+scene = ExtResource("1_6u42v")
+lifetime = 5.0
+size_multiplier = 1.2
+speed_over_lifetime = SubResource("Resource_qnx3v")
+target_collision_logic = SubResource("Resource_hmrp3")
+terrain_collision_logic = SubResource("Resource_ow41q")
+on_destroy_logic = SubResource("Resource_8tbr8")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"

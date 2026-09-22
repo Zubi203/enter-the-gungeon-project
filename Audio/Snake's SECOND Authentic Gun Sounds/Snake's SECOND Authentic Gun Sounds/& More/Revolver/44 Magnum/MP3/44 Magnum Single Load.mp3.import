@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b77mskks0qd6v"
+path="res://.godot/imported/44 Magnum Single Load.mp3-b6ea0d43f851a2458f5a53afe28fed66.mp3str"
+
+[deps]
+
+source_file="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/& More/Revolver/44 Magnum/MP3/44 Magnum Single Load.mp3"
+dest_files=["res://.godot/imported/44 Magnum Single Load.mp3-b6ea0d43f851a2458f5a53afe28fed66.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

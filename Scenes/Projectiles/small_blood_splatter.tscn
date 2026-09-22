@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cvhuvigra6yl2"]
+
+[ext_resource type="Script" uid="uid://dk8xyokclaoxm" path="res://Scripts/Components/one_shot_cpu_particles.gd" id="1_seuyg"]
+
+[sub_resource type="Gradient" id="Gradient_ptkmw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.613879)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_ptkmw")
+width = 32
+height = 16
+fill = 1
+fill_from = Vector2(0.49168974, 0.5069252)
+
+[sub_resource type="Curve" id="Curve_65ton"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.022653729, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xpw1u"]
+offsets = PackedFloat32Array(0, 0.8134058, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_yhcui"]
+colors = PackedColorArray(0.4, 0, 0, 1, 0.68, 0, 0, 1)
+
+[node name="SmallBloodSplatter" type="CPUParticles2D" unique_id=107720059]
+emitting = false
+amount = 3
+texture = SubResource("GradientTexture2D_h2w44")
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.95
+emission_shape = 3
+emission_rect_extents = Vector2(20, 12)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.05
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_65ton")
+color_ramp = SubResource("Gradient_xpw1u")
+color_initial_ramp = SubResource("Gradient_yhcui")
+script = ExtResource("1_seuyg")
+metadata/_custom_type_script = "uid://dk8xyokclaoxm"

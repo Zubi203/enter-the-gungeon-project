@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ce5hvitaho41l"]
+
+[ext_resource type="PackedScene" uid="uid://c7xkqr5fnonrf" path="res://Scenes/Projectiles/bullet.tscn" id="1_ckr4k"]
+[ext_resource type="Script" uid="uid://bs58rdk3akurv" path="res://Scripts/bullet_particles.gd" id="2_dllmy"]
+
+[sub_resource type="Gradient" id="Gradient_f0jjg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.67241377)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dllmy"]
+gradient = SubResource("Gradient_f0jjg")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.50353354, 0.49646643)
+
+[sub_resource type="Curve" id="Curve_h2w44"]
+_data = [Vector2(0, 1), 0.0, -0.9956894, 0, 0, Vector2(1, 0), -1.0312504, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dllmy"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.40147784, 0.5689655, 0.6773399)
+colors = PackedColorArray(1, 1, 1, 1, 0.83975405, 0.83975405, 0.839754, 1, 0.84, 0.84, 0.84, 0.38431373, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tv7gj"]
+gradient = SubResource("Gradient_dllmy")
+width = 150
+fill = 1
+fill_from = Vector2(0.5106007, 0.5093308)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b44rf"]
+size = Vector2(12, 4)
+
+[sub_resource type="Gradient" id="Gradient_ckr4k"]
+offsets = PackedFloat32Array(0, 0.7167488)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ckr4k"]
+gradient = SubResource("Gradient_ckr4k")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.4787986, 0.49116609)
+
+[node name="OvalBullet" unique_id=1755723062 node_paths=PackedStringArray("particles") instance=ExtResource("1_ckr4k")]
+particles = NodePath("BulletParticles")
+
+[node name="BulletParticles" type="CPUParticles2D" parent="." index="0" unique_id=978655898]
+amount = 25
+texture = SubResource("GradientTexture2D_dllmy")
+lifetime = 0.2
+gravity = Vector2(0, 0)
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_h2w44")
+script = ExtResource("2_dllmy")
+metadata/_custom_type_script = "uid://bs58rdk3akurv"
+
+[node name="BulletSprite" parent="." index="1" unique_id=1057259869]
+texture = SubResource("GradientTexture2D_tv7gj")
+
+[node name="Collider" parent="." index="2" unique_id=633958702]
+shape = SubResource("RectangleShape2D_b44rf")
+
+[node name="BulletLight" parent="." index="4" unique_id=981348411]
+energy = 0.5
+texture = SubResource("GradientTexture2D_ckr4k")

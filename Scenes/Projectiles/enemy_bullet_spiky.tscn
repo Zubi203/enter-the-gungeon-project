@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://dsy685b5oooqr"]
+
+[ext_resource type="PackedScene" uid="uid://dy08dx5dcek57" path="res://Scenes/Projectiles/enemy_bullet_basic.tscn" id="1_nrv1d"]
+
+[sub_resource type="Gradient" id="Gradient_pkftc"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.50985223, 0.6034483, 0.6330049)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 0.5, 0.00999999, 0.00999999, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qmbkw"]
+gradient = SubResource("Gradient_pkftc")
+width = 160
+height = 160
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_3rmkv"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.87931037)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_3rmkv")
+width = 8
+height = 8
+fill = 2
+
+[sub_resource type="Gradient" id="Gradient_wkvrk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5147783, 0.87931037)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 0.56078434, 0.011764706, 0.011764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_imbjt"]
+gradient = SubResource("Gradient_wkvrk")
+width = 8
+height = 8
+fill = 2
+
+[node name="EnemyBulletSpiky" unique_id=1755723062 instance=ExtResource("1_nrv1d")]
+
+[node name="BulletSprite" parent="." index="0" unique_id=1057259869]
+texture = SubResource("GradientTexture2D_qmbkw")
+
+[node name="Collider" parent="." index="1" unique_id=633958702]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="." index="4" unique_id=1393855310]
+scale = Vector2(1.25, 1.25)
+
+[node name="Spike" type="Sprite2D" parent="Node2D" index="0" unique_id=668880914]
+position = Vector2(2.7348611, -2.256301)
+rotation = -1.5763946
+scale = Vector2(0.14407079, 0.124801956)
+texture = SubResource("GradientTexture2D_h2w44")
+
+[node name="Spike5" type="Sprite2D" parent="Node2D" index="1" unique_id=1901106252]
+position = Vector2(1.8941303, -3.7176802)
+rotation = -1.6501807
+scale = Vector2(0.16258056, 0.2176995)
+texture = SubResource("GradientTexture2D_imbjt")
+
+[node name="Spike9" type="Sprite2D" parent="Node2D" index="2" unique_id=1292784397]
+position = Vector2(4.1767597, -0.55810165)
+rotation = -0.92705804
+scale = Vector2(0.09993673, 0.11042384)
+texture = SubResource("GradientTexture2D_imbjt")
+
+[node name="Spike10" type="Sprite2D" parent="Node2D" index="3" unique_id=1462983033]
+position = Vector2(-2.3535187, -3.5581017)
+rotation = -2.8383224
+scale = Vector2(0.096702635, 0.10730717)
+texture = SubResource("GradientTexture2D_imbjt")
+
+[node name="Spike6" type="Sprite2D" parent="Node2D" index="4" unique_id=1177678268]
+position = Vector2(1.483318, 3.81055)
+rotation = 0.40610635
+scale = Vector2(0.22646159, 0.22173457)
+texture = SubResource("GradientTexture2D_imbjt")
+
+[node name="Spike7" type="Sprite2D" parent="Node2D" index="5" unique_id=89425747]
+position = Vector2(-2.3937614, 3.378899)
+rotation = 1.1587429
+scale = Vector2(0.23841822, 0.15448241)
+texture = SubResource("GradientTexture2D_imbjt")
+
+[node name="Spike8" type="Sprite2D" parent="Node2D" index="6" unique_id=1975436402]
+position = Vector2(-4, -0.99999976)
+rotation = 2.5286083
+scale = Vector2(0.27561674, 0.27739492)
+texture = SubResource("GradientTexture2D_imbjt")
+
+[node name="Spike3" type="Sprite2D" parent="Node2D" index="7" unique_id=766299178]
+position = Vector2(-2.9999998, 1.9999995)
+rotation = 1.6601069
+scale = Vector2(0.14185494, 0.14562804)
+texture = SubResource("GradientTexture2D_h2w44")
+
+[node name="Spike2" type="Sprite2D" parent="Node2D" index="8" unique_id=1229855068]
+position = Vector2(2.835313, 1.9176567)
+rotation = -0.309664
+scale = Vector2(0.29633403, 0.23426095)
+texture = SubResource("GradientTexture2D_h2w44")
+
+[node name="Spike4" type="Sprite2D" parent="Node2D" index="9" unique_id=1533873464]
+position = Vector2(-0.3910261, -3.4616883)
+rotation = -2.713126
+scale = Vector2(0.30772588, 0.19388735)
+texture = SubResource("GradientTexture2D_h2w44")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c0p28jvchmqic"
+path="res://.godot/imported/AK Reload Part 2 MP3.mp3-15d157122e71ff13df28000779969cf2.mp3str"
+
+[deps]
+
+source_file="res://Audio/Snake's Authentic Gun Sounds/Reloads, Cycling & More/MP3/AK Reload Part 2 MP3.mp3"
+dest_files=["res://.godot/imported/AK Reload Part 2 MP3.mp3-15d157122e71ff13df28000779969cf2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

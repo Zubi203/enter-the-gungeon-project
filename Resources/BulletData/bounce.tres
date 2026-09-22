@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BouncyBullet" format=3 uid="uid://b5ffb2y8n42wp"]
+
+[ext_resource type="Script" uid="uid://c1ilk3xhprqqp" path="res://Scripts/ResourceScripts/bouncy_bullet.gd" id="1_nvmpc"]
+
+[resource]
+script = ExtResource("1_nvmpc")
+metadata/_custom_type_script = "uid://c1ilk3xhprqqp"

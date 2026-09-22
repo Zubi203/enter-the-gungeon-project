@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="GunData" format=3 uid="uid://bl6hght4hbn7c"]
+
+[ext_resource type="PackedScene" uid="uid://da8t0qhnps1j1" path="res://Scenes/VFX/wall_hit_effect_3.tscn" id="1_0cien"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="1_4wmw6"]
+[ext_resource type="Script" uid="uid://20jt2km3xhd0" path="res://Scripts/ResourceScripts/bullet_destroy_strategy.gd" id="1_drj5h"]
+[ext_resource type="PackedScene" uid="uid://ce5hvitaho41l" path="res://Scenes/Projectiles/oval_bullet.tscn" id="2_gmsi6"]
+[ext_resource type="Script" uid="uid://bhowfwjcqmlkp" path="res://Scripts/ResourceScripts/bullet_data.gd" id="3_q3bte"]
+[ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="4_eawhg"]
+[ext_resource type="PackedScene" uid="uid://decet2cw34lj5" path="res://Scenes/VFX/small_shell.tscn" id="4_q3bte"]
+[ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="5_0cien"]
+[ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="5_02wff"]
+[ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="6_eawhg"]
+[ext_resource type="Texture2D" uid="uid://dv0fucslb011h" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Revolvers/1Revolver01.png" id="7_0cien"]
+[ext_resource type="AudioStream" uid="uid://c0baqodbkry2j" path="res://Audio/Snake's Authentic Gun Sounds/Isolated/22LR Single Isolated WAV.wav" id="7_gmsi6"]
+
+[sub_resource type="Resource" id="Resource_gmsi6"]
+script = ExtResource("1_drj5h")
+destroy_effect = ExtResource("1_0cien")
+metadata/_custom_type_script = "uid://20jt2km3xhd0"
+
+[sub_resource type="Curve" id="Curve_rfnrq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6106195, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49107152), -2.4214282, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_8uw7x"]
+script = ExtResource("4_eawhg")
+base_speed = 350.0
+speed_curve = SubResource("Curve_rfnrq")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_7ule0"]
+script = ExtResource("5_02wff")
+collision_vfx = Array[PackedScene]([ExtResource("5_0cien")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_drj5h"]
+script = ExtResource("5_02wff")
+collision_vfx = Array[PackedScene]([ExtResource("6_eawhg")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_ttlq8"]
+script = ExtResource("3_q3bte")
+scene = ExtResource("2_gmsi6")
+bullet_color = Color(1, 0.91749996, 0.00999999, 1)
+damage = 4
+lifetime = 0.7
+speed_over_lifetime = SubResource("Resource_8uw7x")
+target_collision_logic = SubResource("Resource_7ule0")
+terrain_collision_logic = SubResource("Resource_drj5h")
+on_destroy_logic = SubResource("Resource_gmsi6")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
+
+[resource]
+script = ExtResource("1_4wmw6")
+texture = ExtResource("7_0cien")
+bullet = SubResource("Resource_ttlq8")
+shoot_sfx = ExtResource("7_gmsi6")
+shoot_vfx = Array[PackedScene]([ExtResource("4_q3bte")])
+charge_time = 0.0
+bullets_per_shot = 3
+recoil = 6.0
+burst_explosiveness = 0.93
+accuracy_cone_angle = 20.0
+shoot_interval = 0.4
+name = "Revolver"
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"

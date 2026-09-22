@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dr54aqyb5bxpm"]
+
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="1_km8uw"]
+[ext_resource type="Texture2D" uid="uid://blrstm366jhg6" path="res://Graphics/Characters/character_sprite_sheet.png" id="1_u73ym"]
+[ext_resource type="Script" uid="uid://wuiklct7x237" path="res://Scripts/Components/character_sprite.gd" id="2_5gjis"]
+[ext_resource type="Script" uid="uid://bwv1ju4aso6cw" path="res://Scripts/Components/health_component.gd" id="2_fosa8"]
+[ext_resource type="PackedScene" uid="uid://cvhuvigra6yl2" path="res://Scenes/Projectiles/small_blood_splatter.tscn" id="5_gu001"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_km8uw"]
+resource_local_to_scene = true
+shader = ExtResource("1_km8uw")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2w44"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2w44"]
+radius = 6.0
+height = 18.0
+
+[node name="CharacterBase" type="CharacterBody2D" unique_id=184718225]
+z_index = 1
+y_sort_enabled = true
+
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=8739034]
+material = SubResource("ShaderMaterial_km8uw")
+texture = ExtResource("1_u73ym")
+hframes = 18
+vframes = 5
+script = ExtResource("2_5gjis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1092441608]
+shape = SubResource("CircleShape2D_h2w44")
+
+[node name="HealthComponent" type="Node2D" parent="." unique_id=585283887]
+script = ExtResource("2_fosa8")
+hit_effects = Array[PackedScene]([ExtResource("5_gu001")])
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=41026086]
+z_index = 3
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1445577034]
+shape = SubResource("CapsuleShape2D_h2w44")
+debug_color = Color(0.7, 0, 0, 0.41960785)

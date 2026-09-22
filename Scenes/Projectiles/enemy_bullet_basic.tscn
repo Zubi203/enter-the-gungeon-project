@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dy08dx5dcek57"]
+
+[ext_resource type="PackedScene" uid="uid://c7xkqr5fnonrf" path="res://Scenes/Projectiles/bullet.tscn" id="1_tuqke"]
+
+[sub_resource type="Gradient" id="Gradient_tuqke"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.46059114, 0.5837439, 0.6330049)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 0.5, 0.00999999, 0.00999999, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f5cn3"]
+gradient = SubResource("Gradient_tuqke")
+width = 150
+height = 150
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5cn3"]
+radius = 4.1231055
+
+[sub_resource type="Gradient" id="Gradient_f5cn3"]
+offsets = PackedFloat32Array(0, 0.6773399)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_avuho"]
+gradient = SubResource("Gradient_f5cn3")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.50706714, 0.53886926)
+
+[node name="EnemyBulletBasic" unique_id=1755723062 instance=ExtResource("1_tuqke")]
+
+[node name="BulletSprite" parent="." index="0" unique_id=1057259869]
+texture = SubResource("GradientTexture2D_f5cn3")
+
+[node name="Collider" parent="." index="1" unique_id=633958702]
+shape = SubResource("CircleShape2D_f5cn3")
+
+[node name="BulletLight" parent="." index="3" unique_id=981348411]
+scale = Vector2(1.25, 1.25)
+color = Color(1, 0.42000002, 0.42000002, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_avuho")

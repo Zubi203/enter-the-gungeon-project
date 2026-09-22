@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bm5s53hsrjukq"
+path="res://.godot/imported/9mm Pistol Rack Part 1.mp3-40505f489f635bd52317f62926226f83.mp3str"
+
+[deps]
+
+source_file="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Rack Part 1.mp3"
+dest_files=["res://.godot/imported/9mm Pistol Rack Part 1.mp3-40505f489f635bd52317f62926226f83.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

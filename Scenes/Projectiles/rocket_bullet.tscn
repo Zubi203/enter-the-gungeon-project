@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cdvdlsiematg5"]
+
+[ext_resource type="PackedScene" uid="uid://c7xkqr5fnonrf" path="res://Scenes/Projectiles/bullet.tscn" id="1_iaoy4"]
+[ext_resource type="Script" uid="uid://bs58rdk3akurv" path="res://Scripts/bullet_particles.gd" id="2_pnwk5"]
+
+[sub_resource type="Gradient" id="Gradient_nl8ka"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5591133)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pnwk5"]
+gradient = SubResource("Gradient_nl8ka")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.48939928, 0.5106007)
+
+[sub_resource type="Curve" id="Curve_h2w44"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.56250006), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_65ton"]
+offsets = PackedFloat32Array(0, 0.12373737, 0.2550505, 0.40151516, 0.59343433, 0.780303, 1)
+colors = PackedColorArray(1, 0.7316667, 0.53999996, 1, 0.97, 0.70616007, 0.038800023, 1, 1, 0.48333335, 0, 1, 1, 0.20000005, 0, 1, 0.37413925, 0.37413928, 0.37413922, 1, 0.19793725, 0.19793722, 0.19793722, 1, 0.2, 0.2, 0.2, 0)
+
+[sub_resource type="Gradient" id="Gradient_pnwk5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.317734, 0.68719214)
+colors = PackedColorArray(0.91228896, 0.9122889, 0.91228884, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hjhr8"]
+gradient = SubResource("Gradient_pnwk5")
+width = 150
+height = 80
+fill = 1
+fill_from = Vector2(0.35, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pxch"]
+size = Vector2(10, 6)
+
+[sub_resource type="Gradient" id="Gradient_iaoy4"]
+offsets = PackedFloat32Array(0, 0.682266)
+colors = PackedColorArray(1, 1, 1, 0.5529412, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mtslb"]
+gradient = SubResource("Gradient_iaoy4")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="RocketBullet" unique_id=1755723062 node_paths=PackedStringArray("particles") instance=ExtResource("1_iaoy4")]
+particles = NodePath("BulletParticles")
+
+[node name="BulletParticles" type="CPUParticles2D" parent="." index="0" unique_id=2033107918]
+position = Vector2(-4, 0)
+amount = 30
+texture = SubResource("GradientTexture2D_pnwk5")
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2(0, -8)
+angle_max = 90.0
+scale_amount_min = 0.1
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_h2w44")
+color_ramp = SubResource("Gradient_65ton")
+script = ExtResource("2_pnwk5")
+metadata/_custom_type_script = "uid://bs58rdk3akurv"
+
+[node name="BulletSprite" parent="." index="1" unique_id=1057259869]
+texture = SubResource("GradientTexture2D_hjhr8")
+
+[node name="Collider" parent="." index="2" unique_id=633958702]
+shape = SubResource("RectangleShape2D_0pxch")
+
+[node name="BulletLight" parent="." index="4" unique_id=981348411]
+rotation = 0.7853982
+energy = 0.6
+texture = SubResource("GradientTexture2D_mtslb")

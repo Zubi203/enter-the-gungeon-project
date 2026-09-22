@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cw6arrc1xtrvt"
+path="res://.godot/imported/9mm Pistol Reload 2.mp3-0baccc9e65858e636e1dd0ca0cb8c1d0.mp3str"
+
+[deps]
+
+source_file="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Reload 2.mp3"
+dest_files=["res://.godot/imported/9mm Pistol Reload 2.mp3-0baccc9e65858e636e1dd0ca0cb8c1d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

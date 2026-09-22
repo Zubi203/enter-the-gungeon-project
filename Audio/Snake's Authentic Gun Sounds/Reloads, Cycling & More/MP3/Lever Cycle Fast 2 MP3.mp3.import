@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccxj1grvyxawh"
+path="res://.godot/imported/Lever Cycle Fast 2 MP3.mp3-a1ba70e0ca242276b5e46d9b091339a2.mp3str"
+
+[deps]
+
+source_file="res://Audio/Snake's Authentic Gun Sounds/Reloads, Cycling & More/MP3/Lever Cycle Fast 2 MP3.mp3"
+dest_files=["res://.godot/imported/Lever Cycle Fast 2 MP3.mp3-a1ba70e0ca242276b5e46d9b091339a2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bkke5ricdxn84"]
+
+[ext_resource type="PackedScene" uid="uid://decet2cw34lj5" path="res://Scenes/VFX/small_shell.tscn" id="1_l5km1"]
+
+[sub_resource type="Gradient" id="Gradient_l5km1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.87931037)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pap8y"]
+gradient = SubResource("Gradient_l5km1")
+width = 16
+height = 8
+fill = 2
+fill_from = Vector2(0.48939928, 0.5123675)
+
+[node name="LargeShell" unique_id=798184511 instance=ExtResource("1_l5km1")]
+texture = SubResource("GradientTexture2D_pap8y")
+initial_velocity_min = 140.0
+initial_velocity_max = 180.0
+damping_min = 300.0
+damping_max = 500.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+color = Color(0.72, 0.52848, 0.17280002, 1)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1qxahyuwv4tm"
+path="res://.godot/imported/Bolt Mag Pack.mp3-6c5766b2f42dbe914b4f984f8676f82a.mp3str"
+
+[deps]
+
+source_file="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/& More/Mag Pack/MP3/Bolt Mag Pack.mp3"
+dest_files=["res://.godot/imported/Bolt Mag Pack.mp3-6c5766b2f42dbe914b4f984f8676f82a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

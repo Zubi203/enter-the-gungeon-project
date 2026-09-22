@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://dui28ky4h0aba"]
+
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="1_rvpsq"]
+[ext_resource type="Script" uid="uid://d04me0ykwn4nc" path="res://Scripts/ResourceScripts/enemy_data.gd" id="1_xf71c"]
+[ext_resource type="Script" uid="uid://20jt2km3xhd0" path="res://Scripts/ResourceScripts/bullet_destroy_strategy.gd" id="2_wwvjw"]
+[ext_resource type="PackedScene" uid="uid://br3kr2reoi4ad" path="res://Scenes/Projectiles/round_bullet.tscn" id="3_c6ulm"]
+[ext_resource type="Script" uid="uid://bhowfwjcqmlkp" path="res://Scripts/ResourceScripts/bullet_data.gd" id="4_y2dbo"]
+[ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="5_6oxas"]
+[ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="6_gye4g"]
+[ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_pbbap"]
+
+[sub_resource type="Resource" id="Resource_wwvjw"]
+script = ExtResource("2_wwvjw")
+metadata/_custom_type_script = "uid://20jt2km3xhd0"
+
+[sub_resource type="Curve" id="Curve_xpkfn"]
+_data = [Vector2(0.42346942, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_dn4xo"]
+script = ExtResource("5_6oxas")
+base_speed = 100.0
+speed_curve = SubResource("Curve_xpkfn")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_mi56d"]
+script = ExtResource("6_gye4g")
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_rvpsq"]
+script = ExtResource("6_gye4g")
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_htt74"]
+script = ExtResource("4_y2dbo")
+scene = ExtResource("3_c6ulm")
+size_multiplier = 1.3
+speed_over_lifetime = SubResource("Resource_dn4xo")
+target_collision_logic = SubResource("Resource_mi56d")
+terrain_collision_logic = SubResource("Resource_rvpsq")
+on_destroy_logic = SubResource("Resource_wwvjw")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
+
+[sub_resource type="Resource" id="Resource_3fxgo"]
+script = ExtResource("1_rvpsq")
+bullet = SubResource("Resource_htt74")
+recoil_enabled = false
+accuracy_cone_angle = 20.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_beaxc"]
+script = ExtResource("7_pbbap")
+attack_sequence = Array[ExtResource("1_rvpsq")]([SubResource("Resource_3fxgo")])
+startup_delay = 0.1
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[resource]
+script = ExtResource("1_xf71c")
+attack = SubResource("Resource_beaxc")
+attack_cooldown = 1.5
+metadata/_custom_type_script = "uid://d04me0ykwn4nc"

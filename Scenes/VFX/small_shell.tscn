@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://decet2cw34lj5"]
+
+[ext_resource type="Script" uid="uid://dk8xyokclaoxm" path="res://Scripts/Components/one_shot_cpu_particles.gd" id="1_fyte0"]
+
+[sub_resource type="Gradient" id="Gradient_fyte0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.8940887)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fyte0"]
+gradient = SubResource("Gradient_fyte0")
+width = 16
+height = 8
+fill = 2
+fill_from = Vector2(0.4787986, 0.4876325)
+
+[sub_resource type="Curve" id="Curve_kmo2q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.88311684, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="SmallShell" type="CPUParticles2D" unique_id=798184511]
+emitting = false
+amount = 1
+texture = SubResource("GradientTexture2D_fyte0")
+lifetime = 4.0
+one_shot = true
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 120.0
+initial_velocity_max = 160.0
+damping_min = 200.0
+damping_max = 400.0
+angle_max = 360.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_kmo2q")
+color = Color(0.69, 0.49335003, 0.06900001, 1)
+script = ExtResource("1_fyte0")
+metadata/_custom_type_script = "uid://dk8xyokclaoxm"

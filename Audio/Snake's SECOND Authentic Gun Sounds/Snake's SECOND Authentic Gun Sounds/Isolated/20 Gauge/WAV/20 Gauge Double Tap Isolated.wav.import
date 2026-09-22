@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cygulwrp0tbmp"
+path="res://.godot/imported/20 Gauge Double Tap Isolated.wav-5409b30d2b63325aa9c76986fac1ad1b.sample"
+
+[deps]
+
+source_file="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/Isolated/20 Gauge/WAV/20 Gauge Double Tap Isolated.wav"
+dest_files=["res://.godot/imported/20 Gauge Double Tap Isolated.wav-5409b30d2b63325aa9c76986fac1ad1b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

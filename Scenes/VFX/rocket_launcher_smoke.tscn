@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cp1epq8c2ke4r"]
+
+[ext_resource type="Script" uid="uid://dk8xyokclaoxm" path="res://Scripts/Components/one_shot_cpu_particles.gd" id="1_6e250"]
+
+[sub_resource type="Gradient" id="Gradient_oo6yt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.036945812, 0.5788177)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_oo6yt")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.51766783, 0.5106007)
+
+[sub_resource type="Curve" id="Curve_xpw1u"]
+_data = [Vector2(0, 0.1428572), 0.0, 0.0, 0, 0, Vector2(0.6450217, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_yhcui"]
+offsets = PackedFloat32Array(0.0025252525, 0.46717173, 1)
+colors = PackedColorArray(0.55, 0.07699999, 0.07699999, 1, 0.27095187, 0.14120367, 0.14117804, 1, 0.1288298, 0.12882978, 0.12882978, 1)
+
+[node name="RocketLauncherSmoke" type="CPUParticles2D" unique_id=1298119194]
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_h2w44")
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.95
+randomness = 1.0
+lifetime_randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 150.0
+damping_min = 100.0
+damping_max = 200.0
+scale_amount_min = 0.8
+scale_amount_curve = SubResource("Curve_xpw1u")
+color_ramp = SubResource("Gradient_yhcui")
+script = ExtResource("1_6e250")
+metadata/_custom_type_script = "uid://dk8xyokclaoxm"

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://daklyg66dwkrc"]
+
+[ext_resource type="PackedScene" uid="uid://c370i8x1hba51" path="res://Scenes/Characters/enemy_default.tscn" id="1_665n2"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_xcoj1"]
+[ext_resource type="Texture2D" uid="uid://dbed0rikdvrxj" path="res://Graphics/Characters/mimic-skull.png" id="3_xcoj1"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_2fxdk"]
+[ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="5_08h6d"]
+[ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="6_a7o1g"]
+[ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_8re8k"]
+
+[sub_resource type="Gradient" id="Gradient_dwgdj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.52955663)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_dwgdj")
+fill = 1
+fill_from = Vector2(0.48939928, 0.5)
+
+[sub_resource type="Curve" id="Curve_65ton"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.4375007, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xpw1u"]
+colors = PackedColorArray(1, 0.69, 0.69, 1, 1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3pc4"]
+resource_local_to_scene = true
+shader = ExtResource("2_xcoj1")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="Resource" id="Resource_88iev"]
+script = ExtResource("4_2fxdk")
+bullet = ExtResource("5_08h6d")
+shoot_vfx = Array[PackedScene]([ExtResource("6_a7o1g")])
+recoil_enabled = false
+accuracy_cone_angle = 20.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_bueni"]
+script = ExtResource("7_8re8k")
+attack_sequence = Array[ExtResource("4_2fxdk")]([SubResource("Resource_88iev")])
+startup_delay = 0.3
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[node name="PossessedSkull" unique_id=184718225 instance=ExtResource("1_665n2")]
+
+[node name="SkullFlame" type="CPUParticles2D" parent="." index="0" unique_id=1585409207]
+position = Vector2(0, -7)
+amount = 12
+texture = SubResource("GradientTexture2D_h2w44")
+lifetime = 0.8
+emission_shape = 1
+emission_sphere_radius = 12.0
+gravity = Vector2(0, -100)
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_65ton")
+color_ramp = SubResource("Gradient_xpw1u")
+
+[node name="Shadow" parent="." index="1" unique_id=1624065905]
+z_index = -1
+position = Vector2(0, 3.4999998)
+scale = Vector2(0.75, 0.93749994)
+
+[node name="CharacterSprite" parent="." index="2" unique_id=8739034]
+material = SubResource("ShaderMaterial_v3pc4")
+texture = ExtResource("3_xcoj1")
+
+[node name="EnemyAI" parent="." index="7" unique_id=731142563]
+position = Vector2(0, 1)
+attack_sequence = SubResource("Resource_bueni")
+
+[node name="GunSprite" parent="." index="10" unique_id=1716614618]
+position = Vector2(0, 1)
+gun_offset = 0.0

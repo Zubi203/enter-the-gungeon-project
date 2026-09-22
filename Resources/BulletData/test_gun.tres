@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GunData" format=3 uid="uid://b2cpqtr8bgard"]
+
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="1_n86g7"]
+[ext_resource type="Resource" uid="uid://caxl8vfwf3hio" path="res://Resources/BulletData/default_bullet.tres" id="1_s0lw3"]
+
+[resource]
+script = ExtResource("1_n86g7")
+bullet = ExtResource("1_s0lw3")
+charge_time = 1.0
+bullets_per_shot = 13
+recoil = 3.0
+burst_explosiveness = 0.9
+accuracy_cone_angle = 90.0
+spread_type = 1
+spread_firing_order = 2
+shoot_interval = 0.5
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"

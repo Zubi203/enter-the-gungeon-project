@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://beyq4ni0l7ucp"]
+
+[ext_resource type="Script" uid="uid://dk8xyokclaoxm" path="res://Scripts/Components/one_shot_cpu_particles.gd" id="1_1qp5a"]
+
+[sub_resource type="Gradient" id="Gradient_fekah"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.62811387)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xpw1u"]
+gradient = SubResource("Gradient_fekah")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.48293516, 0.49317408)
+
+[sub_resource type="Curve" id="Curve_65ton"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23948222, 1), 0.0, 0.0, 0, 0, Vector2(0.77669907, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_yhcui"]
+offsets = PackedFloat32Array(0, 0.39311594, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1)
+
+[node name="EnemyAttackWindupSmall" type="CPUParticles2D" unique_id=1586424361]
+emitting = false
+texture = SubResource("GradientTexture2D_xpw1u")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+emission_shape = 6
+emission_ring_inner_radius = 12.0
+emission_ring_radius = 24.0
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+radial_accel_min = -400.0
+radial_accel_max = -400.0
+tangential_accel_max = 60.74
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_65ton")
+color_ramp = SubResource("Gradient_yhcui")
+script = ExtResource("1_1qp5a")
+metadata/_custom_type_script = "uid://dk8xyokclaoxm"

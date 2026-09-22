@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://caxl8vfwf3hio"]
+
+[ext_resource type="Script" uid="uid://20jt2km3xhd0" path="res://Scripts/ResourceScripts/bullet_destroy_strategy.gd" id="1_q4lsk"]
+[ext_resource type="Script" uid="uid://bhowfwjcqmlkp" path="res://Scripts/ResourceScripts/bullet_data.gd" id="1_y7u0f"]
+[ext_resource type="PackedScene" uid="uid://b547i0hnllonf" path="res://Scenes/Projectiles/rect_bullet.tscn" id="2_ljieq"]
+[ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="3_q4lsk"]
+[ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="4_ljieq"]
+[ext_resource type="Resource" uid="uid://b5ffb2y8n42wp" path="res://Resources/BulletData/bounce.tres" id="6_ljieq"]
+
+[sub_resource type="Resource" id="Resource_t1vox"]
+script = ExtResource("1_q4lsk")
+metadata/_custom_type_script = "uid://20jt2km3xhd0"
+
+[sub_resource type="Curve" id="Curve_2iflq"]
+_data = [Vector2(0, 1), 0.0, -0.098245576, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_ws3a4"]
+script = ExtResource("3_q4lsk")
+base_speed = 400.0
+speed_curve = SubResource("Curve_2iflq")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_8pfs1"]
+script = ExtResource("4_ljieq")
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[resource]
+script = ExtResource("1_y7u0f")
+scene = ExtResource("2_ljieq")
+bullet_color = Color(0.96000004, 1, 0.19999999, 1)
+damage = 10
+lifetime = 0.6
+speed_over_lifetime = SubResource("Resource_ws3a4")
+target_collision_logic = SubResource("Resource_8pfs1")
+terrain_collision_logic = ExtResource("6_ljieq")
+on_destroy_logic = SubResource("Resource_t1vox")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"

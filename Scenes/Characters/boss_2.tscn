@@ -1,0 +1,416 @@
+[gd_scene format=3 uid="uid://cdk14m8amwxet"]
+
+[ext_resource type="PackedScene" uid="uid://dr54aqyb5bxpm" path="res://Scenes/Characters/character_base.tscn" id="1_jcmgw"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_fi4a2"]
+[ext_resource type="Texture2D" uid="uid://dnhrcb78wk7mp" path="res://Graphics/Characters/image - 2025-08-02T190920.899.png" id="3_6e402"]
+[ext_resource type="Script" uid="uid://cmgu0npg7qct6" path="res://Scripts/Components/character_animation.gd" id="4_6e402"]
+[ext_resource type="Script" uid="uid://bk5d58qoe7pi" path="res://Scripts/Components/movement_component.gd" id="5_ii178"]
+[ext_resource type="Script" uid="uid://ckuplqe8jhy5g" path="res://Scripts/Components/boss_2ai.gd" id="6_ii178"]
+[ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_kswfg"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="8_yfgoj"]
+[ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="9_ay6qp"]
+[ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="10_anlfi"]
+[ext_resource type="Script" uid="uid://blvowsd1elxf6" path="res://Scripts/ResourceScripts/splitting_bullet_strategy.gd" id="11_lu4jd"]
+[ext_resource type="PackedScene" uid="uid://dy08dx5dcek57" path="res://Scenes/Projectiles/enemy_bullet_basic.tscn" id="11_s8qfc"]
+[ext_resource type="PackedScene" uid="uid://b2wf4p3d06ilu" path="res://Scenes/VFX/enemy_attack_windup.tscn" id="11_yfgoj"]
+[ext_resource type="PackedScene" uid="uid://da8t0qhnps1j1" path="res://Scenes/VFX/wall_hit_effect_3.tscn" id="12_s8qfc"]
+[ext_resource type="Script" uid="uid://20jt2km3xhd0" path="res://Scripts/ResourceScripts/bullet_destroy_strategy.gd" id="13_n4qx3"]
+[ext_resource type="PackedScene" uid="uid://dc1eoururnyi0" path="res://Scenes/Projectiles/enemy_bullet_oval.tscn" id="14_00r7f"]
+[ext_resource type="Script" uid="uid://bhowfwjcqmlkp" path="res://Scripts/ResourceScripts/bullet_data.gd" id="15_4ut3d"]
+[ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="16_8l3y2"]
+[ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="17_dl0au"]
+[ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="18_crvcv"]
+[ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="19_8yr1y"]
+[ext_resource type="PackedScene" uid="uid://dsy685b5oooqr" path="res://Scenes/Projectiles/enemy_bullet_spiky.tscn" id="20_5o0ab"]
+
+[sub_resource type="Gradient" id="Gradient_1prna"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.75123155)
+colors = PackedColorArray(0, 0, 0, 0.3764706, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jcmgw"]
+gradient = SubResource("Gradient_1prna")
+width = 32
+height = 16
+fill = 1
+fill_from = Vector2(0.48939928, 0.50530034)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ii178"]
+resource_local_to_scene = true
+shader = ExtResource("2_fi4a2")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnsm1"]
+size = Vector2(30, 18)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_edowj"]
+radius = 15.0
+height = 38.0
+
+[sub_resource type="Animation" id="Animation_1prna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tq1da"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.8, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_73or3"]
+resource_name = "hit"
+
+[sub_resource type="Animation" id="Animation_88iev"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4uqsb"]
+resource_name = "roll"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qstrc"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.033333335, 0.16666667, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.15, 0.85), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_edowj"]
+_data = {
+&"RESET": SubResource("Animation_1prna"),
+&"death": SubResource("Animation_tq1da"),
+&"hit": SubResource("Animation_73or3"),
+&"idle": SubResource("Animation_88iev"),
+&"roll": SubResource("Animation_4uqsb"),
+&"run": SubResource("Animation_qstrc")
+}
+
+[sub_resource type="Resource" id="Resource_00r7f"]
+script = ExtResource("8_yfgoj")
+bullet = ExtResource("9_ay6qp")
+shoot_vfx = Array[PackedScene]([ExtResource("10_anlfi")])
+bullets_per_shot = 7
+recoil_enabled = false
+burst_explosiveness = 0.85
+accuracy_cone_angle = 120.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_4ut3d"]
+script = ExtResource("7_kswfg")
+attack_sequence = Array[ExtResource("8_yfgoj")]([SubResource("Resource_00r7f")])
+startup_delay = 0.6
+delay_between_attacks = 0.1
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[sub_resource type="Resource" id="Resource_0g5dt"]
+script = ExtResource("13_n4qx3")
+destroy_effect = ExtResource("12_s8qfc")
+metadata/_custom_type_script = "uid://20jt2km3xhd0"
+
+[sub_resource type="Curve" id="Curve_s8qfc"]
+_data = [Vector2(0.6439394, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_lu4jd"]
+script = ExtResource("16_8l3y2")
+base_speed = 110.0
+speed_curve = SubResource("Curve_s8qfc")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_0jhm4"]
+script = ExtResource("18_crvcv")
+collision_vfx = Array[PackedScene]([ExtResource("17_dl0au")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_8rrb5"]
+script = ExtResource("18_crvcv")
+collision_vfx = Array[PackedScene]([ExtResource("19_8yr1y")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_n4qx3"]
+script = ExtResource("15_4ut3d")
+scene = ExtResource("11_s8qfc")
+lifetime = 4.0
+speed_over_lifetime = SubResource("Resource_lu4jd")
+target_collision_logic = SubResource("Resource_0jhm4")
+terrain_collision_logic = SubResource("Resource_8rrb5")
+on_destroy_logic = SubResource("Resource_0g5dt")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
+
+[sub_resource type="Resource" id="Resource_edowj"]
+script = ExtResource("8_yfgoj")
+bullet = SubResource("Resource_n4qx3")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("10_anlfi")])
+bullets_per_shot = 50
+recoil_enabled = false
+accuracy_cone_angle = 120.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_ii178"]
+script = ExtResource("7_kswfg")
+attack_sequence = Array[ExtResource("8_yfgoj")]([SubResource("Resource_edowj")])
+startup_delay = 0.7
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[sub_resource type="Curve" id="Curve_00r7f"]
+_data = [Vector2(0.60256416, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_s8qfc"]
+script = ExtResource("16_8l3y2")
+base_speed = 120.0
+speed_curve = SubResource("Curve_00r7f")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_wrmyq"]
+script = ExtResource("15_4ut3d")
+scene = ExtResource("14_00r7f")
+lifetime = 4.0
+size_multiplier = 0.8
+speed_over_lifetime = SubResource("Resource_s8qfc")
+target_collision_logic = SubResource("Resource_0jhm4")
+terrain_collision_logic = SubResource("Resource_8rrb5")
+on_destroy_logic = SubResource("Resource_0g5dt")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
+
+[sub_resource type="Resource" id="Resource_nypfw"]
+script = ExtResource("8_yfgoj")
+bullet = SubResource("Resource_wrmyq")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("10_anlfi")])
+bullets_per_shot = 60
+recoil_enabled = false
+accuracy_cone_angle = 360.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_rf4tg"]
+script = ExtResource("11_lu4jd")
+split_shot = SubResource("Resource_nypfw")
+destroy_effect = ExtResource("10_anlfi")
+metadata/_custom_type_script = "uid://blvowsd1elxf6"
+
+[sub_resource type="Curve" id="Curve_jsr6q"]
+_data = [Vector2(0.25757575, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.6589146, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_iujc3"]
+script = ExtResource("16_8l3y2")
+base_speed = 100.0
+speed_curve = SubResource("Curve_jsr6q")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_3fw03"]
+script = ExtResource("18_crvcv")
+collision_vfx = Array[PackedScene]([ExtResource("17_dl0au")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_ff0y3"]
+script = ExtResource("18_crvcv")
+collision_vfx = Array[PackedScene]([ExtResource("19_8yr1y")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_gf27e"]
+script = ExtResource("15_4ut3d")
+scene = ExtResource("20_5o0ab")
+size_multiplier = 1.5
+speed_over_lifetime = SubResource("Resource_iujc3")
+target_collision_logic = SubResource("Resource_3fw03")
+terrain_collision_logic = SubResource("Resource_ff0y3")
+on_destroy_logic = SubResource("Resource_rf4tg")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
+
+[sub_resource type="Resource" id="Resource_iekjk"]
+script = ExtResource("8_yfgoj")
+bullet = SubResource("Resource_gf27e")
+shoot_vfx = Array[PackedScene]([ExtResource("10_anlfi")])
+recoil = 15.0
+accuracy_cone_angle = 0.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_feygg"]
+script = ExtResource("7_kswfg")
+attack_sequence = Array[ExtResource("8_yfgoj")]([SubResource("Resource_iekjk")])
+startup_delay = 0.7
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[sub_resource type="Resource" id="Resource_ay6qp"]
+script = ExtResource("8_yfgoj")
+bullet = ExtResource("9_ay6qp")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("10_anlfi")])
+bullets_per_shot = 20
+recoil_enabled = false
+accuracy_cone_angle = 360.0
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_anlfi"]
+script = ExtResource("8_yfgoj")
+bullet = ExtResource("9_ay6qp")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("10_anlfi")])
+bullets_per_shot = 19
+recoil_enabled = false
+accuracy_cone_angle = 360.0
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_doweh"]
+script = ExtResource("8_yfgoj")
+bullet = ExtResource("9_ay6qp")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("10_anlfi")])
+bullets_per_shot = 20
+recoil_enabled = false
+accuracy_cone_angle = 360.0
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_yfgoj"]
+script = ExtResource("7_kswfg")
+attack_sequence = Array[ExtResource("8_yfgoj")]([SubResource("Resource_ay6qp"), SubResource("Resource_anlfi"), SubResource("Resource_doweh")])
+startup_delay = 0.7
+delay_between_attacks = 0.1
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[node name="Boss2" unique_id=184718225 instance=ExtResource("1_jcmgw")]
+collision_layer = 4
+collision_mask = 5
+
+[node name="Shadow" type="Sprite2D" parent="." index="0" unique_id=1128432124]
+z_index = -1
+position = Vector2(0, -0.5000007)
+scale = Vector2(1.0625, 1.0625001)
+texture = SubResource("GradientTexture2D_jcmgw")
+
+[node name="CharacterSprite" parent="." index="1" unique_id=8739034]
+material = SubResource("ShaderMaterial_ii178")
+texture = ExtResource("3_6e402")
+offset = Vector2(0, -24.19)
+hframes = 1
+vframes = 1
+region_enabled = true
+region_rect = Rect2(299.75327, 542.65967, 52.139618, 52.371338)
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1092441608]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_rnsm1")
+
+[node name="Hurtbox" parent="." index="4" unique_id=41026086 groups=["Enemy"]]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1445577034]
+position = Vector2(2, -17)
+shape = SubResource("CapsuleShape2D_edowj")
+
+[node name="CharacterAnimation" type="AnimationPlayer" parent="." index="5" unique_id=1364103352]
+libraries/ = SubResource("AnimationLibrary_edowj")
+script = ExtResource("4_6e402")
+follow_type = 1
+metadata/_custom_type_script = "uid://cmgu0npg7qct6"
+
+[node name="MovementComponent" type="Node" parent="." index="6" unique_id=195520836]
+script = ExtResource("5_ii178")
+speed = 70.0
+acceleration = 1000.0
+braking = 1000.0
+knockback_immune = true
+metadata/_custom_type_script = "uid://bk5d58qoe7pi"
+
+[node name="Muzzle" type="Marker2D" parent="." index="7" unique_id=1632419392]
+position = Vector2(0, -6)
+
+[node name="Boss2AI" type="Node2D" parent="." index="8" unique_id=304998928 node_paths=PackedStringArray("muzzle")]
+script = ExtResource("6_ii178")
+attacks = Dictionary[int, ExtResource("7_kswfg")]({
+0: null,
+1: null,
+2: null,
+3: SubResource("Resource_4ut3d"),
+4: SubResource("Resource_feygg"),
+5: SubResource("Resource_ii178"),
+6: SubResource("Resource_yfgoj")
+})
+muzzle = NodePath("../Muzzle")
+windup_effect = ExtResource("11_yfgoj")

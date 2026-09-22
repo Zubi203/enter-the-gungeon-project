@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c7xkqr5fnonrf"]
+
+[ext_resource type="Texture2D" uid="uid://2ici4uqbjn1s" path="res://icon.svg" id="1_12ur6"]
+[ext_resource type="Script" uid="uid://bgton84etl10u" path="res://Scripts/base_bullet.gd" id="1_3323x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2w44"]
+radius = 6.0
+
+[node name="Bullet" type="Area2D" unique_id=1755723062 node_paths=PackedStringArray("direction_ray", "bullet_light", "sprite")]
+z_index = 5
+collision_layer = 8
+collision_mask = 17
+collision_priority = 1000.0
+priority = 3
+script = ExtResource("1_3323x")
+direction_ray = NodePath("DirectionRay")
+bullet_light = NodePath("BulletLight")
+sprite = NodePath("BulletSprite")
+
+[node name="BulletSprite" type="Sprite2D" parent="." unique_id=1057259869]
+scale = Vector2(0.078125, 0.078125)
+texture = ExtResource("1_12ur6")
+
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=633958702]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_h2w44")
+
+[node name="DirectionRay" type="RayCast2D" parent="." unique_id=1435691347]
+unique_name_in_owner = true
+top_level = true
+target_position = Vector2(0, 20)
+collision_mask = 17
+hit_from_inside = true
+
+[node name="BulletLight" type="PointLight2D" parent="." unique_id=981348411]

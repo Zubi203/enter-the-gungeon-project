@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="GunData" format=3 uid="uid://cfpcs0qkb1wb7"]
+
+[ext_resource type="PackedScene" uid="uid://da8t0qhnps1j1" path="res://Scenes/VFX/wall_hit_effect_3.tscn" id="1_3joyo"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="1_b82fj"]
+[ext_resource type="Script" uid="uid://20jt2km3xhd0" path="res://Scripts/ResourceScripts/bullet_destroy_strategy.gd" id="1_o88br"]
+[ext_resource type="PackedScene" uid="uid://br3kr2reoi4ad" path="res://Scenes/Projectiles/round_bullet.tscn" id="2_hqg80"]
+[ext_resource type="Script" uid="uid://bhowfwjcqmlkp" path="res://Scripts/ResourceScripts/bullet_data.gd" id="3_4g3fi"]
+[ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="4_e862r"]
+[ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="5_3joyo"]
+[ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="5_5ygba"]
+[ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="6_e862r"]
+[ext_resource type="Texture2D" uid="uid://dcjefdt2m15rg" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/4Shotgun04.png" id="7_3joyo"]
+[ext_resource type="AudioStream" uid="uid://bls76omxo5rre" path="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/Isolated/20 Gauge/WAV/20 Gauge Single Isolated.wav" id="7_hqg80"]
+[ext_resource type="PackedScene" uid="uid://bkke5ricdxn84" path="res://Scenes/VFX/large_shell.tscn" id="8_4g3fi"]
+
+[sub_resource type="Resource" id="Resource_o88br"]
+script = ExtResource("1_o88br")
+destroy_effect = ExtResource("1_3joyo")
+metadata/_custom_type_script = "uid://20jt2km3xhd0"
+
+[sub_resource type="Curve" id="Curve_1wcxm"]
+_data = [Vector2(0.017699122, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.29464293), -2.173076, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_wl67f"]
+script = ExtResource("4_e862r")
+base_speed = 500.0
+speed_curve = SubResource("Curve_1wcxm")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_a0t1y"]
+script = ExtResource("5_5ygba")
+collision_vfx = Array[PackedScene]([ExtResource("5_3joyo")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_s5pnm"]
+script = ExtResource("5_5ygba")
+collision_vfx = Array[PackedScene]([ExtResource("6_e862r")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_y16kw"]
+script = ExtResource("3_4g3fi")
+scene = ExtResource("2_hqg80")
+bullet_color = Color(1, 0.48333335, 0, 1)
+damage = 4
+lifetime = 0.5
+speed_over_lifetime = SubResource("Resource_wl67f")
+target_collision_logic = SubResource("Resource_a0t1y")
+terrain_collision_logic = SubResource("Resource_s5pnm")
+on_destroy_logic = SubResource("Resource_o88br")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
+
+[resource]
+script = ExtResource("1_b82fj")
+texture = ExtResource("7_3joyo")
+bullet = SubResource("Resource_y16kw")
+shoot_sfx = ExtResource("7_hqg80")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("8_4g3fi")])
+bullets_per_shot = 6
+recoil = 10.0
+accuracy_cone_angle = 25.0
+spread_type = 1
+shoot_interval = 0.6
+name = "Shotgun"
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"

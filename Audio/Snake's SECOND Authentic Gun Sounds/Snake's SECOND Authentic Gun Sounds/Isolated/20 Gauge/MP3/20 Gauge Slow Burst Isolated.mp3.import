@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://p53jexv1155o"
+path="res://.godot/imported/20 Gauge Slow Burst Isolated.mp3-7cc27f2a5bab4d9a69157040d9bc955f.mp3str"
+
+[deps]
+
+source_file="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/Isolated/20 Gauge/MP3/20 Gauge Slow Burst Isolated.mp3"
+dest_files=["res://.godot/imported/20 Gauge Slow Burst Isolated.mp3-7cc27f2a5bab4d9a69157040d9bc955f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

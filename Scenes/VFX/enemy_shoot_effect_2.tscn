@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://k7bgs2fy76je"]
+
+[ext_resource type="Script" uid="uid://dk8xyokclaoxm" path="res://Scripts/Components/one_shot_cpu_particles.gd" id="1_wh31p"]
+
+[sub_resource type="Gradient" id="Gradient_xogpx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.65763545)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_65ton"]
+gradient = SubResource("Gradient_xogpx")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.49293286, 0.48939928)
+
+[sub_resource type="Curve" id="Curve_h2w44"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.48047, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xpw1u"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[node name="EnemyShootEffect2" type="CPUParticles2D" unique_id=129356392]
+emitting = false
+amount = 30
+texture = SubResource("GradientTexture2D_65ton")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.52
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 220.0
+damping_min = 300.0
+damping_max = 300.0
+scale_amount_min = 0.4
+scale_amount_max = 0.8
+scale_amount_curve = SubResource("Curve_h2w44")
+color_ramp = SubResource("Gradient_xpw1u")
+script = ExtResource("1_wh31p")
+metadata/_custom_type_script = "uid://dk8xyokclaoxm"

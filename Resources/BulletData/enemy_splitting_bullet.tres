@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://ckd2wi6dtsll0"]
+
+[ext_resource type="Script" uid="uid://bhowfwjcqmlkp" path="res://Scripts/ResourceScripts/bullet_data.gd" id="1_nfagn"]
+[ext_resource type="Script" uid="uid://blvowsd1elxf6" path="res://Scripts/ResourceScripts/splitting_bullet_strategy.gd" id="2_74cfy"]
+[ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="3_tmh8y"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_218qp"]
+[ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="5_kwrho"]
+[ext_resource type="PackedScene" uid="uid://dsy685b5oooqr" path="res://Scenes/Projectiles/enemy_bullet_spiky.tscn" id="6_x8bu8"]
+[ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="8_py56s"]
+[ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="9_xh0n8"]
+[ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="10_vgnpt"]
+[ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="11_ymfyn"]
+
+[sub_resource type="Resource" id="Resource_jvf7h"]
+script = ExtResource("4_218qp")
+bullet = ExtResource("3_tmh8y")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("5_kwrho")])
+bullets_per_shot = 11
+recoil_enabled = false
+accuracy_cone_angle = 360.0
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_12ot4"]
+script = ExtResource("2_74cfy")
+split_shot = SubResource("Resource_jvf7h")
+destroy_effect = ExtResource("5_kwrho")
+metadata/_custom_type_script = "uid://blvowsd1elxf6"
+
+[sub_resource type="Curve" id="Curve_xj7ol"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.7311087, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_fy3wx"]
+script = ExtResource("8_py56s")
+base_speed = 80.0
+speed_curve = SubResource("Curve_xj7ol")
+metadata/_custom_type_script = "uid://n0q6mnryced5"
+
+[sub_resource type="Resource" id="Resource_3fw03"]
+script = ExtResource("10_vgnpt")
+collision_vfx = Array[PackedScene]([ExtResource("9_xh0n8")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[sub_resource type="Resource" id="Resource_ff0y3"]
+script = ExtResource("10_vgnpt")
+collision_vfx = Array[PackedScene]([ExtResource("11_ymfyn")])
+metadata/_custom_type_script = "uid://bt8wxltexhu4a"
+
+[resource]
+script = ExtResource("1_nfagn")
+scene = ExtResource("6_x8bu8")
+lifetime = 1.5
+size_multiplier = 1.2
+speed_over_lifetime = SubResource("Resource_fy3wx")
+target_collision_logic = SubResource("Resource_3fw03")
+terrain_collision_logic = SubResource("Resource_ff0y3")
+on_destroy_logic = SubResource("Resource_12ot4")
+metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
