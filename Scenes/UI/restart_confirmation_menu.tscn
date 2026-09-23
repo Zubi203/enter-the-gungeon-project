@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://d64yrhejgx32"]
+
+[ext_resource type="Script" uid="uid://cqukb6a1oiu8k" path="res://Scripts/fade_in_color_rect.gd" id="1_g77d0"]
+[ext_resource type="Theme" uid="uid://nt8kxnvib4jr" path="res://Resources/ui_theme.tres" id="1_kltrv"]
+[ext_resource type="Script" uid="uid://b7xo13avbqok0" path="res://Scripts/UI/restart_confirmation_menu.gd" id="2_pbssq"]
+[ext_resource type="FontFile" uid="uid://b0fthxblc67q6" path="res://Graphics/UI/pixel-game.regular.otf" id="3_hj83y"]
+[ext_resource type="Script" uid="uid://y2xddldu1qni" path="res://Scripts/UI/container_animation.gd" id="4_11n37"]
+[ext_resource type="Script" uid="uid://che6di6c0n56f" path="res://Scripts/UI/animated_button_component.gd" id="4_52bpo"]
+[ext_resource type="Script" uid="uid://ssy26hmoygoi" path="res://Scripts/UI/auto_animated_ui_component.gd" id="6_11n37"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2w44"]
+font = ExtResource("3_hj83y")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_11n37"]
+font = ExtResource("3_hj83y")
+font_size = 38
+
+[node name="RestartConfirmationMenu" type="Control" unique_id=1777135813]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kltrv")
+script = ExtResource("2_pbssq")
+
+[node name="FadeInColorRect" type="ColorRect" parent="." unique_id=1872527983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_g77d0")
+fade_in_duration = 0.1
+transparency = 1.0
+metadata/_custom_type_script = "uid://cqukb6a1oiu8k"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=164072115]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=196970709]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1167007444]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1454083846]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=235445736]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel" unique_id=1425001421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESTART RUN?"
+label_settings = SubResource("LabelSettings_h2w44")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1326522256]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2" unique_id=593570537]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer" unique_id=1617980105]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=1869500534]
+layout_mode = 2
+size_flags_vertical = 6
+text = "current progress will be lost"
+label_settings = SubResource("LabelSettings_11n37")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=1448028569]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 70
+alignment = 1
+script = ExtResource("4_11n37")
+anim_when = 1
+delay_appear = 0.1
+
+[node name="ResetButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1422653707]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+text = "RESTART"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer/ButtonContainer/ResetButton" unique_id=277941994]
+script = ExtResource("4_52bpo")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="CancelButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1883146129]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+text = "Cancel
+"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer/ButtonContainer/CancelButton" unique_id=160362782]
+script = ExtResource("4_52bpo")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="AutoAnimateUIComponent" type="Control" parent="CenterContainer/PanelContainer" unique_id=1221715943 node_paths=PackedStringArray("target")]
+layout_mode = 2
+script = ExtResource("6_11n37")
+target = NodePath("..")
+anim_when = 1
+metadata/_custom_type_script = "uid://ssy26hmoygoi"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer/ButtonContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/VBoxContainer/ButtonContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

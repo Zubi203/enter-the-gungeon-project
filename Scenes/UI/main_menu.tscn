@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://5nvrwauton5y"]
+
+[ext_resource type="Theme" uid="uid://nt8kxnvib4jr" path="res://Resources/ui_theme.tres" id="1_5wsvm"]
+[ext_resource type="Script" uid="uid://che6di6c0n56f" path="res://Scripts/UI/animated_button_component.gd" id="2_i2xx2"]
+[ext_resource type="Script" uid="uid://y2xddldu1qni" path="res://Scripts/UI/container_animation.gd" id="2_o14dv"]
+[ext_resource type="Script" uid="uid://john0p3652ts" path="res://Scripts/UI/main_menu.gd" id="2_u7lva"]
+[ext_resource type="PackedScene" uid="uid://7dvydj3hyic8" path="res://Scenes/UI/settings_menu.tscn" id="3_mrfpk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2w44"]
+font_size = 32
+
+[node name="MainMenu" type="Control" unique_id=195793762]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5wsvm")
+script = ExtResource("2_u7lva")
+settings_menu = ExtResource("3_mrfpk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=128550437]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=139209398]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="VBoxContainer/MarginContainer" unique_id=889274508]
+layout_mode = 2
+text = "UNTITLED
+GUN GAME"
+label_settings = SubResource("LabelSettings_h2w44")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1368810521]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Padding" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1329139086]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Padding2" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=754442618]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Padding5" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1554126406]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1065522718]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_o14dv")
+anim_when = 1
+delay_appear = 1.0
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonContainer" unique_id=1338184169]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CONTINUE"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="VBoxContainer/HBoxContainer/ButtonContainer/ContinueButton" unique_id=440648677]
+script = ExtResource("2_i2xx2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonContainer" unique_id=411684672]
+layout_mode = 2
+size_flags_vertical = 3
+text = "NEW GAME"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="VBoxContainer/HBoxContainer/ButtonContainer/PlayButton" unique_id=1755415568]
+script = ExtResource("2_i2xx2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="TestingButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonContainer" unique_id=297882288]
+layout_mode = 2
+size_flags_vertical = 3
+text = "TESTING GROUNDS"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="VBoxContainer/HBoxContainer/ButtonContainer/TestingButton" unique_id=1699318878]
+script = ExtResource("2_i2xx2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonContainer" unique_id=1877467847]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SETTINGS"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="VBoxContainer/HBoxContainer/ButtonContainer/SettingsButton" unique_id=1224229346]
+script = ExtResource("2_i2xx2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonContainer" unique_id=515863073]
+layout_mode = 2
+size_flags_vertical = 3
+text = "EXIT"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="VBoxContainer/HBoxContainer/ButtonContainer/ExitButton" unique_id=1068323896]
+script = ExtResource("2_i2xx2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="Padding" type="Control" parent="VBoxContainer/HBoxContainer/ButtonContainer" unique_id=1177447418]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Padding6" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=719236193]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Padding3" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1453956548]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Padding4" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1114741099]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonContainer/TestingButton" to="." method="_on_testing_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]

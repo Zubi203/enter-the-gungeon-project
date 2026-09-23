@@ -61,14 +61,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("scroll_previous"):
 		prev_weapon()
 	
-	if Input.is_action_just_pressed("roll"):
-		if current_weapon.type == GunData.GunType.CHARGE:
-			charge_counter = 0.0
-			gun_sprite.stop_charging()
-		roll_buffer_timer.start(roll_buffer_duration)
-	
-	if Input.is_action_just_pressed("shoot"):
-		shoot_buffer_timer.start(shoot_buffer_duration)
 	
 	if current_weapon.type == GunData.GunType.CHARGE:
 		if Input.is_action_pressed("shoot") and dodge_roll_duration_countdown <= 0.0:
@@ -99,6 +91,17 @@ func _process(_delta: float) -> void:
 	
 	if gun_sprite:
 		gun_sprite.target = get_global_mouse_position()
+	
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("roll"):
+		if current_weapon.type == GunData.GunType.CHARGE:
+			charge_counter = 0.0
+			gun_sprite.stop_charging()
+		roll_buffer_timer.start(roll_buffer_duration)
+	
+	if Input.is_action_just_pressed("shoot"):
+		shoot_buffer_timer.start(shoot_buffer_duration)
 	
 
 func _set_camera_position() -> Vector2:

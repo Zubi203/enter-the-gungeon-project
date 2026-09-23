@@ -5,7 +5,12 @@
 [ext_resource type="Script" uid="uid://bvibxjbhbdxvw" path="res://Scripts/Managers/camera_controller.gd" id="2_f23fq"]
 [ext_resource type="Script" uid="uid://bol7lwjjpdtyt" path="res://Scripts/Managers/audio_manager.gd" id="4_8skju"]
 [ext_resource type="Script" uid="uid://bfupd6u83tcrv" path="res://Scripts/Managers/bullet_manager.gd" id="5_tv7gj"]
+[ext_resource type="Theme" uid="uid://nt8kxnvib4jr" path="res://Resources/ui_theme.tres" id="7_43f4u"]
+[ext_resource type="Script" uid="uid://che6di6c0n56f" path="res://Scripts/UI/animated_button_component.gd" id="7_cei40"]
+[ext_resource type="Script" uid="uid://542a7uwh0vfd" path="res://Scripts/UI/level_ui.gd" id="7_jdqic"]
 [ext_resource type="Script" uid="uid://dcavfat2emgcp" path="res://Scripts/particle_manager.gd" id="7_p3l6u"]
+[ext_resource type="PackedScene" uid="uid://bcqy2rq2lw6l6" path="res://Scenes/UI/pause_menu.tscn" id="8_n01od"]
+[ext_resource type="Texture2D" uid="uid://5o8sxfxudt6r" path="res://Graphics/UI/Setting 2 512 px.png" id="9_43f4u"]
 
 [sub_resource type="Gradient" id="Gradient_xfr4g"]
 offsets = PackedFloat32Array(0)
@@ -38,7 +43,7 @@ position = Vector2(341, 188.33331)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=769768089]
 position = Vector2(-480, -476.6667)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 40.0
 script = ExtResource("2_f23fq")
@@ -54,3 +59,56 @@ script = ExtResource("5_tv7gj")
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=472930812]
 visible = false
 color = Color(0.86036915, 0.8603692, 0.8603691, 1)
+
+[node name="LevelUI" type="CanvasLayer" parent="." unique_id=1027989051]
+script = ExtResource("7_jdqic")
+pause_menu = ExtResource("8_n01od")
+
+[node name="Control" type="Control" parent="LevelUI" unique_id=137025888]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("7_43f4u")
+
+[node name="PauseButton" type="Button" parent="LevelUI/Control" unique_id=699685899]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.96
+anchor_top = 0.04
+anchor_right = 0.97
+anchor_bottom = 0.04
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_type_variation = &"BlackButton"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="LevelUI/Control/PauseButton" unique_id=84170305]
+script = ExtResource("7_cei40")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUI/Control/PauseButton" unique_id=144096771]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="TextureRect" type="TextureRect" parent="LevelUI/Control/PauseButton/MarginContainer" unique_id=1927645778]
+layout_mode = 2
+texture = ExtResource("9_43f4u")
+expand_mode = 1
+
+[connection signal="pressed" from="LevelUI/Control/PauseButton" to="LevelUI" method="_on_pause_button_pressed"]

@@ -12,5 +12,23 @@ var custom_cursor_enabled: bool = true:
 		else:
 			Input.set_custom_mouse_cursor(null)
 
+enum Scenes{
+	TITLE,
+	MAIN_LEVEL,
+	TEST_LEVEL,
+	DEFEAT_SCREEN,
+	VICTORY_SCREEN
+}
+
+const SCENE_PATHS: Dictionary[Scenes, String] = {
+	Scenes.TITLE: "uid://5nvrwauton5y",
+	Scenes.MAIN_LEVEL: "uid://dadonouguo0fx",
+	Scenes.TEST_LEVEL: "",
+	Scenes.DEFEAT_SCREEN: "",
+	Scenes.VICTORY_SCREEN: "",
+}
+
+var current_scene: Scenes
+
 func _enter_tree() -> void:
 	custom_cursor_enabled = true

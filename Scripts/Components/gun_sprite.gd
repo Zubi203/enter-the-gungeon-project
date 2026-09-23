@@ -44,12 +44,14 @@ func _get_recoil_offset(aim_dir: Vector2, delta: float) -> Vector2:
 	recoil_offset = lerpf(recoil_offset, 0.0, delta * 20)
 	return aim_dir * recoil_offset * -1
 
-func recoil(amount: float = 10.0):
+func recoil(color: Color = Color.WHITE, amount: float = 10.0):
 	recoil_offset = amount
 	if shot_particles:
+		shot_particles.modulate = color
 		shot_particles.restart()
 	if gun_flash == null:
 		return
+	gun_flash.color = color
 	if flash_tween and flash_tween.is_running():
 		flash_tween.kill()
 	flash_tween = create_tween()

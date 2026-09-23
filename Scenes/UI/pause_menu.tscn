@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bcqy2rq2lw6l6"]
+
+[ext_resource type="Theme" uid="uid://nt8kxnvib4jr" path="res://Resources/ui_theme.tres" id="1_oykix"]
+[ext_resource type="Script" uid="uid://cqukb6a1oiu8k" path="res://Scripts/fade_in_color_rect.gd" id="1_rrvs5"]
+[ext_resource type="Script" uid="uid://bnn6yarrlg1ey" path="res://Scripts/UI/pause_menu.gd" id="2_702e2"]
+[ext_resource type="PackedScene" uid="uid://7dvydj3hyic8" path="res://Scenes/UI/settings_menu.tscn" id="3_23me3"]
+[ext_resource type="FontFile" uid="uid://b0fthxblc67q6" path="res://Graphics/UI/pixel-game.regular.otf" id="3_kdnb7"]
+[ext_resource type="Script" uid="uid://che6di6c0n56f" path="res://Scripts/UI/animated_button_component.gd" id="4_702e2"]
+[ext_resource type="PackedScene" uid="uid://d64yrhejgx32" path="res://Scenes/UI/restart_confirmation_menu.tscn" id="4_deree"]
+[ext_resource type="Script" uid="uid://ssy26hmoygoi" path="res://Scripts/UI/auto_animated_ui_component.gd" id="5_kdnb7"]
+[ext_resource type="Script" uid="uid://y2xddldu1qni" path="res://Scripts/UI/container_animation.gd" id="5_qyryt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2w44"]
+font = ExtResource("3_kdnb7")
+font_size = 64
+
+[node name="PauseMenu" type="Control" unique_id=1541853090 node_paths=PackedStringArray("reset_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oykix")
+script = ExtResource("2_702e2")
+settings_menu = ExtResource("3_23me3")
+reset_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/RestartButton")
+reset_confirmation_menu = ExtResource("4_deree")
+
+[node name="FadeInColorRect" type="ColorRect" parent="." unique_id=934095759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_rrvs5")
+fade_in_duration = 0.1
+transparency = 1.0
+metadata/_custom_type_script = "uid://cqukb6a1oiu8k"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1840560857]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1621078635]
+custom_minimum_size = Vector2(450, 550)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=628018912]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1589281651]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=745554074]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel" unique_id=1008909722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel/CenterContainer" unique_id=1262674666]
+layout_mode = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_h2w44")
+
+[node name="Panel2" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1680374878]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2" unique_id=876075080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 30
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer" unique_id=209987387]
+layout_mode = 2
+alignment = 1
+script = ExtResource("5_qyryt")
+anim_when = 1
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer" unique_id=1109113970]
+layout_mode = 2
+size_flags_vertical = 3
+text = "RESUME"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/ResumeButton" unique_id=740031809]
+script = ExtResource("4_702e2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer" unique_id=1610972913]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SETTINGS"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/SettingsButton" unique_id=1049348370]
+script = ExtResource("4_702e2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="RestartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer" unique_id=362976635]
+layout_mode = 2
+size_flags_vertical = 3
+text = "RESTART"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/RestartButton" unique_id=416449364]
+script = ExtResource("4_702e2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer" unique_id=2080464356]
+layout_mode = 2
+size_flags_vertical = 3
+text = "MAIN MENU"
+
+[node name="AnimatedButtonComponent" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/MainMenuButton" unique_id=360985955]
+script = ExtResource("4_702e2")
+metadata/_custom_type_script = "uid://che6di6c0n56f"
+
+[node name="AutoAnimateUIComponent" type="Control" parent="CenterContainer/PanelContainer" unique_id=1794605569 node_paths=PackedStringArray("target")]
+layout_mode = 2
+script = ExtResource("5_kdnb7")
+target = NodePath("..")
+anim_when = 1
+metadata/_custom_type_script = "uid://ssy26hmoygoi"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Panel2/MarginContainer/ButtonContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

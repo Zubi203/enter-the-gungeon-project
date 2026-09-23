@@ -83,7 +83,7 @@ func fire_burst(shooter: Node2D, aim_target: Vector2, group: String):
 				camera_controller.directional_shake(shooter.global_position.direction_to(point) * -1, recoil)
 			
 			if shooter is GunSprite:
-				shooter.recoil()
+				shooter.recoil(bullet.bullet_color)
 				
 			if delay_between_shots > 0.0:
 				await shooter.get_tree().create_timer(delay_between_shots).timeout
@@ -130,7 +130,7 @@ func fire_burst(shooter: Node2D, aim_target: Vector2, group: String):
 					camera_controller.directional_shake(shooter.global_position.direction_to(point) * -1, recoil)
 				
 				if shooter is GunSprite:
-					shooter.recoil()
+					shooter.recoil(bullet.bullet_color)
 			
 			if delay_between_shots > 0.0:
 				await shooter.get_tree().create_timer(delay_between_shots).timeout
@@ -147,7 +147,7 @@ func fire_burst(shooter: Node2D, aim_target: Vector2, group: String):
 				camera_controller.directional_shake(shooter.global_position.direction_to(aim_target) * -1, recoil)
 			
 			if shooter is GunSprite:
-				shooter.recoil()
+				shooter.recoil(bullet.bullet_color)
 			
 			if delay_between_shots > 0.0:
 				await shooter.get_tree().create_timer(delay_between_shots).timeout
@@ -163,7 +163,7 @@ func fire_burst(shooter: Node2D, aim_target: Vector2, group: String):
 					camera_controller.directional_shake(shooter.global_position.direction_to(point) * -1, recoil)
 				
 				if shooter is GunSprite:
-					shooter.recoil()
+					shooter.recoil(bullet.bullet_color)
 			
 			if delay_between_shots > 0.0:
 				await shooter.get_tree().create_timer(delay_between_shots).timeout
