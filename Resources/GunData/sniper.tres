@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cjacosbjvnvex" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/6SniperRifle06.png" id="8_4qvt7"]
 [ext_resource type="AudioStream" uid="uid://bjl2jcueceob8" path="res://Audio/Snake's Authentic Gun Sounds/Isolated/7.62x54R/WAV/762x54r Single Isolated WAV.wav" id="8_hopfj"]
 [ext_resource type="PackedScene" uid="uid://bkke5ricdxn84" path="res://Scenes/VFX/large_shell.tscn" id="9_rnsrg"]
+[ext_resource type="Texture2D" uid="uid://yveupok0yt38" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/Outlined/6SniperRifle06.png" id="12_2hxwu"]
 
 [sub_resource type="Resource" id="Resource_s0eiu"]
 script = ExtResource("1_m0mjw")
@@ -57,6 +58,7 @@ metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
 [resource]
 script = ExtResource("1_ed22d")
 texture = ExtResource("8_4qvt7")
+highlighted_texture = ExtResource("12_2hxwu")
 bullet = SubResource("Resource_gsor5")
 shoot_sfx = ExtResource("8_hopfj")
 shoot_vfx = Array[PackedScene]([ExtResource("9_rnsrg")])

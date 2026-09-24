@@ -6,31 +6,24 @@
 [ext_resource type="Script" uid="uid://bk5d58qoe7pi" path="res://Scripts/Components/movement_component.gd" id="2_gy20a"]
 [ext_resource type="Script" uid="uid://dtejatc6kcbh3" path="res://Scripts/Components/player_controller.gd" id="3_cqrjx"]
 [ext_resource type="Script" uid="uid://cmgu0npg7qct6" path="res://Scripts/Components/character_animation.gd" id="4_gy20a"]
-[ext_resource type="Resource" uid="uid://c1kf47ogqf0oy" path="res://Resources/GunData/accurate_pistol.tres" id="5_01b8d"]
 [ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="5_f2s78"]
 [ext_resource type="AudioStream" uid="uid://dealnim77jwyb" path="res://Audio/Minifantasy_Dungeon_SFX/12_human_jump_1.wav" id="5_khnq4"]
-[ext_resource type="Resource" uid="uid://dnqca6ci7pd23" path="res://Resources/GunData/default_pistol.tres" id="5_xccyk"]
 [ext_resource type="AudioStream" uid="uid://dh3grbq016s2o" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_1.wav" id="5_xo8ps"]
 [ext_resource type="AudioStream" uid="uid://bo4f01jlk8hix" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_2.wav" id="6_fcmex"]
 [ext_resource type="AudioStream" uid="uid://b3vuldkl0jnsd" path="res://Audio/Minifantasy_Dungeon_SFX/13_human_jump_land_1.wav" id="6_utp2y"]
 [ext_resource type="AudioStream" uid="uid://dw72gxbruv2b" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_3.wav" id="7_25bbb"]
-[ext_resource type="Resource" uid="uid://bl6hght4hbn7c" path="res://Resources/GunData/triple_burst_revolver.tres" id="8_hwltk"]
-[ext_resource type="Resource" uid="uid://rchw1p720oct" path="res://Resources/GunData/frag_revolver.tres" id="9_hhnlt"]
+[ext_resource type="AudioStream" uid="uid://buqajqhnvdttb" path="res://Audio/Snake's Authentic Gun Sounds/Reloads, Cycling & More/WAV/Semi 22LR Rack WAV.wav" id="9_3k74t"]
 [ext_resource type="Resource" uid="uid://bpli0ftre1d4j" path="res://Resources/GunData/accurate_machine_gun.tres" id="10_m75h8"]
-[ext_resource type="Resource" uid="uid://na0edeyirvgj" path="res://Resources/GunData/gatling_gun.tres" id="11_2dmea"]
 [ext_resource type="Script" uid="uid://873eq26p32mw" path="res://Scripts/Components/gun_sprite.gd" id="11_25bbb"]
-[ext_resource type="Resource" uid="uid://cfpcs0qkb1wb7" path="res://Resources/GunData/even_spread_shotgun.tres" id="12_lml76"]
 [ext_resource type="Resource" uid="uid://c1gfb0s0y05xg" path="res://Resources/GunData/bouncy_shotgun.tres" id="13_ste30"]
-[ext_resource type="Resource" uid="uid://bmgp0230ecc1y" path="res://Resources/GunData/burst_smg.tres" id="14_6kewp"]
-[ext_resource type="Resource" uid="uid://dmjp272lyd546" path="res://Resources/GunData/homing_machine_gun.tres" id="15_j3fsp"]
-[ext_resource type="Resource" uid="uid://db1yn15vscir5" path="res://Resources/GunData/pulse_cannon.tres" id="16_2davj"]
 [ext_resource type="Resource" uid="uid://bu1ypensrgj15" path="res://Resources/GunData/chain_machine_gun.tres" id="17_sgb3t"]
-[ext_resource type="Resource" uid="uid://pykgyhp3vq6p" path="res://Resources/GunData/sniper.tres" id="18_5ehh5"]
-[ext_resource type="Resource" uid="uid://ciqh2cm226bds" path="res://Resources/GunData/charged_sniper.tres" id="19_yhd30"]
-[ext_resource type="Resource" uid="uid://xdybovpgj6uj" path="res://Resources/GunData/rocket_launcher.tres" id="20_lecoj"]
-[ext_resource type="Resource" uid="uid://c5nloty3drtoh" path="res://Resources/GunData/burst_rocket_launcher.tres" id="21_bgpn4"]
+[ext_resource type="Texture2D" uid="uid://c0p2nmvdk84x3" path="res://Graphics/UI/64x64.png" id="19_ddhxa"]
 [ext_resource type="Shader" uid="uid://di6cmpauj1gl" path="res://Shaders/outline_shader.gdshader" id="29_hwltk"]
 [ext_resource type="Script" uid="uid://b17oc8kky02w0" path="res://Scripts/Characters/player_ui.gd" id="31_hhnlt"]
+[ext_resource type="FontFile" uid="uid://b0fthxblc67q6" path="res://Graphics/UI/pixel-game.regular.otf" id="32_m75h8"]
+[ext_resource type="Texture2D" uid="uid://wjcgyshthk28" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/1Machinegun01.png" id="33_2dmea"]
+[ext_resource type="Texture2D" uid="uid://dxo0v5wo353c7" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/Outlined/6Machinegun06.png" id="34_ste30"]
+[ext_resource type="Texture2D" uid="uid://bnqs7i60tuba" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/2Shotgun02.png" id="35_6kewp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hhnlt"]
 resource_local_to_scene = true
@@ -262,6 +255,69 @@ gradient = SubResource("Gradient_j3fsp")
 fill = 1
 fill_from = Vector2(0.52730376, 0.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2w44"]
+atlas = ExtResource("19_ddhxa")
+region = Rect2(128, 2628, 65, 56)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65ton"]
+bg_color = Color(0.1606287, 0.16062859, 0.16062862, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.05109611, 0.05109611, 0.051096104, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2w44"]
+bg_color = Color(0.95, 0, 0, 1)
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.51, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2w44"]
+font = ExtResource("32_m75h8")
+font_size = 54
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.5764706)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="Gradient" id="Gradient_sgb3t"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.59387755, 0.60612243)
+colors = PackedColorArray(1, 1, 1, 1, 0.8431839, 0.8431839, 0.84318376, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pi8ck"]
+gradient = SubResource("Gradient_sgb3t")
+width = 250
+height = 250
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpw1u"]
+bg_color = Color(0.09009846, 0.09009849, 0.09009843, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.27899078, 0.27899086, 0.2789907, 1)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+corner_detail = 12
+
 [node name="Player" unique_id=184718225 groups=["Player"] instance=ExtResource("1_al8ar")]
 collision_layer = 2
 
@@ -286,7 +342,8 @@ metadata/_custom_type_script = "uid://bk5d58qoe7pi"
 script = ExtResource("3_cqrjx")
 roll_buffer_timer = NodePath("../Buffers/RollBuffer")
 shoot_buffer_timer = NodePath("../Buffers/ShootBuffer")
-weapons = Array[ExtResource("5_f2s78")]([ExtResource("5_xccyk"), ExtResource("5_01b8d"), ExtResource("8_hwltk"), ExtResource("9_hhnlt"), ExtResource("10_m75h8"), ExtResource("11_2dmea"), ExtResource("12_lml76"), ExtResource("13_ste30"), ExtResource("14_6kewp"), ExtResource("15_j3fsp"), ExtResource("16_2davj"), ExtResource("17_sgb3t"), ExtResource("18_5ehh5"), ExtResource("19_yhd30"), ExtResource("20_lecoj"), ExtResource("21_bgpn4")])
+weapons = Array[ExtResource("5_f2s78")]([ExtResource("10_m75h8"), ExtResource("13_ste30"), ExtResource("17_sgb3t")])
+reload_sound = ExtResource("9_3k74t")
 hit_iframe_duration = 0.8
 metadata/_custom_type_script = "uid://dtejatc6kcbh3"
 
@@ -461,9 +518,14 @@ one_shot = true
 [node name="ShootBuffer" type="Timer" parent="Buffers" index="1" unique_id=565724756]
 one_shot = true
 
-[node name="PlayerUI" type="CanvasLayer" parent="." index="12" unique_id=124177810 node_paths=PackedStringArray("damage_screen_effect")]
+[node name="PlayerUI" type="CanvasLayer" parent="." index="12" unique_id=124177810 node_paths=PackedStringArray("damage_screen_effect", "health_bar", "health_text", "equipped_gun_sprites", "ammo_progress_bar", "selected_gun_sprite")]
 script = ExtResource("31_hhnlt")
 damage_screen_effect = NodePath("DamageEffect")
+health_bar = NodePath("HBoxContainer/UIColumn/HealthBarContainer/HBoxContainer/ProgressBar")
+health_text = NodePath("HBoxContainer/UIColumn/HealthBarContainer/HBoxContainer/ProgressBar/Label")
+equipped_gun_sprites = [NodePath("HBoxContainer/UIColumn/GunsAndAmmo/GunContainer/Gun1"), NodePath("HBoxContainer/UIColumn/GunsAndAmmo/GunContainer/Gun2"), NodePath("HBoxContainer/UIColumn/GunsAndAmmo/GunContainer/Gun3")]
+ammo_progress_bar = NodePath("HBoxContainer/UIColumn/MarginContainer/AmmoProgressBar")
+selected_gun_sprite = NodePath("HBoxContainer/UIColumn/MarginContainer/AmmoProgressBar/Panel/MarginContainer/SelectedGunTexture")
 
 [node name="DamageEffect" type="TextureRect" parent="PlayerUI" index="0" unique_id=1083637695]
 modulate = Color(1, 1, 1, 0)
@@ -474,3 +536,155 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_hwltk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI" index="1" unique_id=2109864595]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIColumn" type="VBoxContainer" parent="PlayerUI/HBoxContainer" index="0" unique_id=1539825068]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="Padding3" type="Control" parent="PlayerUI/HBoxContainer/UIColumn" index="0" unique_id=1888319016]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HealthBarContainer" type="CenterContainer" parent="PlayerUI/HBoxContainer/UIColumn" index="1" unique_id=698532091]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/HBoxContainer/UIColumn/HealthBarContainer" index="0" unique_id=1768168379]
+custom_minimum_size = Vector2(450, 70)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="PlayerUI/HBoxContainer/UIColumn/HealthBarContainer/HBoxContainer" index="0" unique_id=298635721]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/HealthBarContainer/HBoxContainer/Control" index="0" unique_id=1998550208]
+z_index = 1
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = -82.0
+offset_top = -30.0
+offset_right = 38.0
+offset_bottom = 90.0
+texture = SubResource("AtlasTexture_h2w44")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerUI/HBoxContainer/UIColumn/HealthBarContainer/HBoxContainer" index="1" unique_id=1256215554]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_65ton")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h2w44")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerUI/HBoxContainer/UIColumn/HealthBarContainer/HBoxContainer/ProgressBar" index="0" unique_id=1232762120]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10/10"
+label_settings = SubResource("LabelSettings_h2w44")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GunsAndAmmo" type="MarginContainer" parent="PlayerUI/HBoxContainer/UIColumn" index="2" unique_id=1168596821]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+
+[node name="GunContainer" type="HBoxContainer" parent="PlayerUI/HBoxContainer/UIColumn/GunsAndAmmo" index="0" unique_id=931948109]
+custom_minimum_size = Vector2(400, 50)
+custom_maximum_size = Vector2(400, 60)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Gun1" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/GunsAndAmmo/GunContainer" index="0" unique_id=1873095846]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("33_2dmea")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Gun2" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/GunsAndAmmo/GunContainer" index="1" unique_id=916628586]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("34_ste30")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Gun3" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/GunsAndAmmo/GunContainer" index="2" unique_id=1987435282]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("35_6kewp")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Padding" type="Control" parent="PlayerUI/HBoxContainer/UIColumn" index="3" unique_id=83445609]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Padding2" type="Control" parent="PlayerUI/HBoxContainer/UIColumn" index="4" unique_id=1130396230]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/HBoxContainer/UIColumn" index="5" unique_id=2059119893]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+
+[node name="AmmoProgressBar" type="TextureProgressBar" parent="PlayerUI/HBoxContainer/UIColumn/MarginContainer" index="0" unique_id=978698634]
+custom_minimum_size = Vector2(250, 250)
+custom_maximum_size = Vector2(250, 250)
+layout_mode = 2
+value = 69.0
+fill_mode = 5
+texture_progress = SubResource("GradientTexture2D_pi8ck")
+
+[node name="Panel" type="Panel" parent="PlayerUI/HBoxContainer/UIColumn/MarginContainer/AmmoProgressBar" index="0" unique_id=421836997]
+custom_minimum_size = Vector2(180, 180)
+custom_maximum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xpw1u")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/HBoxContainer/UIColumn/MarginContainer/AmmoProgressBar/Panel" index="0" unique_id=1694934450]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="SelectedGunTexture" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/MarginContainer/AmmoProgressBar/Panel/MarginContainer" index="0" unique_id=805053268]
+layout_mode = 2
+texture = ExtResource("34_ste30")
+expand_mode = 1
+stretch_mode = 5

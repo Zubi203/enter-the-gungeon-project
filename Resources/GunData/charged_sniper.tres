@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://clek01gy6e4gr" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/4SniperRifle04.png" id="7_80rek"]
 [ext_resource type="PackedScene" uid="uid://4pp4lgrc8rks" path="res://Scenes/VFX/wall_hit_effect_2.tscn" id="7_lleba"]
 [ext_resource type="PackedScene" uid="uid://bkke5ricdxn84" path="res://Scenes/VFX/large_shell.tscn" id="8_6ejyp"]
+[ext_resource type="Texture2D" uid="uid://b3jdvgib4mddx" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/Outlined/4SniperRifle04.png" id="11_2b66v"]
 
 [sub_resource type="Resource" id="Resource_k1wmc"]
 script = ExtResource("1_k1wmc")
@@ -58,6 +59,7 @@ metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
 [resource]
 script = ExtResource("1_6k8b4")
 texture = ExtResource("7_80rek")
+highlighted_texture = ExtResource("11_2b66v")
 bullet = SubResource("Resource_vkvoy")
 shoot_sfx = ExtResource("7_0bqay")
 shoot_vfx = Array[PackedScene]([ExtResource("8_6ejyp")])

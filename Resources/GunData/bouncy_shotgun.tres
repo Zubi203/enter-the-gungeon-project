@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bnqs7i60tuba" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/2Shotgun02.png" id="8_tww7a"]
 [ext_resource type="AudioStream" uid="uid://bls76omxo5rre" path="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/Isolated/20 Gauge/WAV/20 Gauge Single Isolated.wav" id="8_ujku5"]
 [ext_resource type="PackedScene" uid="uid://bkke5ricdxn84" path="res://Scenes/VFX/large_shell.tscn" id="9_j7fe4"]
+[ext_resource type="Texture2D" uid="uid://b3k6u1hacu5ak" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/Outlined/2Shotgun02.png" id="10_tww7a"]
 
 [sub_resource type="Resource" id="Resource_lcmvv"]
 script = ExtResource("1_5ar8c")
@@ -55,6 +56,7 @@ metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
 [resource]
 script = ExtResource("1_egfgj")
 texture = ExtResource("8_tww7a")
+highlighted_texture = ExtResource("10_tww7a")
 bullet = SubResource("Resource_g6ywy")
 shoot_sfx = ExtResource("8_ujku5")
 sound_emission_type = 1
@@ -63,5 +65,6 @@ bullets_per_shot = 9
 recoil = 17.0
 accuracy_cone_angle = 40.0
 shoot_interval = 0.6
+magazine_size = 27
 name = "Buckshot"
 metadata/_custom_type_script = "uid://by0fgjfwddu8r"

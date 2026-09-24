@@ -25,6 +25,7 @@ enum SoundEmissionType{
 }
 
 @export var texture: Texture2D
+@export var highlighted_texture: Texture2D
 @export var bullet: BulletData
 @export var shoot_sfx: AudioStream
 @export var sound_emission_type: SoundEmissionType

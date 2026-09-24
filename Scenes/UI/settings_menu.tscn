@@ -24,6 +24,7 @@ font = ExtResource("4_vrd41")
 font_size = 38
 
 [node name="SettingsMenu" type="Control" unique_id=433374742 node_paths=PackedStringArray("menus")]
+z_index = 50
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

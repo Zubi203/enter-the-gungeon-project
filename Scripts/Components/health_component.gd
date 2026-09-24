@@ -36,6 +36,7 @@ func _ready() -> void:
 
 func setup():
 	health = max_health
+	HealthChanged.emit(health, max_health)
 	for child in owner.get_children():
 		if child is CharacterSprite:
 			sprite = child

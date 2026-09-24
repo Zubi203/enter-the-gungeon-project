@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dokqn20jikikv" path="res://Audio/Snake's Authentic Gun Sounds/Isolated/7.62x39/WAV/762x39 Single Isolated WAV.wav" id="7_awbj6"]
 [ext_resource type="PackedScene" uid="uid://4pp4lgrc8rks" path="res://Scenes/VFX/wall_hit_effect_2.tscn" id="7_mimn0"]
 [ext_resource type="Texture2D" uid="uid://bmr2f57gygo6y" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Smgs/6smg06.png" id="7_num04"]
+[ext_resource type="Texture2D" uid="uid://df7d12kd55kni" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Smgs/Outlined/6smg06.png" id="10_ixxr8"]
 
 [sub_resource type="Resource" id="Resource_7lm1g"]
 script = ExtResource("1_7lm1g")
@@ -53,6 +54,7 @@ metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
 [resource]
 script = ExtResource("1_0rq84")
 texture = ExtResource("7_num04")
+highlighted_texture = ExtResource("10_ixxr8")
 bullet = SubResource("Resource_4j0rh")
 shoot_sfx = ExtResource("7_awbj6")
 shoot_sfx_volume = -5.0

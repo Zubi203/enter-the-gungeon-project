@@ -17,6 +17,7 @@ font = ExtResource("3_hj83y")
 font_size = 38
 
 [node name="RestartConfirmationMenu" type="Control" unique_id=1777135813]
+z_index = 50
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

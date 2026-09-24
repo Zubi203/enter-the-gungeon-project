@@ -11,6 +11,10 @@ func perform_attack(shooter: Node2D, aim_target: Vector2, group: String):
 	var default_delay: float = delay_between_attacks
 	await shooter.get_tree().create_timer(startup_delay).timeout
 	for attack in attack_sequence:
+		
+		if shooter == null:
+			return
+		
 		attack.fire_burst(shooter, aim_target, group)
 		if not concurrent_attacks:
 			default_delay = delay_between_attacks + (attack.bullets_per_shot * (1.0 - attack.burst_explosiveness))
