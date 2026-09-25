@@ -6,7 +6,7 @@ extends Resource
 @export var modulate_particles: bool = true
 @export var modulate_light: bool = true
 @export var damage: int = 1
-@export var knockback: float = 10
+@export var knockback: float = 400
 @export var lifetime: float = 2
 @export var size_multiplier = 1.0
 

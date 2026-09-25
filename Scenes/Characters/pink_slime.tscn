@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b5f04ptl844rb"]
+
+[ext_resource type="PackedScene" uid="uid://c370i8x1hba51" path="res://Scenes/Characters/enemy_default.tscn" id="1_b4obi"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_sqvuq"]
+[ext_resource type="Texture2D" uid="uid://bwfk6nunu4vua" path="res://Graphics/Characters/Slimes/PinkSlime.png" id="3_t7btx"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_huivs"]
+[ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="5_1tk3m"]
+[ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="6_xdgbn"]
+[ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_bfqrx"]
+[ext_resource type="Texture2D" uid="uid://demgc2v7g1ywq" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/33.png" id="8_pi24v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqtg1"]
+resource_local_to_scene = true
+shader = ExtResource("2_sqvuq")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="Resource" id="Resource_dt7yr"]
+script = ExtResource("4_huivs")
+bullet = ExtResource("5_1tk3m")
+shoot_vfx = Array[PackedScene]([ExtResource("6_xdgbn")])
+bullets_per_shot = 7
+recoil_enabled = false
+burst_explosiveness = 0.85
+accuracy_cone_angle = 25.0
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_cpen4"]
+script = ExtResource("7_bfqrx")
+attack_sequence = Array[ExtResource("4_huivs")]([SubResource("Resource_dt7yr")])
+startup_delay = 0.3
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[node name="PinkSlime" unique_id=184718225 instance=ExtResource("1_b4obi")]
+
+[node name="CharacterSprite" parent="." index="0" unique_id=8739034]
+material = SubResource("ShaderMaterial_nqtg1")
+texture = ExtResource("3_t7btx")
+
+[node name="EnemyAI" parent="." index="5" unique_id=731142563]
+attack_sequence = SubResource("Resource_cpen4")
+attack_cooldown = 2.5
+
+[node name="GunSprite" parent="." index="8" unique_id=1716614618]
+position = Vector2(0, -10)
+gun_texture = ExtResource("8_pi24v")

@@ -92,14 +92,17 @@ func _on_animation_finished(anim_name: String):
 		hit_anim = false
 
 func _play_footstep_sounds():
-	if footstep_sounds.is_empty():
-		return
 	var time = Time.get_unix_time_from_system()
 	if time - last_footstep_time <footstep_interval:
 		return
 	last_footstep_time = time
+	
 	if walk_particles:
 		walk_particles.restart()
+		
+	if footstep_sounds.is_empty():
+		return
+	
 	audio_manager.play_random_pitch(footstep_sounds.pick_random())
 
 func _on_death():

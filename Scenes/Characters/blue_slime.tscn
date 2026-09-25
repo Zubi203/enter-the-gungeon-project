@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ccipobrdpmnqh"]
+
+[ext_resource type="PackedScene" uid="uid://c370i8x1hba51" path="res://Scenes/Characters/enemy_default.tscn" id="1_4vfdf"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_rljyk"]
+[ext_resource type="Texture2D" uid="uid://dd1r84qsk0tsd" path="res://Graphics/Characters/Slimes/BlueSlime.png" id="3_lj6p5"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="3_oq23b"]
+[ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="4_lj6p5"]
+[ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="5_nj5kb"]
+[ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="6_wmtvx"]
+[ext_resource type="Texture2D" uid="uid://csriwyblq0cvp" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/18.png" id="8_3y0ns"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gktvq"]
+resource_local_to_scene = true
+shader = ExtResource("2_rljyk")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="Resource" id="Resource_23dlt"]
+script = ExtResource("3_oq23b")
+bullet = ExtResource("4_lj6p5")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("5_nj5kb")])
+bullets_per_shot = 5
+recoil_enabled = false
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_b27un"]
+script = ExtResource("6_wmtvx")
+attack_sequence = Array[ExtResource("3_oq23b")]([SubResource("Resource_23dlt")])
+startup_delay = 0.3
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[node name="BlueSlime" unique_id=184718225 instance=ExtResource("1_4vfdf")]
+
+[node name="CharacterSprite" parent="." index="0" unique_id=8739034]
+material = SubResource("ShaderMaterial_gktvq")
+texture = ExtResource("3_lj6p5")
+
+[node name="Hurtbox" parent="." index="3" unique_id=41026086]
+visible = false
+
+[node name="EnemyAI" parent="." index="5" unique_id=731142563]
+attack_sequence = SubResource("Resource_b27un")
+attack_cooldown = 2.0
+
+[node name="GunSprite" parent="." index="8" unique_id=1716614618]
+position = Vector2(0, -14)
+gun_texture = ExtResource("8_3y0ns")

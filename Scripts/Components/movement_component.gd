@@ -1,6 +1,8 @@
 class_name MovementComponent
 extends Node
 
+signal DisableAttacking (duration: float)
+
 var owner_body: CharacterBody2D = null
 var direction: Vector2
 var knockback_vector: Vector2
@@ -71,7 +73,7 @@ func set_move_velocity(dir: Vector2):
 func knockback(dir: Vector2, intensity: float):
 	if knockback_immune:
 		return
-	
+	DisableAttacking.emit(0.7)
 	var knockback_vec = dir.normalized() * intensity
 	knockback_vector = Vector2.ZERO
 	if knockback_tween and knockback_tween.is_running():

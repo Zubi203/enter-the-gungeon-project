@@ -10,10 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="5_vhvlh"]
 [ext_resource type="Script" uid="uid://c1ilk3xhprqqp" path="res://Scripts/ResourceScripts/bouncy_bullet.gd" id="6_vhvlh"]
 [ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="6_yavpt"]
-[ext_resource type="Texture2D" uid="uid://bnqs7i60tuba" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/2Shotgun02.png" id="8_tww7a"]
 [ext_resource type="AudioStream" uid="uid://bls76omxo5rre" path="res://Audio/Snake's SECOND Authentic Gun Sounds/Snake's SECOND Authentic Gun Sounds/Isolated/20 Gauge/WAV/20 Gauge Single Isolated.wav" id="8_ujku5"]
 [ext_resource type="PackedScene" uid="uid://bkke5ricdxn84" path="res://Scenes/VFX/large_shell.tscn" id="9_j7fe4"]
-[ext_resource type="Texture2D" uid="uid://b3k6u1hacu5ak" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/Outlined/2Shotgun02.png" id="10_tww7a"]
+[ext_resource type="Texture2D" uid="uid://bowlyaj2fbyox" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/46.png" id="10_vhvlh"]
 
 [sub_resource type="Resource" id="Resource_lcmvv"]
 script = ExtResource("1_5ar8c")
@@ -45,7 +44,7 @@ metadata/_custom_type_script = "uid://c1ilk3xhprqqp"
 resource_local_to_scene = true
 script = ExtResource("3_j7fe4")
 scene = ExtResource("2_ujku5")
-bullet_color = Color(1, 0.01999998, 0.51, 1)
+bullet_color = Color(1, 0.37, 0.685, 1)
 lifetime = 0.8
 speed_over_lifetime = SubResource("Resource_ak4j8")
 target_collision_logic = SubResource("Resource_go4sh")
@@ -55,8 +54,8 @@ metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
 
 [resource]
 script = ExtResource("1_egfgj")
-texture = ExtResource("8_tww7a")
-highlighted_texture = ExtResource("10_tww7a")
+texture = ExtResource("10_vhvlh")
+highlighted_texture = ExtResource("10_vhvlh")
 bullet = SubResource("Resource_g6ywy")
 shoot_sfx = ExtResource("8_ujku5")
 sound_emission_type = 1

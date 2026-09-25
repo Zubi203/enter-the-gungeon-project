@@ -14,7 +14,8 @@ var flash_tween: Tween
 var target: Vector2
 var recoil_offset: float = 3
 var character_sprite_z_index: int
-
+var base_scale: Vector2
+var recoil_scale_increase: float = 0.4
 
 func _ready() -> void:
 	setup.call_deferred()
@@ -22,12 +23,17 @@ func _ready() -> void:
 func setup():
 	if gun_texture:
 		texture = gun_texture
-	
+	base_scale = scale
 	for child in owner.get_children():
 		if child is CharacterSprite:
 			character_sprite_z_index = child.z_index
 
 func _process(_delta: float) -> void:
+	
+	if scale.x > base_scale.x:
+		scale.x = lerpf(scale.x, base_scale.x, _delta * 10)
+		scale.y = lerpf(scale.y, base_scale.y, _delta * 10)
+	
 	if target:
 		var origin_point = owner.global_position + origin_offset
 		var direction: Vector2 = origin_point.direction_to(target)
@@ -46,6 +52,7 @@ func _get_recoil_offset(aim_dir: Vector2, delta: float) -> Vector2:
 
 func recoil(color: Color = Color.WHITE, amount: float = 10.0):
 	recoil_offset = amount
+	scale = base_scale + Vector2.ONE * recoil_scale_increase
 	if shot_particles:
 		shot_particles.modulate = color
 		shot_particles.restart()

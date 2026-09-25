@@ -13,7 +13,7 @@ enum State{
 @export var shooting_range: float = 150
 @export var turret_mode_range: float = 120
 @export var attack_sequence: EnemyAttack
-@export var attack_cooldown: float
+@export var attack_cooldown: float = 2.0
 var attack_interval_timer: float = 0.0
 
 @export var owner_group: String = "Enemy"
@@ -24,6 +24,7 @@ var target_body: CharacterBody2D = null
 @onready var avoidance_ray: RayCast2D = %AvoidanceRay
 
 var muzzle: GunSprite
+var attack_disabled_timer: float = 0.0
 var left_bias: bool = false
 var current_state: State
 var patrol_direction: Vector2
@@ -44,10 +45,16 @@ func setup():
 	for child in owner.get_children():
 		if child is GunSprite:
 			muzzle = child
+		if child is MovementComponent:
+			child.DisableAttacking.connect(_disable_shooting)
+		
 
 func _process(delta: float) -> void:
 	if target_body == null:
 		return
+	
+	if attack_disabled_timer > 0.0:
+		attack_disabled_timer -= delta
 	
 	muzzle.target = target_body.global_position
 	
@@ -109,6 +116,8 @@ func _try_shoot():
 		return
 	if attack_interval_timer > 0.0:
 		return
+	if attack_disabled_timer > 0.0:
+		return
 	
 	attack_interval_timer = attack_cooldown
 	particle_manager.spawn_particles(telegraph_particles, muzzle.global_position, 1)
@@ -167,3 +176,7 @@ func _local_avoidance(dir: Vector2, detection_range: float = 50) -> Vector2:
 		Vector2(obstacle_dir.y, -obstacle_dir.x)
 	
 	return Vector2(-obstacle_dir.y, obstacle_dir.x)
+
+func _disable_shooting(duration: float):
+	attack_disabled_timer = duration
+	

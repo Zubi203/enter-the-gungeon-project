@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dr54aqyb5bxpm" path="res://Scenes/Characters/character_base.tscn" id="1_dac0r"]
 [ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_ksvbg"]
-[ext_resource type="Texture2D" uid="uid://b3gfrwu4hlm07" path="res://Graphics/Characters/fire-spider.png" id="3_73or3"]
+[ext_resource type="Texture2D" uid="uid://dkvmm434jmn8h" path="res://Graphics/Characters/Slimes/GreenSlime.png" id="3_bfo3h"]
 [ext_resource type="Script" uid="uid://bk5d58qoe7pi" path="res://Scripts/Components/movement_component.gd" id="3_wwg5y"]
 [ext_resource type="PackedScene" uid="uid://c0ceepa6c27pu" path="res://Scenes/VFX/character_death_effect.tscn" id="4_0udae"]
 [ext_resource type="PackedScene" uid="uid://di5a2fewkjbxk" path="res://Scenes/VFX/large_blood_splatter.tscn" id="4_il3c1"]
@@ -16,26 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://beyq4ni0l7ucp" path="res://Scenes/VFX/enemy_attack_windup_small.tscn" id="13_bfo3h"]
 [ext_resource type="Script" uid="uid://873eq26p32mw" path="res://Scripts/Components/gun_sprite.gd" id="15_bfo3h"]
 
-[sub_resource type="Gradient" id="Gradient_jaftu"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.75123155)
-colors = PackedColorArray(0, 0, 0, 0.3764706, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
-gradient = SubResource("Gradient_jaftu")
-width = 32
-height = 16
-fill = 1
-fill_from = Vector2(0.48939928, 0.50530034)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0udae"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfo3h"]
 resource_local_to_scene = true
 shader = ExtResource("2_ksvbg")
 shader_parameter/progress_white = 0.0
 shader_parameter/progress_green = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_335ku"]
-size = Vector2(20, 16)
+size = Vector2(16, 12)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_88iev"]
 height = 22.0
@@ -58,131 +46,72 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/path = NodePath("CharacterSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Shadow:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_tq1da"]
 resource_name = "death"
-length = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.8, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.033333335),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Shadow:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_73or3"]
 resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20]
+}
 
 [sub_resource type="Animation" id="Animation_88iev"]
 resource_name = "idle"
-length = 1.5
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/path = NodePath("CharacterSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1, 1)]
+"times": PackedFloat32Array(0.033333335, 0.099999994, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 8, 9, 10, 11, 12, 13]
 }
 
 [sub_resource type="Animation" id="Animation_4uqsb"]
 resource_name = "roll"
 length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.6666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_qstrc"]
 resource_name = "run"
-length = 0.4
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/path = NodePath("CharacterSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.033333335, 0.16666667, 0.36666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.15, 0.85), Vector2(1, 1)]
+"times": PackedFloat32Array(0, 0.100000024, 0.19999999, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1prna"]
@@ -207,57 +136,74 @@ height = 96
 fill = 1
 fill_from = Vector2(0.49293286, 0.50706714)
 
+[sub_resource type="Gradient" id="Gradient_2dmea"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5591133)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5j6l8"]
+gradient = SubResource("Gradient_2dmea")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.4787986, 0.48233217)
+
+[sub_resource type="Curve" id="Curve_14lae"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7089295, 0.0, 0, 0]
+point_count = 2
+
 [node name="EnemyDefault" unique_id=184718225 groups=["Enemy"] instance=ExtResource("1_dac0r")]
 collision_layer = 4
 
-[node name="Shadow" type="Sprite2D" parent="." index="0" unique_id=1624065905]
-texture = SubResource("GradientTexture2D_h2w44")
-
-[node name="CharacterSprite" parent="." index="1" unique_id=8739034 groups=["Enemy"]]
-material = SubResource("ShaderMaterial_0udae")
-texture = ExtResource("3_73or3")
+[node name="CharacterSprite" parent="." index="0" unique_id=8739034 groups=["Enemy"]]
+material = SubResource("ShaderMaterial_bfo3h")
+scale = Vector2(1.025, 0.975)
+texture = ExtResource("3_bfo3h")
 offset = Vector2(0, -8)
-hframes = 1
-vframes = 1
+hframes = 8
+vframes = 3
 
-[node name="CollisionShape2D" parent="." index="2" unique_id=1092441608 groups=["Enemy"]]
-position = Vector2(0, -2)
+[node name="CollisionShape2D" parent="." index="1" unique_id=1092441608 groups=["Enemy"]]
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_335ku")
 
-[node name="HealthComponent" parent="." index="3" unique_id=585283887 groups=["Enemy"]]
+[node name="HealthComponent" parent="." index="2" unique_id=585283887 groups=["Enemy"]]
 max_health = 50
 death_effects = Array[PackedScene]([ExtResource("4_il3c1"), ExtResource("5_0udae"), ExtResource("4_0udae")])
 
-[node name="Hurtbox" parent="." index="4" unique_id=41026086 groups=["Enemy"]]
+[node name="Hurtbox" parent="." index="3" unique_id=41026086 groups=["Enemy"]]
 position = Vector2(0, -7)
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1445577034]
 shape = SubResource("CapsuleShape2D_88iev")
 
-[node name="MovementComponent" type="Node" parent="." index="5" unique_id=1460539221]
+[node name="MovementComponent" type="Node" parent="." index="4" unique_id=1460539221]
 script = ExtResource("3_wwg5y")
 speed = 40.0
 acceleration = 9999.0
 braking = 9999.0
 metadata/_custom_type_script = "uid://bk5d58qoe7pi"
 
-[node name="EnemyAI" type="Node2D" parent="." index="6" unique_id=731142563]
+[node name="EnemyAI" type="Node2D" parent="." index="5" unique_id=731142563]
 script = ExtResource("4_wwg5y")
 attack_sequence = SubResource("Resource_73or3")
-attack_cooldown = 1.0
 telegraph_particles = ExtResource("13_bfo3h")
 
-[node name="LineOfSight" type="RayCast2D" parent="." index="7" unique_id=2116824844]
+[node name="LineOfSight" type="RayCast2D" parent="." index="6" unique_id=2116824844]
 unique_name_in_owner = true
 
-[node name="CharacterAnimation" type="AnimationPlayer" parent="." index="8" unique_id=519997808]
+[node name="CharacterAnimation" type="AnimationPlayer" parent="." index="7" unique_id=519997808 node_paths=PackedStringArray("walk_particles")]
 libraries/ = SubResource("AnimationLibrary_1prna")
 script = ExtResource("5_tq1da")
+footstep_interval = 0.5
+walk_particles = NodePath("../WalkParticles")
 follow_type = 1
 metadata/_custom_type_script = "uid://cmgu0npg7qct6"
 
-[node name="GunSprite" type="Sprite2D" parent="." index="9" unique_id=1716614618 node_paths=PackedStringArray("gun_flash")]
+[node name="GunSprite" type="Sprite2D" parent="." index="8" unique_id=1716614618 node_paths=PackedStringArray("gun_flash")]
 script = ExtResource("15_bfo3h")
+gun_offset = 10.0
+origin_offset = Vector2(0, -5)
 gun_flash = NodePath("GunFlash")
 gun_flash_duration = 0.1
 metadata/_custom_type_script = "uid://873eq26p32mw"
@@ -269,6 +215,27 @@ color = Color(1, 0.45, 0.45, 1)
 energy = 0.0
 texture = SubResource("GradientTexture2D_bfo3h")
 
-[node name="AvoidanceRay" type="RayCast2D" parent="." index="10" unique_id=1337312578]
+[node name="AvoidanceRay" type="RayCast2D" parent="." index="9" unique_id=1337312578]
 unique_name_in_owner = true
 collision_mask = 5
+
+[node name="WalkParticles" type="CPUParticles2D" parent="." index="10" unique_id=624554804]
+z_index = -1
+emitting = false
+amount = 15
+texture = SubResource("GradientTexture2D_5j6l8")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(8, 4)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+scale_amount_min = 0.05
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_14lae")

@@ -3,6 +3,8 @@ extends ControllerComponent
 
 signal GunsUpdated(curr_gun: GunData, equipped_guns: Array[GunData])
 signal AmmoUpdated(curr_gun: GunData, ammo: int)
+signal AmmoDepleted
+signal Reload
 
 const MAX_GUNS: int = 3
 
@@ -85,10 +87,29 @@ func _process(_delta: float) -> void:
 	if gun_sprite:
 		gun_sprite.target = get_global_mouse_position()
 	
+	if dodge_roll_duration_countdown > 0.0:
+		
+		if gun_sprite:
+			gun_sprite.modulate.a = 0.0
+		dodge_roll_duration_countdown -= _delta
+	else:
+		
+		if gun_sprite:
+			gun_sprite.modulate.a = 1.0
+			
+		if roll_buffer_timer.time_left and dir:
+			charge_counter = 0.0
+			dodge_roll_duration_countdown = dodge_roll_duration
+			DodgeRoll.emit(dir, dodge_roll_duration)
+	
+	
 	if is_reloading:
 		return
 	
 	if Input.is_action_just_pressed("reload"):
+		start_reload()
+	
+	if weapon_ammo[current_weapon] <= 0 and Input.is_action_just_pressed("shoot"):
 		start_reload()
 	
 	if Input.is_action_just_pressed("scroll_next"):
@@ -108,24 +129,7 @@ func _process(_delta: float) -> void:
 		charge_counter = 0.0
 	
 	shoot_input(_delta)
-	
-	if dodge_roll_duration_countdown > 0.0:
-		
-		if gun_sprite:
-			gun_sprite.modulate.a = 0.0
-		dodge_roll_duration_countdown -= _delta
-	else:
-		
-		if gun_sprite:
-			gun_sprite.modulate.a = 1.0
-			
-		if roll_buffer_timer.time_left and dir:
-			charge_counter = 0.0
-			dodge_roll_duration_countdown = dodge_roll_duration
-			DodgeRoll.emit(dir, dodge_roll_duration)
-	
-	
-	
+
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("roll"):
@@ -237,6 +241,9 @@ func consume_ammo():
 			weapon_ammo[current_weapon] -= 1
 			AmmoUpdated.emit(current_weapon, weapon_ammo[current_weapon])
 			await get_tree().create_timer(1.0 - current_weapon.burst_explosiveness).timeout
+	
+	if weapon_ammo[current_weapon] <= 0:
+		AmmoDepleted.emit()
 
 func add_new_gun(gun: GunData):
 	if weapons.size() < MAX_GUNS:
@@ -254,7 +261,7 @@ func add_new_gun(gun: GunData):
 func start_reload():
 	if weapon_ammo[current_weapon] == current_weapon.magazine_size:
 		return
-	
+	Reload.emit()
 	is_reloading = true
 	audio_manager.play_random_pitch(reload_sound)
 	var tween = create_tween()

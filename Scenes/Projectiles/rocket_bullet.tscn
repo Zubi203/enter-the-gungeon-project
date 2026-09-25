@@ -39,7 +39,8 @@ fill_from = Vector2(0.35, 0.5)
 size = Vector2(10, 6)
 
 [sub_resource type="Gradient" id="Gradient_iaoy4"]
-offsets = PackedFloat32Array(0, 0.682266)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.56177604)
 colors = PackedColorArray(1, 1, 1, 0.5529412, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mtslb"]

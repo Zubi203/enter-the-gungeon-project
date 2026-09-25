@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://t4vsjvlyl8y5"]
+
+[ext_resource type="PackedScene" uid="uid://c370i8x1hba51" path="res://Scenes/Characters/enemy_default.tscn" id="1_fni85"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_eue6i"]
+[ext_resource type="Texture2D" uid="uid://o4fqvhww5mcl" path="res://Graphics/Characters/Slimes/BlackSlime.png" id="3_6s0gr"]
+[ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_0h5k0"]
+[ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="5_tbcyi"]
+[ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="6_bn643"]
+[ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_kf0wx"]
+[ext_resource type="Texture2D" uid="uid://fqi4cle8pgxq" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/39.png" id="8_y1abb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kuc3a"]
+resource_local_to_scene = true
+shader = ExtResource("2_eue6i")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="Resource" id="Resource_uthbr"]
+script = ExtResource("4_0h5k0")
+bullet = ExtResource("5_tbcyi")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("6_bn643")])
+bullets_per_shot = 7
+recoil_enabled = false
+accuracy_cone_angle = 90.0
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_o5onh"]
+script = ExtResource("4_0h5k0")
+bullet = ExtResource("5_tbcyi")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("6_bn643")])
+bullets_per_shot = 12
+recoil_enabled = false
+accuracy_cone_angle = 82.5
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_0wk8h"]
+script = ExtResource("4_0h5k0")
+bullet = ExtResource("5_tbcyi")
+sound_emission_type = 1
+shoot_vfx = Array[PackedScene]([ExtResource("6_bn643")])
+bullets_per_shot = 6
+recoil_enabled = false
+accuracy_cone_angle = 75.0
+spread_type = 1
+metadata/_custom_type_script = "uid://by0fgjfwddu8r"
+
+[sub_resource type="Resource" id="Resource_m20ht"]
+script = ExtResource("7_kf0wx")
+attack_sequence = Array[ExtResource("4_0h5k0")]([SubResource("Resource_uthbr"), SubResource("Resource_o5onh"), SubResource("Resource_0wk8h")])
+startup_delay = 0.3
+delay_between_attacks = 0.1
+metadata/_custom_type_script = "uid://bnix037fwewji"
+
+[node name="BlackSlime" unique_id=184718225 instance=ExtResource("1_fni85")]
+
+[node name="CharacterSprite" parent="." index="0" unique_id=8739034]
+material = SubResource("ShaderMaterial_kuc3a")
+texture = ExtResource("3_6s0gr")
+
+[node name="EnemyAI" parent="." index="5" unique_id=731142563]
+attack_sequence = SubResource("Resource_m20ht")
+attack_cooldown = 3.0
+
+[node name="GunSprite" parent="." index="8" unique_id=1716614618]
+position = Vector2(0, -8)
+gun_texture = ExtResource("8_y1abb")

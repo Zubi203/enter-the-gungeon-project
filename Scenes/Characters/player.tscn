@@ -12,20 +12,18 @@
 [ext_resource type="AudioStream" uid="uid://bo4f01jlk8hix" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_2.wav" id="6_fcmex"]
 [ext_resource type="AudioStream" uid="uid://b3vuldkl0jnsd" path="res://Audio/Minifantasy_Dungeon_SFX/13_human_jump_land_1.wav" id="6_utp2y"]
 [ext_resource type="AudioStream" uid="uid://dw72gxbruv2b" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_3.wav" id="7_25bbb"]
+[ext_resource type="Resource" uid="uid://dmjp272lyd546" path="res://Resources/GunData/homing_machine_gun.tres" id="8_v8iml"]
 [ext_resource type="AudioStream" uid="uid://buqajqhnvdttb" path="res://Audio/Snake's Authentic Gun Sounds/Reloads, Cycling & More/WAV/Semi 22LR Rack WAV.wav" id="9_3k74t"]
 [ext_resource type="Resource" uid="uid://bpli0ftre1d4j" path="res://Resources/GunData/accurate_machine_gun.tres" id="10_m75h8"]
 [ext_resource type="Script" uid="uid://873eq26p32mw" path="res://Scripts/Components/gun_sprite.gd" id="11_25bbb"]
 [ext_resource type="Resource" uid="uid://c1gfb0s0y05xg" path="res://Resources/GunData/bouncy_shotgun.tres" id="13_ste30"]
-[ext_resource type="Resource" uid="uid://bu1ypensrgj15" path="res://Resources/GunData/chain_machine_gun.tres" id="17_sgb3t"]
 [ext_resource type="Texture2D" uid="uid://c0p2nmvdk84x3" path="res://Graphics/UI/64x64.png" id="19_ddhxa"]
-[ext_resource type="Shader" uid="uid://di6cmpauj1gl" path="res://Shaders/outline_shader.gdshader" id="29_hwltk"]
+[ext_resource type="Script" uid="uid://ccom303jfvfxp" path="res://Scripts/UI/reloading_label.gd" id="25_v8iml"]
 [ext_resource type="Script" uid="uid://b17oc8kky02w0" path="res://Scripts/Characters/player_ui.gd" id="31_hhnlt"]
 [ext_resource type="FontFile" uid="uid://b0fthxblc67q6" path="res://Graphics/UI/pixel-game.regular.otf" id="32_m75h8"]
-[ext_resource type="Texture2D" uid="uid://wjcgyshthk28" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/1Machinegun01.png" id="33_2dmea"]
 [ext_resource type="Texture2D" uid="uid://dxo0v5wo353c7" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/Outlined/6Machinegun06.png" id="34_ste30"]
-[ext_resource type="Texture2D" uid="uid://bnqs7i60tuba" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/2Shotgun02.png" id="35_6kewp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhnlt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k74t"]
 resource_local_to_scene = true
 shader = ExtResource("2_f2s78")
 shader_parameter/progress_white = 0.0
@@ -140,11 +138,6 @@ _data = {
 &"roll": SubResource("Animation_xo8ps"),
 &"run": SubResource("Animation_fcmex")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2s78"]
-shader = ExtResource("29_hwltk")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/corner_pixels = false
 
 [sub_resource type="Gradient" id="Gradient_2davj"]
 interpolation_mode = 2
@@ -318,11 +311,18 @@ corner_radius_bottom_right = 150
 corner_radius_bottom_left = 150
 corner_detail = 12
 
+[sub_resource type="LabelSettings" id="LabelSettings_65ton"]
+font = ExtResource("32_m75h8")
+font_size = 10
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.5254902)
+
 [node name="Player" unique_id=184718225 groups=["Player"] instance=ExtResource("1_al8ar")]
 collision_layer = 2
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034]
-material = SubResource("ShaderMaterial_hhnlt")
+material = SubResource("ShaderMaterial_3k74t")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1092441608]
@@ -342,7 +342,7 @@ metadata/_custom_type_script = "uid://bk5d58qoe7pi"
 script = ExtResource("3_cqrjx")
 roll_buffer_timer = NodePath("../Buffers/RollBuffer")
 shoot_buffer_timer = NodePath("../Buffers/ShootBuffer")
-weapons = Array[ExtResource("5_f2s78")]([ExtResource("10_m75h8"), ExtResource("13_ste30"), ExtResource("17_sgb3t")])
+weapons = Array[ExtResource("5_f2s78")]([ExtResource("10_m75h8"), ExtResource("13_ste30"), ExtResource("8_v8iml")])
 reload_sound = ExtResource("9_3k74t")
 hit_iframe_duration = 0.8
 metadata/_custom_type_script = "uid://dtejatc6kcbh3"
@@ -365,7 +365,6 @@ script = ExtResource("2_fcmex")
 [node name="GunSprite" type="Sprite2D" parent="." index="7" unique_id=2043419832 node_paths=PackedStringArray("gun_flash", "shot_particles", "charging_particles", "charged_particles", "charge_light")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_f2s78")
 position = Vector2(0, -7)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("11_25bbb")
@@ -613,21 +612,18 @@ theme_override_constants/separation = 20
 [node name="Gun1" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/GunsAndAmmo/GunContainer" index="0" unique_id=1873095846]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("33_2dmea")
 expand_mode = 4
 stretch_mode = 5
 
 [node name="Gun2" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/GunsAndAmmo/GunContainer" index="1" unique_id=916628586]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("34_ste30")
 expand_mode = 4
 stretch_mode = 5
 
 [node name="Gun3" type="TextureRect" parent="PlayerUI/HBoxContainer/UIColumn/GunsAndAmmo/GunContainer" index="2" unique_id=1987435282]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("35_6kewp")
 expand_mode = 4
 stretch_mode = 5
 
@@ -688,3 +684,15 @@ layout_mode = 2
 texture = ExtResource("34_ste30")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="ReloadingLabel" type="Label" parent="." index="13" unique_id=194239695]
+visible = false
+offset_left = -26.0
+offset_top = -31.0
+offset_right = 26.0
+offset_bottom = -21.0
+text = "( RELOAD )"
+label_settings = SubResource("LabelSettings_65ton")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("25_v8iml")

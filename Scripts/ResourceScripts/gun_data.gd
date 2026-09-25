@@ -60,6 +60,9 @@ var particle_manager: ParticleManager:
 
 func fire_burst(shooter: Node2D, aim_target: Vector2, group: String):
 	
+	if shooter == null:
+		return
+	
 	var target_points: Array[Vector2] = get_target_points(shooter, aim_target)
 	var delay_between_shots: float = 1.0 - burst_explosiveness
 	
@@ -74,6 +77,8 @@ func fire_burst(shooter: Node2D, aim_target: Vector2, group: String):
 			target_points.reverse()
 		
 		for point in target_points:
+			if shooter == null:
+				return
 			bullet_manager.shoot(bullet, shooter.global_position, point, group)
 			if sound_emission_type == SoundEmissionType.PER_BULLET:
 				audio_manager.play(shoot_sfx, shoot_sfx_volume)

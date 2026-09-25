@@ -10,8 +10,7 @@
 [ext_resource type="Script" uid="uid://n0q6mnryced5" path="res://Scripts/ResourceScripts/speed_over_lifetime_strategy.gd" id="5_coc0x"]
 [ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="6_gr3lo"]
 [ext_resource type="PackedScene" uid="uid://bkke5ricdxn84" path="res://Scenes/VFX/large_shell.tscn" id="7_87f1h"]
-[ext_resource type="Texture2D" uid="uid://c51newiqhyoki" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Explosives/4Explosive04.png" id="8_sjgae"]
-[ext_resource type="Texture2D" uid="uid://dcn372rvdljpq" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/Explosives/Outlined/4Explosive04.png" id="9_gr3lo"]
+[ext_resource type="Texture2D" uid="uid://cb1vh7gurdmue" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/61.png" id="9_coc0x"]
 [ext_resource type="PackedScene" uid="uid://cp1epq8c2ke4r" path="res://Scenes/VFX/rocket_launcher_smoke.tscn" id="10_e6icm"]
 
 [sub_resource type="Resource" id="Resource_bo10k"]
@@ -59,8 +58,8 @@ stereo = true
 
 [resource]
 script = ExtResource("1_t4bqg")
-texture = ExtResource("8_sjgae")
-highlighted_texture = ExtResource("9_gr3lo")
+texture = ExtResource("9_coc0x")
+highlighted_texture = ExtResource("9_coc0x")
 bullet = SubResource("Resource_sjgae")
 shoot_sfx = SubResource("AudioStreamWAV_7wfhb")
 shoot_vfx = Array[PackedScene]([ExtResource("7_87f1h"), ExtResource("10_e6icm")])

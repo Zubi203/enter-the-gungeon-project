@@ -11,10 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cx7gya4ktld3s" path="res://Scenes/VFX/character_hit_effect_2.tscn" id="6_c033a"]
 [ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="6_fop07"]
 [ext_resource type="AudioStream" uid="uid://c6vmwwicurljf" path="res://Audio/Sci-Fi Weapons & Impacts –  Sound Effects Pack FREE/07_Weapon_Shot_SciFi.wav.wav" id="7_0bqay"]
-[ext_resource type="Texture2D" uid="uid://clek01gy6e4gr" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/4SniperRifle04.png" id="7_80rek"]
 [ext_resource type="PackedScene" uid="uid://4pp4lgrc8rks" path="res://Scenes/VFX/wall_hit_effect_2.tscn" id="7_lleba"]
 [ext_resource type="PackedScene" uid="uid://bkke5ricdxn84" path="res://Scenes/VFX/large_shell.tscn" id="8_6ejyp"]
-[ext_resource type="Texture2D" uid="uid://b3jdvgib4mddx" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/Outlined/4SniperRifle04.png" id="11_2b66v"]
+[ext_resource type="Texture2D" uid="uid://xl8clu1v3v6y" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/48.png" id="11_kqckg"]
 
 [sub_resource type="Resource" id="Resource_k1wmc"]
 script = ExtResource("1_k1wmc")
@@ -46,7 +45,7 @@ metadata/_custom_type_script = "uid://bt8wxltexhu4a"
 [sub_resource type="Resource" id="Resource_vkvoy"]
 script = ExtResource("3_6ejyp")
 scene = ExtResource("2_k1wmc")
-bullet_color = Color(0.9000001, 0, 1, 1)
+bullet_color = Color(0.59000003, 1, 0.9863334, 1)
 damage = 25
 lifetime = 3.0
 size_multiplier = 2.0
@@ -58,8 +57,8 @@ metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
 
 [resource]
 script = ExtResource("1_6k8b4")
-texture = ExtResource("7_80rek")
-highlighted_texture = ExtResource("11_2b66v")
+texture = ExtResource("11_kqckg")
+highlighted_texture = ExtResource("11_kqckg")
 bullet = SubResource("Resource_vkvoy")
 shoot_sfx = ExtResource("7_0bqay")
 shoot_vfx = Array[PackedScene]([ExtResource("8_6ejyp")])

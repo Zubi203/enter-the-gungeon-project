@@ -34,8 +34,9 @@ fill_from = Vector2(0.5106007, 0.5093308)
 size = Vector2(12, 4)
 
 [sub_resource type="Gradient" id="Gradient_ckr4k"]
-offsets = PackedFloat32Array(0, 0.7167488)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.6814672)
+colors = PackedColorArray(1, 1, 1, 0.54901963, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ckr4k"]
 gradient = SubResource("Gradient_ckr4k")

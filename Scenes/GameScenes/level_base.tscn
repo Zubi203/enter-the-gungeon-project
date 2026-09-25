@@ -11,7 +11,14 @@
 [ext_resource type="Script" uid="uid://dcavfat2emgcp" path="res://Scripts/particle_manager.gd" id="7_p3l6u"]
 [ext_resource type="PackedScene" uid="uid://bcqy2rq2lw6l6" path="res://Scenes/UI/pause_menu.tscn" id="8_n01od"]
 [ext_resource type="Texture2D" uid="uid://5o8sxfxudt6r" path="res://Graphics/UI/Setting 2 512 px.png" id="9_43f4u"]
-[ext_resource type="PackedScene" uid="uid://ccipobrdpmnqh" path="res://Scenes/Characters/fire_spider.tscn" id="12_6ly15"]
+[ext_resource type="PackedScene" uid="uid://ccipobrdpmnqh" path="res://Scenes/Characters/blue_slime.tscn" id="12_6ly15"]
+[ext_resource type="PackedScene" uid="uid://t4vsjvlyl8y5" path="res://Scenes/Characters/black_slime.tscn" id="13_315ow"]
+[ext_resource type="PackedScene" uid="uid://df3kvlvw1jdgo" path="res://Scenes/Characters/blue_magma_slime.tscn" id="14_1ffv8"]
+[ext_resource type="PackedScene" uid="uid://bucuhwgmje2m1" path="res://Scenes/Characters/dark_blue_slime.tscn" id="15_p36h3"]
+[ext_resource type="PackedScene" uid="uid://daklyg66dwkrc" path="res://Scenes/Characters/green_slime.tscn" id="16_jm6s6"]
+[ext_resource type="PackedScene" uid="uid://bq1u2577lkfw2" path="res://Scenes/Characters/magma_slime.tscn" id="17_h5gn7"]
+[ext_resource type="PackedScene" uid="uid://b5f04ptl844rb" path="res://Scenes/Characters/pink_slime.tscn" id="18_ndifn"]
+[ext_resource type="PackedScene" uid="uid://ctx8ww7u3geh0" path="res://Scenes/Characters/yellow_slime.tscn" id="19_xdhx6"]
 
 [sub_resource type="Gradient" id="Gradient_xfr4g"]
 offsets = PackedFloat32Array(0)
@@ -115,5 +122,29 @@ theme_override_constants/margin_bottom = 14
 layout_mode = 2
 texture = ExtResource("9_43f4u")
 expand_mode = 1
+
+[node name="BlackSlime" parent="." unique_id=660148932 instance=ExtResource("13_315ow")]
+position = Vector2(332, 367)
+
+[node name="BloodEye" parent="." unique_id=942871430 instance=ExtResource("14_1ffv8")]
+position = Vector2(97, 360)
+
+[node name="BlueSlime" parent="." unique_id=1024263307 instance=ExtResource("12_6ly15")]
+position = Vector2(172, 317)
+
+[node name="DarkBlueSlime" parent="." unique_id=222501123 instance=ExtResource("15_p36h3")]
+position = Vector2(95, 290)
+
+[node name="PossessedSkull" parent="." unique_id=2088570822 instance=ExtResource("16_jm6s6")]
+position = Vector2(220, 369)
+
+[node name="EnemyDefault" parent="." unique_id=1235000893 instance=ExtResource("17_h5gn7")]
+position = Vector2(393, 314)
+
+[node name="AngrySpirit" parent="." unique_id=866032910 instance=ExtResource("18_ndifn")]
+position = Vector2(560, 323)
+
+[node name="YellowSlime" parent="." unique_id=831518956 instance=ExtResource("19_xdhx6")]
+position = Vector2(575, 239)
 
 [connection signal="pressed" from="LevelUI/Control/PauseButton" to="LevelUI" method="_on_pause_button_pressed"]
