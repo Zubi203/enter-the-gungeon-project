@@ -4,8 +4,8 @@
 
 [sub_resource type="Gradient" id="Gradient_p32vf"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5925267)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.1492248, 0.42829457, 0.5925267)
+colors = PackedColorArray(0.92273736, 0.9227374, 0.92273736, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ur3o5"]
 gradient = SubResource("Gradient_p32vf")
@@ -17,9 +17,6 @@ fill_from = Vector2(0.46245733, 0.47269624)
 [sub_resource type="Curve" id="Curve_i4nt7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.854369, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.6400003, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_hnue8"]
-colors = PackedColorArray(0.46, 0, 0, 1, 0.73, 0, 0, 1)
 
 [node name="CharacterHitEffect3" type="CPUParticles2D" unique_id=1056327090]
 emitting = false
@@ -37,6 +34,5 @@ angle_max = 90.0
 scale_amount_min = 0.1
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_i4nt7")
-color_initial_ramp = SubResource("Gradient_hnue8")
 script = ExtResource("1_i8mgr")
 metadata/_custom_type_script = "uid://dk8xyokclaoxm"

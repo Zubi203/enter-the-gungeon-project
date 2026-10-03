@@ -2,13 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://c370i8x1hba51" path="res://Scenes/Characters/enemy_default.tscn" id="1_665n2"]
 [ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_xcoj1"]
+[ext_resource type="PackedScene" uid="uid://cvhuvigra6yl2" path="res://Scenes/Projectiles/small_blood_splatter.tscn" id="3_0cah3"]
 [ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_2fxdk"]
 [ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="5_08h6d"]
 [ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="6_a7o1g"]
+[ext_resource type="AudioStream" uid="uid://bkxmp70rra6so" path="res://Audio/hit effects/slime gun sfx.wav" id="6_pqebk"]
 [ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_8re8k"]
 [ext_resource type="Texture2D" uid="uid://cvd0ceigige1j" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/24.png" id="7_a66hv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a66hv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bklrt"]
 resource_local_to_scene = true
 shader = ExtResource("2_xcoj1")
 shader_parameter/progress_white = 0.0
@@ -17,6 +19,7 @@ shader_parameter/progress_green = 0.0
 [sub_resource type="Resource" id="Resource_88iev"]
 script = ExtResource("4_2fxdk")
 bullet = ExtResource("5_08h6d")
+shoot_sfx = ExtResource("6_pqebk")
 shoot_vfx = Array[PackedScene]([ExtResource("6_a7o1g")])
 recoil_enabled = false
 accuracy_cone_angle = 20.0
@@ -31,7 +34,14 @@ metadata/_custom_type_script = "uid://bnix037fwewji"
 [node name="GreenSlime" unique_id=184718225 instance=ExtResource("1_665n2")]
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034]
-material = SubResource("ShaderMaterial_a66hv")
+material = SubResource("ShaderMaterial_bklrt")
+
+[node name="HealthComponent" parent="." index="2" unique_id=585283887]
+particle_modulate_color = Color(0.3882353, 0.7882353, 0.62352943, 1)
+hit_effects = Array[PackedScene]([ExtResource("3_0cah3")])
+
+[node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(41026086) index="0" unique_id=1445577034]
+visible = false
 
 [node name="EnemyAI" parent="." index="5" unique_id=731142563]
 position = Vector2(0, 1)
@@ -39,5 +49,4 @@ attack_sequence = SubResource("Resource_bueni")
 
 [node name="GunSprite" parent="." index="8" unique_id=1716614618]
 position = Vector2(0, -6)
-origin_offset = Vector2(0, -5)
 gun_texture = ExtResource("7_a66hv")

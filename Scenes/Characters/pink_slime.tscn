@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_bfqrx"]
 [ext_resource type="Texture2D" uid="uid://demgc2v7g1ywq" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/33.png" id="8_pi24v"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqtg1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pi24v"]
 resource_local_to_scene = true
 shader = ExtResource("2_sqvuq")
 shader_parameter/progress_white = 0.0
@@ -34,8 +34,14 @@ metadata/_custom_type_script = "uid://bnix037fwewji"
 [node name="PinkSlime" unique_id=184718225 instance=ExtResource("1_b4obi")]
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034]
-material = SubResource("ShaderMaterial_nqtg1")
+material = SubResource("ShaderMaterial_pi24v")
 texture = ExtResource("3_t7btx")
+
+[node name="HealthComponent" parent="." index="2" unique_id=585283887]
+particle_modulate_color = Color(0.9411765, 0.43137255, 0.6509804, 1)
+
+[node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(41026086) index="0" unique_id=1445577034]
+visible = false
 
 [node name="EnemyAI" parent="." index="5" unique_id=731142563]
 attack_sequence = SubResource("Resource_cpen4")

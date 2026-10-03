@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://c72tiqpli2yfu"]
+
+[ext_resource type="Texture2D" uid="uid://dgc1iicl5cuda" path="res://Graphics/VFX/Holy VFX 02.png" id="1_bevse"]
+[ext_resource type="Script" uid="uid://qybu1bdwsbsx" path="res://Scripts/enemy_spawn_vfx.gd" id="2_l57sx"]
+
+[sub_resource type="Gradient" id="Gradient_l57sx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.37790698, 0.5755814)
+colors = PackedColorArray(1, 1, 1, 1, 0.99, 0.79596, 0.15840003, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_l57sx")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.48976108, 0.5102389)
+
+[sub_resource type="Curve" id="Curve_65ton"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24825174, 1), 0.0, 0.0, 0, 0, Vector2(0.8006993, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_xpw1u"]
+offsets = PackedFloat32Array(0, 0.7490119, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_k16pq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3jh57"]
+resource_name = "spawn_effect"
+length = 1.3666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666666, 0.13333327, 0.19999999, 0.2666666, 0.3333332, 0.40000004, 0.46666664, 0.53333324, 0.59999985, 0.6666667, 0.7333333, 0.7999999, 0.86666673, 0.93333334, 0.99999994, 1.0666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26666668, 1.3333334),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_reveal_enemy"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_st676"]
+_data = {
+&"RESET": SubResource("Animation_k16pq"),
+&"spawn_effect": SubResource("Animation_3jh57")
+}
+
+[node name="EnemySpawnVFX" type="Sprite2D" unique_id=1198068864]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 20
+texture = ExtResource("1_bevse")
+offset = Vector2(0, -16)
+hframes = 16
+script = ExtResource("2_l57sx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=218998604]
+unique_name_in_owner = true
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture2D_h2w44")
+lifetime = 0.55
+one_shot = true
+emission_shape = 6
+emission_ring_inner_radius = 25.0
+emission_ring_radius = 25.0
+gravity = Vector2(0, 0)
+radial_accel_min = -200.0
+radial_accel_max = -200.0
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_65ton")
+color_ramp = SubResource("Gradient_xpw1u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=29453634]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_st676")

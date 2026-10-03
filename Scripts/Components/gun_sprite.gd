@@ -12,6 +12,7 @@ extends Sprite2D
 @export var charge_light: PointLight2D
 var flash_tween: Tween
 var target: Vector2
+var facing_direction: Vector2
 var recoil_offset: float = 3
 var character_sprite_z_index: int
 var base_scale: Vector2
@@ -37,6 +38,7 @@ func _process(_delta: float) -> void:
 	if target:
 		var origin_point = owner.global_position + origin_offset
 		var direction: Vector2 = origin_point.direction_to(target)
+		facing_direction = Vector2(direction.x, -1.0)
 		rotation = direction.angle()
 		global_position = origin_point + direction * gun_offset + _get_recoil_offset(direction, _delta)
 		flip_v = direction.x < 0
@@ -62,7 +64,7 @@ func recoil(color: Color = Color.WHITE, amount: float = 10.0):
 	if flash_tween and flash_tween.is_running():
 		flash_tween.kill()
 	flash_tween = create_tween()
-	flash_tween.tween_property(gun_flash, "energy", 0.0, gun_flash_duration).from(1.5)
+	flash_tween.tween_property(gun_flash, "energy", 0.0, gun_flash_duration).from(3)
 
 func charging(charge_color: Color):
 	if charging_particles == null:

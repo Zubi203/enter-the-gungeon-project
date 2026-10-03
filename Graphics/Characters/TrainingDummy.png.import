@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cky1jqqok0yus"
-path="res://.godot/imported/vampire-bat.png-d44e4cc655873f40212b4876ed25366b.ctex"
+uid="uid://cqnym0lotk3jd"
+path="res://.godot/imported/TrainingDummy.png-ad75e861dc906e765cd22b967d6b8bc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Characters/vampire-bat.png"
-dest_files=["res://.godot/imported/vampire-bat.png-d44e4cc655873f40212b4876ed25366b.ctex"]
+source_file="res://Graphics/Characters/TrainingDummy.png"
+dest_files=["res://.godot/imported/TrainingDummy.png-ad75e861dc906e765cd22b967d6b8bc0.ctex"]
 
 [params]
 

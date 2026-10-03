@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://dkqvhbfcnneox"]
+
+[ext_resource type="Script" uid="uid://di6lpmi3gitpw" path="res://Scripts/health_pickup.gd" id="1_tv2tu"]
+[ext_resource type="Shader" uid="uid://bhv8ksjokpqg" path="res://Shaders/shine.gdshader" id="2_ftxjj"]
+[ext_resource type="Texture2D" uid="uid://c0p2nmvdk84x3" path="res://Graphics/UI/64x64.png" id="2_i1x0e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2w44"]
+resource_local_to_scene = true
+shader = ExtResource("2_ftxjj")
+shader_parameter/angle = 6.0
+shader_parameter/thickness = 0.007
+shader_parameter/center = Vector2(-1.165, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65ton"]
+atlas = ExtResource("2_i1x0e")
+region = Rect2(128, 2625, 64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2w44"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_ph2as"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/center")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.165, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_um4yc"]
+resource_name = "health_pickup_idle"
+length = 3.0333333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/center")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6333333, 3.0333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.9, 1), Vector2(-1.2, 1), Vector2(-1.2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5p5bt"]
+_data = {
+&"RESET": SubResource("Animation_ph2as"),
+&"health_pickup_idle": SubResource("Animation_um4yc")
+}
+
+[node name="HealthPickup" type="Area2D" unique_id=67982808 node_paths=PackedStringArray("collider", "sprite")]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_tv2tu")
+type = 0
+auto_move_to_target = true
+auto_move_range = 70.0
+auto_move_speed = 110.0
+collider = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://b754grtk2k1hd"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=633807841]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_h2w44")
+scale = Vector2(0.15, 0.15)
+texture = SubResource("AtlasTexture_65ton")
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=798746729]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_h2w44")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=430055027]
+libraries/ = SubResource("AnimationLibrary_5p5bt")
+autoplay = &"health_pickup_idle"

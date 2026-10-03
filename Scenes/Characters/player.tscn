@@ -10,20 +10,19 @@
 [ext_resource type="AudioStream" uid="uid://dealnim77jwyb" path="res://Audio/Minifantasy_Dungeon_SFX/12_human_jump_1.wav" id="5_khnq4"]
 [ext_resource type="AudioStream" uid="uid://dh3grbq016s2o" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_1.wav" id="5_xo8ps"]
 [ext_resource type="AudioStream" uid="uid://bo4f01jlk8hix" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_2.wav" id="6_fcmex"]
+[ext_resource type="Resource" uid="uid://dnqca6ci7pd23" path="res://Resources/GunData/default_pistol.tres" id="6_hy8lp"]
 [ext_resource type="AudioStream" uid="uid://b3vuldkl0jnsd" path="res://Audio/Minifantasy_Dungeon_SFX/13_human_jump_land_1.wav" id="6_utp2y"]
 [ext_resource type="AudioStream" uid="uid://dw72gxbruv2b" path="res://Audio/Minifantasy_Dungeon_SFX/16_human_walk_stone_3.wav" id="7_25bbb"]
-[ext_resource type="Resource" uid="uid://dmjp272lyd546" path="res://Resources/GunData/homing_machine_gun.tres" id="8_v8iml"]
+[ext_resource type="PackedScene" uid="uid://dsb8fnf1tcap8" path="res://Scenes/Items and Pickups/gun_pickup.tscn" id="8_uxymp"]
 [ext_resource type="AudioStream" uid="uid://buqajqhnvdttb" path="res://Audio/Snake's Authentic Gun Sounds/Reloads, Cycling & More/WAV/Semi 22LR Rack WAV.wav" id="9_3k74t"]
-[ext_resource type="Resource" uid="uid://bpli0ftre1d4j" path="res://Resources/GunData/accurate_machine_gun.tres" id="10_m75h8"]
 [ext_resource type="Script" uid="uid://873eq26p32mw" path="res://Scripts/Components/gun_sprite.gd" id="11_25bbb"]
-[ext_resource type="Resource" uid="uid://c1gfb0s0y05xg" path="res://Resources/GunData/bouncy_shotgun.tres" id="13_ste30"]
 [ext_resource type="Texture2D" uid="uid://c0p2nmvdk84x3" path="res://Graphics/UI/64x64.png" id="19_ddhxa"]
 [ext_resource type="Script" uid="uid://ccom303jfvfxp" path="res://Scripts/UI/reloading_label.gd" id="25_v8iml"]
 [ext_resource type="Script" uid="uid://b17oc8kky02w0" path="res://Scripts/Characters/player_ui.gd" id="31_hhnlt"]
 [ext_resource type="FontFile" uid="uid://b0fthxblc67q6" path="res://Graphics/UI/pixel-game.regular.otf" id="32_m75h8"]
 [ext_resource type="Texture2D" uid="uid://dxo0v5wo353c7" path="res://Graphics/Weapons/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/Outlined/6Machinegun06.png" id="34_ste30"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k74t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxymp"]
 resource_local_to_scene = true
 shader = ExtResource("2_f2s78")
 shader_parameter/progress_white = 0.0
@@ -322,7 +321,7 @@ shadow_color = Color(0, 0, 0, 0.5254902)
 collision_layer = 2
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034]
-material = SubResource("ShaderMaterial_3k74t")
+material = SubResource("ShaderMaterial_uxymp")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1092441608]
@@ -334,7 +333,7 @@ script = ExtResource("2_gy20a")
 speed = 100.0
 acceleration = 9999.0
 braking = 9999.0
-roll_speed = 190.0
+roll_speed = 220.0
 roll_particles = NodePath("../RollParticles")
 metadata/_custom_type_script = "uid://bk5d58qoe7pi"
 
@@ -342,8 +341,9 @@ metadata/_custom_type_script = "uid://bk5d58qoe7pi"
 script = ExtResource("3_cqrjx")
 roll_buffer_timer = NodePath("../Buffers/RollBuffer")
 shoot_buffer_timer = NodePath("../Buffers/ShootBuffer")
-weapons = Array[ExtResource("5_f2s78")]([ExtResource("10_m75h8"), ExtResource("13_ste30"), ExtResource("8_v8iml")])
+weapons = Array[ExtResource("5_f2s78")]([ExtResource("6_hy8lp")])
 reload_sound = ExtResource("9_3k74t")
+pickup_scene = ExtResource("8_uxymp")
 hit_iframe_duration = 0.8
 metadata/_custom_type_script = "uid://dtejatc6kcbh3"
 

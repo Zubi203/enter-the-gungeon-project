@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_bqaen"]
 [ext_resource type="Texture2D" uid="uid://btvihr1hijy1u" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/36.png" id="8_mt4lw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_baqy0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mt4lw"]
 resource_local_to_scene = true
 shader = ExtResource("2_k363l")
 shader_parameter/progress_white = 0.0
@@ -35,8 +35,14 @@ metadata/_custom_type_script = "uid://bnix037fwewji"
 [node name="DarkBlueSlime" unique_id=184718225 instance=ExtResource("1_3spke")]
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034]
-material = SubResource("ShaderMaterial_baqy0")
+material = SubResource("ShaderMaterial_mt4lw")
 texture = ExtResource("3_2icjq")
+
+[node name="HealthComponent" parent="." index="2" unique_id=585283887]
+particle_modulate_color = Color(0.3372549, 0.54509807, 0.70980394, 1)
+
+[node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(41026086) index="0" unique_id=1445577034]
+visible = false
 
 [node name="EnemyAI" parent="." index="5" unique_id=731142563]
 attack_sequence = SubResource("Resource_tywpu")

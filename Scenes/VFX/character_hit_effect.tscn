@@ -2,16 +2,26 @@
 
 [ext_resource type="Script" uid="uid://dk8xyokclaoxm" path="res://Scripts/Components/one_shot_cpu_particles.gd" id="1_1jg02"]
 
+[sub_resource type="Gradient" id="Gradient_1jg02"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.63372093)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ur3o5"]
+gradient = SubResource("Gradient_1jg02")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.49317408, 0.50341296)
+
 [sub_resource type="Curve" id="Curve_i4nt7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.6400003, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_hwltk"]
-colors = PackedColorArray(0.46, 0, 0, 1, 0.73, 0, 0, 1)
-
 [node name="CharacterHitEffect" type="CPUParticles2D" unique_id=1056327090]
 emitting = false
 amount = 10
+texture = SubResource("GradientTexture2D_ur3o5")
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
@@ -22,8 +32,8 @@ gravity = Vector2(0, 200)
 initial_velocity_min = 60.0
 initial_velocity_max = 150.0
 angle_max = 90.0
-scale_amount_max = 4.0
+scale_amount_min = 0.05
+scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_i4nt7")
-color_initial_ramp = SubResource("Gradient_hwltk")
 script = ExtResource("1_1jg02")
 metadata/_custom_type_script = "uid://dk8xyokclaoxm"

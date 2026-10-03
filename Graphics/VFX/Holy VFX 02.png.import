@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lusfxp32i10c"
-path="res://.godot/imported/frost-eye.png-50d0140d12a1db1339b0ff50d413842e.ctex"
+uid="uid://dgc1iicl5cuda"
+path="res://.godot/imported/Holy VFX 02.png-8d95bd42f4365b53d251d78926882e44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Characters/frost-eye.png"
-dest_files=["res://.godot/imported/frost-eye.png-50d0140d12a1db1339b0ff50d413842e.ctex"]
+source_file="res://Graphics/VFX/Holy VFX 02.png"
+dest_files=["res://.godot/imported/Holy VFX 02.png-8d95bd42f4365b53d251d78926882e44.ctex"]
 
 [params]
 

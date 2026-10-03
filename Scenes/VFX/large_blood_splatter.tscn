@@ -4,8 +4,8 @@
 
 [sub_resource type="Gradient" id="Gradient_ptkmw"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.613879)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.54844964, 0.613879)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.84705883, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
 gradient = SubResource("Gradient_ptkmw")
@@ -22,9 +22,6 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.8134058, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Gradient" id="Gradient_yhcui"]
-colors = PackedColorArray(0.4, 0, 0, 1, 0.68, 0, 0, 1)
-
 [node name="LargeBloodSplatter" type="CPUParticles2D" unique_id=107720059]
 emitting = false
 amount = 18
@@ -40,6 +37,5 @@ scale_amount_min = 0.1
 scale_amount_max = 0.9
 scale_amount_curve = SubResource("Curve_65ton")
 color_ramp = SubResource("Gradient_xpw1u")
-color_initial_ramp = SubResource("Gradient_yhcui")
 script = ExtResource("1_trgiw")
 metadata/_custom_type_script = "uid://dk8xyokclaoxm"

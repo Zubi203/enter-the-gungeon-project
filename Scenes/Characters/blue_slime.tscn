@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="6_wmtvx"]
 [ext_resource type="Texture2D" uid="uid://csriwyblq0cvp" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/18.png" id="8_3y0ns"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gktvq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y0ns"]
 resource_local_to_scene = true
 shader = ExtResource("2_rljyk")
 shader_parameter/progress_white = 0.0
@@ -34,15 +34,17 @@ metadata/_custom_type_script = "uid://bnix037fwewji"
 [node name="BlueSlime" unique_id=184718225 instance=ExtResource("1_4vfdf")]
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034]
-material = SubResource("ShaderMaterial_gktvq")
+material = SubResource("ShaderMaterial_3y0ns")
 texture = ExtResource("3_lj6p5")
+
+[node name="HealthComponent" parent="." index="2" unique_id=585283887]
+particle_modulate_color = Color(0.39607844, 0.70980394, 0.8784314, 1)
 
 [node name="Hurtbox" parent="." index="3" unique_id=41026086]
 visible = false
 
 [node name="EnemyAI" parent="." index="5" unique_id=731142563]
 attack_sequence = SubResource("Resource_b27un")
-attack_cooldown = 2.0
 
 [node name="GunSprite" parent="." index="8" unique_id=1716614618]
 position = Vector2(0, -14)

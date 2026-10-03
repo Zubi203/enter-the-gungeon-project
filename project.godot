@@ -145,6 +145,7 @@ reload={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Hitbox"
 2d_physics/layer_5="Hurtbox"
+2d_physics/layer_6="Pickups"
 
 [physics]
 
@@ -154,3 +155,4 @@ reload={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.14509805, 0.07450981, 0.101960786, 1)

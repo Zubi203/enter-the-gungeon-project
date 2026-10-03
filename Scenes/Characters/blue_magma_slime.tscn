@@ -4,12 +4,14 @@
 [ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_u8rvh"]
 [ext_resource type="Texture2D" uid="uid://d2u71yvoihqdh" path="res://Graphics/Characters/Slimes/BlueMagmaSlime.png" id="3_emaym"]
 [ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_w041d"]
+[ext_resource type="PackedScene" uid="uid://cvhuvigra6yl2" path="res://Scenes/Projectiles/small_blood_splatter.tscn" id="4_ypsgv"]
 [ext_resource type="Resource" uid="uid://ckd2wi6dtsll0" path="res://Resources/BulletData/enemy_splitting_bullet.tres" id="5_irsp5"]
 [ext_resource type="PackedScene" uid="uid://k7bgs2fy76je" path="res://Scenes/VFX/enemy_shoot_effect_2.tscn" id="6_evr2p"]
+[ext_resource type="AudioStream" uid="uid://bkxmp70rra6so" path="res://Audio/hit effects/slime gun sfx.wav" id="7_8cw2l"]
 [ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="7_37ekk"]
 [ext_resource type="Texture2D" uid="uid://lh8k3yjrk23o" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/25.png" id="8_n5r8n"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5qpq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cotv2"]
 resource_local_to_scene = true
 shader = ExtResource("2_u8rvh")
 shader_parameter/progress_white = 0.0
@@ -18,6 +20,7 @@ shader_parameter/progress_green = 0.0
 [sub_resource type="Resource" id="Resource_7jy0f"]
 script = ExtResource("4_w041d")
 bullet = ExtResource("5_irsp5")
+shoot_sfx = ExtResource("7_8cw2l")
 shoot_vfx = Array[PackedScene]([ExtResource("6_evr2p")])
 recoil_enabled = false
 accuracy_cone_angle = 15.0
@@ -32,8 +35,12 @@ metadata/_custom_type_script = "uid://bnix037fwewji"
 [node name="BlueMagmaSlime" unique_id=184718225 instance=ExtResource("1_evr2p")]
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034]
-material = SubResource("ShaderMaterial_r5qpq")
+material = SubResource("ShaderMaterial_cotv2")
 texture = ExtResource("3_emaym")
+
+[node name="HealthComponent" parent="." index="2" unique_id=585283887]
+particle_modulate_color = Color(0.1764706, 0.8666667, 0.92941177, 1)
+hit_effects = Array[PackedScene]([ExtResource("4_ypsgv")])
 
 [node name="EnemyAI" parent="." index="5" unique_id=731142563]
 attack_sequence = SubResource("Resource_han3a")

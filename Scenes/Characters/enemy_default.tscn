@@ -11,12 +11,15 @@
 [ext_resource type="Script" uid="uid://cmgu0npg7qct6" path="res://Scripts/Components/character_animation.gd" id="5_tq1da"]
 [ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="6_qstrc"]
 [ext_resource type="Resource" uid="uid://bpqx8pbt3oljm" path="res://Resources/BulletData/default_enemy_bullet.tres" id="7_1prna"]
+[ext_resource type="AudioStream" uid="uid://df2wq3mis48ug" path="res://Audio/hit effects/mixkit-hard-and-quick-punch-2143.wav" id="7_14lae"]
 [ext_resource type="PackedScene" uid="uid://c68jpig38lb83" path="res://Scenes/VFX/enemy_shoot_effect.tscn" id="8_1prna"]
+[ext_resource type="AudioStream" uid="uid://530d7ud47dh7" path="res://Audio/hit effects/enemy hit effect.wav" id="8_14lae"]
 [ext_resource type="Script" uid="uid://bnix037fwewji" path="res://Scripts/ResourceScripts/enemy_attack.gd" id="8_siu8x"]
 [ext_resource type="PackedScene" uid="uid://beyq4ni0l7ucp" path="res://Scenes/VFX/enemy_attack_windup_small.tscn" id="13_bfo3h"]
 [ext_resource type="Script" uid="uid://873eq26p32mw" path="res://Scripts/Components/gun_sprite.gd" id="15_bfo3h"]
+[ext_resource type="PackedScene" uid="uid://c72tiqpli2yfu" path="res://Scenes/VFX/enemy_spawn_vfx.tscn" id="16_qbrmd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfo3h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbrmd"]
 resource_local_to_scene = true
 shader = ExtResource("2_ksvbg")
 shader_parameter/progress_white = 0.0
@@ -125,14 +128,13 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_f2s78"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.0125, 0.3482143, 0.5732143)
-colors = PackedColorArray(0.6616297, 0.66162944, 0.66162896, 1, 0.18645912, 0.186459, 0.18645903, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.0125, 0.35852712, 0.5988372)
+colors = PackedColorArray(0.58345014, 0.58344996, 0.5834491, 1, 0.18645889, 0.18645906, 0.18645895, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bfo3h"]
 gradient = SubResource("Gradient_f2s78")
-width = 96
-height = 96
+width = 48
+height = 48
 fill = 1
 fill_from = Vector2(0.49293286, 0.50706714)
 
@@ -156,7 +158,7 @@ point_count = 2
 collision_layer = 4
 
 [node name="CharacterSprite" parent="." index="0" unique_id=8739034 groups=["Enemy"]]
-material = SubResource("ShaderMaterial_bfo3h")
+material = SubResource("ShaderMaterial_qbrmd")
 scale = Vector2(1.025, 0.975)
 texture = ExtResource("3_bfo3h")
 offset = Vector2(0, -8)
@@ -170,6 +172,8 @@ shape = SubResource("RectangleShape2D_335ku")
 [node name="HealthComponent" parent="." index="2" unique_id=585283887 groups=["Enemy"]]
 max_health = 50
 death_effects = Array[PackedScene]([ExtResource("4_il3c1"), ExtResource("5_0udae"), ExtResource("4_0udae")])
+hit_sound = ExtResource("7_14lae")
+death_sound = ExtResource("8_14lae")
 
 [node name="Hurtbox" parent="." index="3" unique_id=41026086 groups=["Enemy"]]
 position = Vector2(0, -7)
@@ -188,6 +192,7 @@ metadata/_custom_type_script = "uid://bk5d58qoe7pi"
 script = ExtResource("4_wwg5y")
 attack_sequence = SubResource("Resource_73or3")
 telegraph_particles = ExtResource("13_bfo3h")
+spawn_effect = ExtResource("16_qbrmd")
 
 [node name="LineOfSight" type="RayCast2D" parent="." index="6" unique_id=2116824844]
 unique_name_in_owner = true
@@ -201,15 +206,16 @@ follow_type = 1
 metadata/_custom_type_script = "uid://cmgu0npg7qct6"
 
 [node name="GunSprite" type="Sprite2D" parent="." index="8" unique_id=1716614618 node_paths=PackedStringArray("gun_flash")]
+offset = Vector2(-7, 0)
 script = ExtResource("15_bfo3h")
-gun_offset = 10.0
+gun_offset = 17.0
 origin_offset = Vector2(0, -5)
 gun_flash = NodePath("GunFlash")
 gun_flash_duration = 0.1
 metadata/_custom_type_script = "uid://873eq26p32mw"
 
 [node name="GunFlash" type="PointLight2D" parent="GunSprite" index="0" unique_id=604606682]
-position = Vector2(15.000001, 0)
+position = Vector2(7, 0)
 rotation = 0.7853982
 color = Color(1, 0.45, 0.45, 1)
 energy = 0.0
@@ -239,3 +245,7 @@ initial_velocity_max = 7.0
 scale_amount_min = 0.05
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_14lae")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="11" unique_id=1664796594]
+unique_name_in_owner = true
+path_desired_distance = 5.0

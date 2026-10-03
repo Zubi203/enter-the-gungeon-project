@@ -35,7 +35,7 @@ enum SoundEmissionType{
 @export var charge_time: float = 2.0
 @export var bullets_per_shot: int = 1
 @export var recoil_enabled: bool = true
-@export var recoil: float = 7.0
+@export var recoil: float = 12.0
 @export_range(0.0, 1.0, 0.0001) var burst_explosiveness: float = 1.0
 @export var accuracy_cone_angle: float = 30.0
 @export var spread_type: SpreadType

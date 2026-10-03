@@ -18,7 +18,7 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_testing_button_pressed() -> void:
-	pass # Replace with function body.
+	SceneTransition.transition(GlobalData.Scenes.TEST_LEVEL, GlobalData.Scenes.TITLE)
 
 
 func _on_play_button_pressed() -> void:

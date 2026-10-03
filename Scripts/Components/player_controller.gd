@@ -29,6 +29,7 @@ var control_disabled: bool = false
 		GunsUpdated.emit(current_weapon, weapons)
 var is_reloading: bool = false
 @export var reload_sound: AudioStream
+@export var pickup_scene: PackedScene
 
 var current_weapon: GunData:
 	set(value): 
@@ -48,6 +49,9 @@ var bullet_manager: BulletManager:
 var audio_manager: AudioManager:
 	get: return ManagerRegistry.get_manager("audio_manager")
 
+var pickup_manager: PickupManager:
+	get: return ManagerRegistry.get_manager("pickup_manager")
+
 func _ready() -> void:
 	weapon_ammo.clear()
 	for gun in weapons:
@@ -66,6 +70,7 @@ func setup():
 			child.DamageTaken.connect(_on_damage_taken)
 	
 	await get_tree().create_timer(0.1).timeout
+	
 	AmmoUpdated.emit(current_weapon, weapon_ammo[current_weapon])
 	GunsUpdated.emit(current_weapon, weapons)
 
@@ -104,6 +109,9 @@ func _process(_delta: float) -> void:
 	
 	
 	if is_reloading:
+		return
+	
+	if weapon_ammo.keys().is_empty():
 		return
 	
 	if Input.is_action_just_pressed("reload"):
@@ -250,13 +258,18 @@ func add_new_gun(gun: GunData):
 		if not weapons.has(gun):
 			weapons.append(gun)
 			weapon_ammo[gun] = gun.magazine_size
-			
+			current_weapon = gun
 	else:
+		if pickup_scene:
+			pickup_manager.spawn_gun_pickup(pickup_scene, current_weapon, owner.global_position)
 		weapons.erase(current_weapon)
 		weapon_ammo.erase(current_weapon)
 		weapons.append(gun)
 		weapon_ammo[gun] = gun.magazine_size
 		current_weapon = gun
+	
+	AmmoUpdated.emit(current_weapon, weapon_ammo[current_weapon])
+	GunsUpdated.emit(current_weapon, weapons)
 
 func start_reload():
 	if weapon_ammo[current_weapon] == current_weapon.magazine_size:

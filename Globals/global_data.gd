@@ -23,7 +23,7 @@ enum Scenes{
 const SCENE_PATHS: Dictionary[Scenes, String] = {
 	Scenes.TITLE: "uid://5nvrwauton5y",
 	Scenes.MAIN_LEVEL: "uid://dadonouguo0fx",
-	Scenes.TEST_LEVEL: "",
+	Scenes.TEST_LEVEL: "uid://d1atmn18l5jal",
 	Scenes.DEFEAT_SCREEN: "",
 	Scenes.VICTORY_SCREEN: "",
 }

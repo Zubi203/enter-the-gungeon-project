@@ -18,29 +18,24 @@ fill_from = Vector2(0.48293516, 0.49317408)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23948222, 1), 0.0, 0.0, 0, 0, Vector2(0.77669907, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="Gradient" id="Gradient_yhcui"]
-offsets = PackedFloat32Array(0, 0.39311594, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1)
-
 [node name="EnemyAttackWindup" type="CPUParticles2D" unique_id=1586424361]
 emitting = false
 amount = 20
 texture = SubResource("GradientTexture2D_xpw1u")
-lifetime = 0.9
+lifetime = 0.7
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.9
 emission_shape = 6
-emission_ring_inner_radius = 42.0
-emission_ring_radius = 48.0
+emission_ring_inner_radius = 30.0
+emission_ring_radius = 35.0
 particle_flag_align_y = true
 direction = Vector2(0, 0)
 gravity = Vector2(0, 0)
 radial_accel_min = -200.0
 radial_accel_max = -200.0
 tangential_accel_max = 60.74
-scale_amount_min = 0.4
-scale_amount_max = 0.6
+scale_amount_min = 0.2
+scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_65ton")
-color_ramp = SubResource("Gradient_yhcui")
 script = ExtResource("1_haj67")
 metadata/_custom_type_script = "uid://dk8xyokclaoxm"

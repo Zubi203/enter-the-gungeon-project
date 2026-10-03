@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3k0y6qt84dse"
-path="res://.godot/imported/lantern-ghost.png-0114d043d1257d8225e12ec766d54b88.ctex"
+uid="uid://jjp8avb6qy0l"
+path="res://.godot/imported/EnemySpawnFX.png-dfc8024f3cbdc1913bbc743b8c52b298.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Characters/lantern-ghost.png"
-dest_files=["res://.godot/imported/lantern-ghost.png-0114d043d1257d8225e12ec766d54b88.ctex"]
+source_file="res://Graphics/VFX/EnemySpawnFX.png"
+dest_files=["res://.godot/imported/EnemySpawnFX.png-dfc8024f3cbdc1913bbc743b8c52b298.ctex"]
 
 [params]
 

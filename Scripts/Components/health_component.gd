@@ -13,10 +13,12 @@ var sprite: CharacterSprite
 var health: int:
 	set(value):
 		health = value
+		health = clampi(health, 0, max_health)
 		HealthChanged.emit(health, max_health)
 		if health <= 0:
 			die()
 
+@export var particle_modulate_color: Color = Color.WHITE
 @export var hit_effects: Array[PackedScene]
 
 @export var death_effects: Array[PackedScene]
@@ -24,6 +26,7 @@ var health: int:
 @export var hit_sound_cooldown: float = 0.1
 var hit_sound_countdown: float = 0.0
 @export var death_sound: AudioStream
+var is_dead: bool = false
 
 var particle_manager: ParticleManager:
 	get: return ManagerRegistry.get_manager("particle_manager")
@@ -56,7 +59,7 @@ func _try_play_hit_sound():
 	if hit_sound_countdown > 0.0:
 		return
 	hit_sound_countdown = hit_sound_cooldown
-	audio_manager.play_random_pitch(hit_sound)
+	audio_manager.play_random_pitch(hit_sound, -10)
 
 func heal(amount: int):
 	health += amount
@@ -64,13 +67,17 @@ func heal(amount: int):
 		sprite.heal_flash()
 
 func die():
+	if is_dead:
+		return
+	is_dead = true
 	HealthDepleted.emit()
 	audio_manager.play_random_pitch(death_sound)
 	for effect in death_effects:
-		particle_manager.spawn_particles(effect, owner.global_position, -1)
+		particle_manager.spawn_particles(effect, owner.global_position, -1, particle_modulate_color)
 
 func spawn_hit_effects():
 	if hit_effects.is_empty():
 		return
+	audio_manager.play_random_pitch(hit_sound)
 	for effect in hit_effects:
-		particle_manager.spawn_particles(effect, owner.global_position, -1)
+		particle_manager.spawn_particles(effect, owner.global_position, -1, particle_modulate_color)

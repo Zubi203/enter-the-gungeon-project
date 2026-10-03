@@ -4,8 +4,8 @@
 
 [sub_resource type="Gradient" id="Gradient_xogpx"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.65763545)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.5755814, 0.65763545)
+colors = PackedColorArray(1, 1, 1, 1, 0.09923185, 0.09923173, 0.09923177, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_65ton"]
 gradient = SubResource("Gradient_xogpx")
@@ -15,28 +15,35 @@ fill = 1
 fill_from = Vector2(0.49293286, 0.48939928)
 
 [sub_resource type="Curve" id="Curve_h2w44"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.48047, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7062937, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.48047, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_xpw1u"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_p5nn6"]
+offsets = PackedFloat32Array(0, 0.81620556, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_gwi5o"]
+colors = PackedColorArray(0.59313357, 0.5931336, 0.59313333, 1, 1, 1, 1, 1)
 
 [node name="EnemyShootEffect" type="CPUParticles2D" unique_id=129356392]
 emitting = false
-amount = 30
 texture = SubResource("GradientTexture2D_65ton")
-lifetime = 0.2
+lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 120.0
-initial_velocity_max = 120.0
+initial_velocity_min = 60.0
+initial_velocity_max = 80.0
+angular_velocity_min = 600.0
+angular_velocity_max = 600.0
 damping_min = 300.0
 damping_max = 300.0
-scale_amount_min = 0.1
-scale_amount_max = 0.4
+angle_max = 90.0
+scale_amount_min = 0.2
+scale_amount_max = 0.6
 scale_amount_curve = SubResource("Curve_h2w44")
-color_ramp = SubResource("Gradient_xpw1u")
+color_ramp = SubResource("Gradient_p5nn6")
+color_initial_ramp = SubResource("Gradient_gwi5o")
 script = ExtResource("1_jor7k")
 metadata/_custom_type_script = "uid://dk8xyokclaoxm"

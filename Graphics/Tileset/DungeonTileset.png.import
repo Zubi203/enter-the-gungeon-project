@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbed0rikdvrxj"
-path="res://.godot/imported/mimic-skull.png-326732c4be70bbc33d609a914c7e8f2a.ctex"
+uid="uid://cmnqgcq3xer2y"
+path="res://.godot/imported/DungeonTileset.png-f522bd087b6872570c5c1d85bd904003.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Characters/mimic-skull.png"
-dest_files=["res://.godot/imported/mimic-skull.png-326732c4be70bbc33d609a914c7e8f2a.ctex"]
+source_file="res://Graphics/Tileset/DungeonTileset.png"
+dest_files=["res://.godot/imported/DungeonTileset.png-f522bd087b6872570c5c1d85bd904003.ctex"]
 
 [params]
 

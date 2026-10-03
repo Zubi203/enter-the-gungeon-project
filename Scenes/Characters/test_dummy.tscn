@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://dh5isxa2dvwn3"]
+
+[ext_resource type="Script" uid="uid://bqw2offq2ekw" path="res://Scripts/Components/infinite_health_component.gd" id="1_t74h7"]
+[ext_resource type="Script" uid="uid://dgawt8meclj6n" path="res://Scenes/Characters/hurtbox_component.gd" id="2_hmgm0"]
+[ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="2_t74h7"]
+[ext_resource type="AudioStream" uid="uid://df2wq3mis48ug" path="res://Audio/hit effects/mixkit-hard-and-quick-punch-2143.wav" id="3_df3rk"]
+[ext_resource type="Texture2D" uid="uid://cqnym0lotk3jd" path="res://Graphics/Characters/TrainingDummy.png" id="3_dqbbt"]
+[ext_resource type="Script" uid="uid://wuiklct7x237" path="res://Scripts/Components/character_sprite.gd" id="3_qlxkc"]
+[ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="3_t74h7"]
+[ext_resource type="Script" uid="uid://cmgu0npg7qct6" path="res://Scripts/Components/character_animation.gd" id="5_t74h7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2w44"]
+radius = 9.0
+height = 28.0
+
+[sub_resource type="Gradient" id="Gradient_qlxkc"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.59108526)
+colors = PackedColorArray(0, 0, 0, 0.16862746, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2w44"]
+gradient = SubResource("Gradient_qlxkc")
+width = 32
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlxkc"]
+resource_local_to_scene = true
+shader = ExtResource("3_t74h7")
+shader_parameter/progress_white = 0.0
+shader_parameter/progress_green = 0.0
+
+[sub_resource type="Animation" id="Animation_df3rk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_183o7"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ve7mg"]
+resource_name = "hit"
+length = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_3o03c"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1bpr0"]
+resource_name = "roll"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dqpvx"]
+resource_name = "run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlnst"]
+_data = {
+&"RESET": SubResource("Animation_df3rk"),
+&"death": SubResource("Animation_183o7"),
+&"hit": SubResource("Animation_ve7mg"),
+&"idle": SubResource("Animation_3o03c"),
+&"roll": SubResource("Animation_1bpr0"),
+&"run": SubResource("Animation_dqpvx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2w44"]
+size = Vector2(13, 18)
+
+[node name="TestDummy" type="CharacterBody2D" unique_id=107130733 groups=["Enemy"]]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 7
+
+[node name="HealthComponent" type="Node2D" parent="." unique_id=1765847076]
+script = ExtResource("1_t74h7")
+max_health = 900
+hit_effects = Array[PackedScene]([ExtResource("2_t74h7")])
+hit_sound = ExtResource("3_df3rk")
+metadata/_custom_type_script = "uid://bwv1ju4aso6cw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=147559497 groups=["Enemy"]]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("2_hmgm0")
+metadata/_custom_type_script = "uid://dgawt8meclj6n"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1663668963]
+position = Vector2(2, -18)
+shape = SubResource("CapsuleShape2D_h2w44")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=746580747]
+position = Vector2(2, -1)
+scale = Vector2(0.875, 0.75)
+texture = SubResource("GradientTexture2D_h2w44")
+
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=641842053]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_qlxkc")
+texture = ExtResource("3_dqbbt")
+offset = Vector2(0, -24)
+hframes = 6
+script = ExtResource("3_qlxkc")
+metadata/_custom_type_script = "uid://wuiklct7x237"
+
+[node name="CharacterAnimation" type="AnimationPlayer" parent="." unique_id=1825068307]
+libraries/ = SubResource("AnimationLibrary_hlnst")
+script = ExtResource("5_t74h7")
+follow_type = 1
+target_group = ""
+metadata/_custom_type_script = "uid://cmgu0npg7qct6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1092299137]
+position = Vector2(2.5, -18)
+shape = SubResource("RectangleShape2D_h2w44")

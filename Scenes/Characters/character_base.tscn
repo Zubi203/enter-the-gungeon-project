@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://wuiklct7x237" path="res://Scripts/Components/character_sprite.gd" id="2_5gjis"]
 [ext_resource type="Script" uid="uid://bwv1ju4aso6cw" path="res://Scripts/Components/health_component.gd" id="2_fosa8"]
 [ext_resource type="PackedScene" uid="uid://cvhuvigra6yl2" path="res://Scenes/Projectiles/small_blood_splatter.tscn" id="5_gu001"]
+[ext_resource type="PackedScene" uid="uid://fm77uwr2u4x4" path="res://Scenes/VFX/character_hit_effect.tscn" id="6_t5vbb"]
+[ext_resource type="PackedScene" uid="uid://cx7gya4ktld3s" path="res://Scenes/VFX/character_hit_effect_2.tscn" id="7_503ba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_km8uw"]
 resource_local_to_scene = true
@@ -23,6 +25,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="CharacterSprite" type="Sprite2D" parent="." unique_id=8739034]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_km8uw")
 texture = ExtResource("1_u73ym")
 hframes = 18
@@ -34,7 +37,8 @@ shape = SubResource("CircleShape2D_h2w44")
 
 [node name="HealthComponent" type="Node2D" parent="." unique_id=585283887]
 script = ExtResource("2_fosa8")
-hit_effects = Array[PackedScene]([ExtResource("5_gu001")])
+hit_effects = Array[PackedScene]([ExtResource("5_gu001"), ExtResource("6_t5vbb")])
+death_effects = Array[PackedScene]([ExtResource("7_503ba")])
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=41026086]
 z_index = 3

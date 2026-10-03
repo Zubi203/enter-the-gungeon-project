@@ -58,7 +58,6 @@ bullet = SubResource("Resource_gmuc2")
 shoot_sfx = ExtResource("7_4atke")
 shoot_vfx = Array[PackedScene]([ExtResource("4_ikhk2")])
 charge_time = 0.0
-recoil = 5.0
 accuracy_cone_angle = 15.0
 shoot_interval = 0.1
 name = "Pistol"

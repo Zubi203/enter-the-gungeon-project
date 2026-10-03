@@ -55,7 +55,7 @@ func _update_ammo_bar(selected_gun: GunData, ammo: int):
 	ammo_progress_bar.value = ammo
 
 func _update_equipped_guns(current_gun: GunData, equipped_guns: Array[GunData]):
-	if not equipped_guns.size() == equipped_gun_sprites.size():
+	if equipped_guns.size() > equipped_gun_sprites.size():
 		return
 	
 	for i in range(equipped_guns.size()):

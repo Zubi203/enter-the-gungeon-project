@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c370i8x1hba51" path="res://Scenes/Characters/enemy_default.tscn" id="1_8cvj2"]
 [ext_resource type="Shader" uid="uid://cmlr2bvy0bicl" path="res://Shaders/character.gdshader" id="2_rk4tp"]
 [ext_resource type="Texture2D" uid="uid://bdsn7nxx6k8tu" path="res://Graphics/Characters/Slimes/MagmaSlime.png" id="3_g2y2g"]
+[ext_resource type="PackedScene" uid="uid://cvhuvigra6yl2" path="res://Scenes/Projectiles/small_blood_splatter.tscn" id="4_evvsf"]
 [ext_resource type="Script" uid="uid://by0fgjfwddu8r" path="res://Scripts/ResourceScripts/gun_data.gd" id="4_hmoug"]
 [ext_resource type="PackedScene" uid="uid://da8t0qhnps1j1" path="res://Scenes/VFX/wall_hit_effect_3.tscn" id="5_u1hcf"]
 [ext_resource type="Script" uid="uid://20jt2km3xhd0" path="res://Scripts/ResourceScripts/bullet_destroy_strategy.gd" id="6_pm8he"]
@@ -13,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c425yjxr4smoa" path="res://Scenes/VFX/wall_hit_effect.tscn" id="10_abfj3"]
 [ext_resource type="Script" uid="uid://bt8wxltexhu4a" path="res://Scripts/ResourceScripts/collision_strategy.gd" id="11_p8whe"]
 [ext_resource type="PackedScene" uid="uid://k7bgs2fy76je" path="res://Scenes/VFX/enemy_shoot_effect_2.tscn" id="12_pm8he"]
-[ext_resource type="PackedScene" uid="uid://b2wf4p3d06ilu" path="res://Scenes/VFX/enemy_attack_windup.tscn" id="14_pm8he"]
+[ext_resource type="AudioStream" uid="uid://bkxmp70rra6so" path="res://Audio/hit effects/slime gun sfx.wav" id="13_voqp3"]
 [ext_resource type="Texture2D" uid="uid://dnxknpwodbpny" path="res://Graphics/Weapons/SnoopethDuckDuck Guns/Pack 1/1px/16.png" id="15_gwi5o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5nn6"]
@@ -60,6 +61,7 @@ metadata/_custom_type_script = "uid://bhowfwjcqmlkp"
 [sub_resource type="Resource" id="Resource_1eduh"]
 script = ExtResource("4_hmoug")
 bullet = SubResource("Resource_ust1u")
+shoot_sfx = ExtResource("13_voqp3")
 sound_emission_type = 1
 shoot_vfx = Array[PackedScene]([ExtResource("12_pm8he")])
 bullets_per_shot = 18
@@ -71,7 +73,7 @@ metadata/_custom_type_script = "uid://by0fgjfwddu8r"
 [sub_resource type="Resource" id="Resource_asb5u"]
 script = ExtResource("7_85uqb")
 attack_sequence = Array[ExtResource("4_hmoug")]([SubResource("Resource_1eduh")])
-startup_delay = 0.8
+startup_delay = 0.5
 metadata/_custom_type_script = "uid://bnix037fwewji"
 
 [node name="MagmaSlime" unique_id=184718225 instance=ExtResource("1_8cvj2")]
@@ -80,10 +82,16 @@ metadata/_custom_type_script = "uid://bnix037fwewji"
 material = SubResource("ShaderMaterial_p5nn6")
 texture = ExtResource("3_g2y2g")
 
+[node name="HealthComponent" parent="." index="2" unique_id=585283887]
+particle_modulate_color = Color(0.93333334, 0.70980394, 0.24705882, 1)
+hit_effects = Array[PackedScene]([ExtResource("4_evvsf")])
+
+[node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(41026086) index="0" unique_id=1445577034]
+visible = false
+
 [node name="EnemyAI" parent="." index="5" unique_id=731142563]
 attack_sequence = SubResource("Resource_asb5u")
 attack_cooldown = 3.0
-telegraph_particles = ExtResource("14_pm8he")
 
 [node name="GunSprite" parent="." index="8" unique_id=1716614618]
 position = Vector2(0, -12)
