@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dmjag4sq238yo"]
+
+[ext_resource type="PackedScene" uid="uid://m53a8dftp52y" path="res://Scenes/Objects/door.tscn" id="1_r8y8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4rea"]
+size = Vector2(8, 32)
+
+[node name="DoorSideways" unique_id=542845465 instance=ExtResource("1_r8y8o")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=177596858]
+offset = Vector2(0, -8)
+region_rect = Rect2(96, 64, 16, 32)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1073491204]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_n4rea")
+
+[node name="DoorParticles" parent="." index="2" unique_id=781533571]
+position = Vector2(0, -8)
+emission_rect_extents = Vector2(8, 16)

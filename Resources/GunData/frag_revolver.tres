@@ -108,7 +108,6 @@ highlighted_texture = ExtResource("13_d7jld")
 bullet = SubResource("Resource_iuxm4")
 shoot_sfx = ExtResource("7_v0b81")
 shoot_vfx = Array[PackedScene]([ExtResource("4_wirpd")])
-recoil = 12.0
 accuracy_cone_angle = 2.0
 shoot_interval = 0.1
 metadata/_custom_type_script = "uid://by0fgjfwddu8r"

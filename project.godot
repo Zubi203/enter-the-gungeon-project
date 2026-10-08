@@ -146,6 +146,7 @@ reload={
 2d_physics/layer_4="Hitbox"
 2d_physics/layer_5="Hurtbox"
 2d_physics/layer_6="Pickups"
+2d_physics/layer_7="Triggers"
 
 [physics]
 
